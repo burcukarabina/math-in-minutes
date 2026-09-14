@@ -150,5 +150,18 @@ const videos = [
   youtubeId: "7V5kwhb2UuI",
   description:
     "An introduction to cross sections and how they help visualize surfaces defined by functions of two variables."
+}, 
+  
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "direct-substitution-multivariable-limits",
+  section: "Multivariable Limits",
+  topic: "Limits",
+  title: "Direct Substitution with Multivariable Limits",
+  youtubeId: "6QYiXivUINc",
+  description:
+    "A worked example showing how to evaluate a multivariable limit using direct substitution when the function is continuous at the point."
 }
 ];
