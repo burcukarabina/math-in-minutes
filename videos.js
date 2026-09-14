@@ -189,5 +189,18 @@ const videos = [
   youtubeId: "luXoC6ZqtFc",
   description:
     "A worked example showing how to prove that a multivariable limit exists using the Squeeze Theorem."
+}, 
+
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "testing-limits-continuity-different-paths",
+  section: "Multivariable Limits",
+  topic: "Limits and Continuity",
+  title: "Testing Limits and Continuity with Different Paths",
+  youtubeId: "_PSV22Jckow",
+  description:
+    "A worked example using multiple paths to test whether a multivariable limit exists and to determine continuity at a point."
 }
 ];
