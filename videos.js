@@ -112,6 +112,31 @@ const videos = [
   description:
     "An introduction to the average value of a function on a closed interval and its connection to definite integrals."
 },
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "ftc-i-in-action",
+  section: "Fundamental Theorem of Calculus",
+  topic: "FTC I",
+  title: "FTC I in Action",
+  youtubeId: "y61RJm4BYLg",
+  description:
+    "A worked example showing how the Fundamental Theorem of Calculus Part I is applied in practice."
+},
+
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "ftc-1-chain-rule-calc-1",
+  section: "Fundamental Theorem of Calculus",
+  topic: "FTC I",
+  title: "FTC I + Chain Rule + Calc I",
+  youtubeId: "AmIWNoOl488",
+  description:
+    "A worked example connecting the Fundamental Theorem of Calculus Part I with the Chain Rule and key ideas from Calculus I."
+},
   
   {
   course: "calculus-3",
