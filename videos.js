@@ -176,5 +176,18 @@ const videos = [
   youtubeId: "7poFr_0UwGo",
   description:
     "A worked example showing how to prove that a multivariable limit does not exist by comparing different paths of approach."
+}, 
+
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "multivariable-limit-squeeze-theorem",
+  section: "Multivariable Limits",
+  topic: "Limits",
+  title: "Multivariable Limit Using the Squeeze Theorem",
+  youtubeId: "luXoC6ZqtFc",
+  description:
+    "A worked example showing how to prove that a multivariable limit exists using the Squeeze Theorem."
 }
 ];
