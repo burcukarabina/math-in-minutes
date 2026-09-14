@@ -163,5 +163,18 @@ const videos = [
   youtubeId: "6QYiXivUINc",
   description:
     "A worked example showing how to evaluate a multivariable limit using direct substitution when the function is continuous at the point."
+}, 
+
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "multivariable-limit-dne",
+  section: "Multivariable Limits",
+  topic: "Limits",
+  title: "Multivariable Limit DNE",
+  youtubeId: "7poFr_0UwGo",
+  description:
+    "A worked example showing how to prove that a multivariable limit does not exist by comparing different paths of approach."
 }
 ];
