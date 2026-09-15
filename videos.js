@@ -137,6 +137,18 @@ const videos = [
   description:
     "A worked example connecting the Fundamental Theorem of Calculus Part I with the Chain Rule and key ideas from Calculus I."
 },
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "ftc-ii-in-action",
+  section: "Fundamental Theorem of Calculus",
+  topic: "FTC II",
+  title: "FTC II in Action",
+  youtubeId: "G1nSApajp1M",
+  description:
+    "A worked example showing how the Fundamental Theorem of Calculus Part II is applied to evaluate definite integrals."
+},
   
   {
   course: "calculus-3",
