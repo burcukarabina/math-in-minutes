@@ -149,6 +149,18 @@ const videos = [
   description:
     "A worked example showing how the Fundamental Theorem of Calculus Part II is applied to evaluate definite integrals."
 },
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "substitution-which-one-to-choose",
+  section: "Integration Techniques",
+  topic: "Substitution",
+  title: "Substitution – Which One to Choose?",
+  youtubeId: "cIM1nn-xpjo",
+  description:
+    "A guide to choosing an effective substitution when evaluating integrals, with emphasis on recognizing useful inner functions."
+},
   
   {
   course: "calculus-3",
