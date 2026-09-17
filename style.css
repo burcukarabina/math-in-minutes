@@ -184,7 +184,8 @@ main {
 }
 
 .fancy-b {
-  font-family: "Brush Script MT", "Segoe Script", cursive;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
   font-size: 1.15em;
   font-weight: 700;
 }
