@@ -153,6 +153,18 @@ const videos = [
   course: "calculus-2",
   courseName: "Calculus II",
   page: "calculus-2.html",
+  id: "u-substitution-definite-integrals-two-methods",
+  section: "Integration Techniques",
+  topic: "Substitution",
+  title: "u-Substitution with Definite Integrals: Two Methods",
+  youtubeId: "AwCBc921EMI",
+  description:
+    "A comparison of two methods for applying u-substitution to definite integrals: changing the bounds and converting back to the original variable."
+},
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
   id: "substitution-which-one-to-choose",
   section: "Integration Techniques",
   topic: "Substitution",
