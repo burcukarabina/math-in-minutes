@@ -263,5 +263,52 @@ const videos = [
   youtubeId: "_PSV22Jckow",
   description:
     "A worked example using multiple paths to test whether a multivariable limit exists and to determine continuity at a point."
+}, {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "geometric-meaning-of-partial-derivatives",
+  section: "Partial Derivatives",
+  topic: "Partial Derivatives",
+  title: "Geometric Meaning of Partial Derivatives",
+  youtubeId: "aEzq_jrQNas",
+  description:
+    "A geometric interpretation of partial derivatives using tangent slopes along cross sections of a surface."
+},
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "first-order-partial-derivatives",
+  section: "Partial Derivatives",
+  topic: "Partial Derivatives",
+  title: "First-Order Partial Derivatives",
+  youtubeId: "hcXwsFnMaDE",
+  description:
+    "An introduction to first-order partial derivatives and how to differentiate a multivariable function with respect to one variable at a time."
+},
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "partial-derivatives-and-derivative-rules",
+  section: "Partial Derivatives",
+  topic: "Partial Derivatives",
+  title: "Partial Derivatives and Derivative Rules",
+  youtubeId: "N0L56b_lwss",
+  description:
+    "A worked example applying familiar derivative rules to compute partial derivatives of multivariable functions."
+},
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "second-order-partials-and-notation",
+  section: "Partial Derivatives",
+  topic: "Partial Derivatives",
+  title: "Second-Order Partials and Notation",
+  youtubeId: "k21pbT8q8I8",
+  description:
+    "An introduction to second-order partial derivatives and the notation used to represent them."
 }
 ];
