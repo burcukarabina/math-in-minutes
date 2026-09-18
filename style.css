@@ -184,10 +184,10 @@ main {
 }
 
 .fancy-b {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
+  font-size: 1.25em;
+  font-weight: 400;
   font-style: italic;
-  font-size: 1.15em;
-  font-weight: 700;
 }
 
 /* =========================================
