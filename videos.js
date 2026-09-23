@@ -381,5 +381,16 @@ const videos = [
   youtubeId: "r9wKlV-ZOy0",
   description:
     "A worked example showing how to find the equation of a tangent plane to a surface using partial derivatives."
+}, {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "finding-the-hessian-matrix",
+  section: "Partial Derivatives",
+  topic: "Hessian Matrix",
+  title: "Finding the Hessian Matrix",
+  youtubeId: "zHatEfWAxpQ",
+  description:
+    "A worked example showing how to construct the Hessian matrix from second-order partial derivatives."
 }
 ];
