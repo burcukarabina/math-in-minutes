@@ -369,5 +369,17 @@ const videos = [
   youtubeId: "k21pbT8q8I8",
   description:
     "An introduction to second-order partial derivatives and the notation used to represent them."
+},
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "equation-of-a-tangent-plane",
+  section: "Partial Derivatives",
+  topic: "Tangent Planes",
+  title: "Equation of a Tangent Plane",
+  youtubeId: "r9wKlV-ZOy0",
+  description:
+    "A worked example showing how to find the equation of a tangent plane to a surface using partial derivatives."
 }
 ];
