@@ -173,7 +173,66 @@ const videos = [
   description:
     "A guide to choosing an effective substitution when evaluating integrals, with emphasis on recognizing useful inner functions."
 },
-  
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "trigonometric-substitution",
+  section: "Integration Techniques",
+  topic: "Trigonometric Substitution",
+  title: "Trigonometric Substitution",
+  youtubeId: "HhA405T7B5c",
+  description:
+    "An introduction to trigonometric substitution and how to recognize and apply appropriate substitutions when evaluating integrals."
+},
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "choosing-functions-integration-by-parts",
+  section: "Integration Techniques",
+  topic: "Integration by Parts",
+  title: "Choosing Functions with Integration by Parts",
+  youtubeId: "8efFJBBMfqE",
+  description:
+    "A guide to choosing the functions f and g' when applying integration by parts."
+},
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "id-method-example-1",
+  section: "Integration Techniques",
+  topic: "Integration by Parts",
+  title: "ID Method Example 1",
+  youtubeId: "5xkmZ7aCEO8",
+  description:
+    "A worked example using the ID method as a quick approach to integration by parts."
+},
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "id-method-example-2",
+  section: "Integration Techniques",
+  topic: "Integration by Parts",
+  title: "ID Method Example 2",
+  youtubeId: "8UXJ0RnAnsc",
+  description:
+    "A second worked example using the ID method as a quick approach to integration by parts."
+},
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "id-method-example-3",
+  section: "Integration Techniques",
+  topic: "Integration by Parts",
+  title: "ID Method Example 3",
+  youtubeId: "NiGaEyXPp0s",
+  description:
+    "A third worked example using the ID method as a quick approach to integration by parts."
+},
   {
   course: "calculus-3",
   courseName: "Calculus III",
