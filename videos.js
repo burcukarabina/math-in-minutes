@@ -234,6 +234,18 @@ const videos = [
     "A third worked example using the ID method as a quick approach to integration by parts."
 },
   {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "partial-fraction-decomposition",
+  section: "Integration Techniques",
+  topic: "Partial Fractions",
+  title: "Partial Fraction Decomposition",
+  youtubeId: "x7U7FW1rTI8",
+  description:
+    "An introduction to partial fraction decomposition and how it can be used to rewrite rational functions in a form that is easier to integrate."
+},
+  {
   course: "calculus-3",
   courseName: "Calculus III",
   page: "calculus-3.html",
