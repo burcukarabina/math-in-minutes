@@ -246,6 +246,78 @@ const videos = [
     "An introduction to partial fraction decomposition and how it can be used to rewrite rational functions in a form that is easier to integrate."
 },
   {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "p-integrals-and-convergence",
+  section: "Improper Integrals",
+  topic: "Improper Integrals",
+  title: "p-Integrals and Convergence",
+  youtubeId: "UPuLCNU0qQI",
+  description:
+    "An introduction to p-integrals and the conditions that determine whether an improper integral converges or diverges."
+},
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "improper-integral-negative-infinity-to-infinity-part-1",
+  section: "Improper Integrals",
+  topic: "Improper Integrals",
+  title: "Improper Integral over (-∞, ∞): Part I",
+  youtubeId: "73HOJIuWBsc",
+  description:
+    "An introduction to evaluating improper integrals over the entire real line by splitting the integral into two improper integrals."
+},
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "improper-integral-negative-infinity-to-infinity-part-2",
+  section: "Improper Integrals",
+  topic: "Improper Integrals",
+  title: "Improper Integral over (-∞, ∞): Part II",
+  youtubeId: "0Gr3hmM3yHY",
+  description:
+    "A continuation of improper integrals over the entire real line, with another worked example involving convergence."
+},
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "choosing-the-right-volume-formula",
+  section: "Applications of Integration",
+  topic: "Volumes",
+  title: "Choosing the Right Volume Formula",
+  youtubeId: "Yf8mHOcqW3g",
+  description:
+    "A guide to choosing an appropriate volume formula when setting up solids of revolution."
+},
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "disk-versus-washer-method",
+  section: "Applications of Integration",
+  topic: "Volumes",
+  title: "Disk versus Washer Method",
+  youtubeId: "VoMGShMb1FE",
+  description:
+    "A comparison of the disk and washer methods for finding volumes of solids of revolution, with guidance on when to use each method."
+},
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "shell-method",
+  section: "Applications of Integration",
+  topic: "Volumes",
+  title: "Shell Method",
+  youtubeId: "tIlx5vlsYPk",
+  description:
+    "An introduction to the shell method for finding volumes of solids of revolution, including how to set up the corresponding integral."
+},
+  {
   course: "calculus-3",
   courseName: "Calculus III",
   page: "calculus-3.html",
