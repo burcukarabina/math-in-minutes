@@ -368,6 +368,177 @@ const questions = [
   explanation:
     "The p-integral \\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^p}\\,dx\\) converges precisely when \\(p>1\\)."
 },
+  {
+  course: "calculus-2",
+  section: "Improper Integrals",
+  id: "improper-type-and-convergence",
+  type: "randomized-multiple-choice",
+
+  question:
+    "Classify the improper integral and determine whether it converges or diverges.",
+
+  choices: [
+    "Type I and converges",
+    "Type I and diverges",
+    "Type II and converges",
+    "Type II and diverges"
+  ],
+
+  pool: [
+
+    // =====================================
+    // TYPE I — CONVERGES
+    // correct: 0
+    // =====================================
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^2}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "This is Type I because the interval is infinite. It is a p-integral with \\(p=2>1\\), so it converges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_2^\\infty \\frac{1}{x^3}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "This is Type I because the upper limit is infinite. Since it is a p-integral with \\(p=3>1\\), it converges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^\\infty e^{-x}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "This is Type I because the interval is unbounded. The exponential decay is strong enough for the integral to converge."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^{3/2}}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "This is Type I. It is a p-integral with \\(p=\\frac{3}{2}>1\\), so it converges."
+    },
+
+
+    // =====================================
+    // TYPE I — DIVERGES
+    // correct: 1
+    // =====================================
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x}\\,dx\\)",
+      correct: 1,
+      explanation:
+        "This is Type I because the interval is infinite. It is the harmonic p-integral with \\(p=1\\), so it diverges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{\\sqrt{x}}\\,dx\\)",
+      correct: 1,
+      explanation:
+        "This is Type I. It is a p-integral with \\(p=\\frac12\\le 1\\), so it diverges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_2^\\infty \\frac{1}{x^{2/3}}\\,dx\\)",
+      correct: 1,
+      explanation:
+        "This is Type I because the upper limit is infinite. Since \\(p=\\frac23\\le1\\), the p-integral diverges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^\\infty 1\\,dx\\)",
+      correct: 1,
+      explanation:
+        "This is Type I because the interval is infinite. The accumulated area grows without bound, so the integral diverges."
+    },
+
+
+    // =====================================
+    // TYPE II — CONVERGES
+    // correct: 2
+    // =====================================
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{\\sqrt{x}}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "This is Type II because the integrand is unbounded at \\(x=0\\). Since the singularity behaves like \\(x^{-1/2}\\) with exponent less than 1, the integral converges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\ln x\\,dx\\)",
+      correct: 2,
+      explanation:
+        "This is Type II because \\(\\ln x\\) is unbounded as \\(x\\to0^+\\). The corresponding improper limit is finite, so the integral converges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^4 \\frac{1}{\\sqrt{4-x}}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "This is Type II because the integrand is unbounded at \\(x=4\\). The singularity has exponent \\(\\frac12<1\\), so the integral converges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^2 \\frac{1}{(x-1)^{1/3}}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "This is Type II because the integrand is unbounded at \\(x=1\\). Since the singularity has exponent \\(\\frac13<1\\), the integral converges."
+    },
+
+
+    // =====================================
+    // TYPE II — DIVERGES
+    // correct: 3
+    // =====================================
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{x}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "This is Type II because the integrand is unbounded at \\(x=0\\). The corresponding p-type singularity has exponent \\(1\\), so the integral diverges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{x^2}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "This is Type II because the integrand is unbounded at \\(x=0\\). Since the singularity has exponent \\(2\\ge1\\), the integral diverges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^2 \\frac{1}{(x-1)^2}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "This is Type II because the integrand is unbounded at the interior point \\(x=1\\). Splitting the integral at \\(x=1\\) produces divergent improper integrals."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^{\\pi/2} \\tan x\\,dx\\)",
+      correct: 3,
+      explanation:
+        "This is Type II because \\(\\tan x\\) becomes unbounded as \\(x\\to\\frac{\\pi}{2}^-\\). The corresponding improper limit diverges."
+    }
+
+  ]
+},
 
 
   {
