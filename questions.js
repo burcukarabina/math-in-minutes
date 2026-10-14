@@ -416,6 +416,218 @@ const questions = [
 },
   {
   course: "calculus-2",
+  section: "Definite Integrals",
+  id: "order-integrals-by-value",
+  type: "drag-order",
+
+  question:
+    "Drag the following definite integrals into increasing order. Try to compare the integrands rather than evaluating the integrals.",
+
+  pool: [
+
+    /* =====================================
+       SET 1
+    ===================================== */
+
+    {
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{x^2}{1+x^2}\\,dx\\)",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{x}{1+x}\\,dx\\)",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{1+x}\\,dx\\)",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{1+x^2}\\,dx\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "For \\(0<x<1\\), \\(\\frac{x^2}{1+x^2}<\\frac{x}{1+x}<\\frac{1}{1+x}<\\frac{1}{1+x^2}\\). Since all four integrals are over the same interval, the same ordering holds for their values."
+    },
+
+
+    /* =====================================
+       SET 2
+    ===================================== */
+
+    {
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{x^2}{2+x^2}\\,dx\\)",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{x}{2+x}\\,dx\\)",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{2+x}\\,dx\\)",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{1+x^2}\\,dx\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "On \\(0<x<1\\), the four integrands satisfy \\(\\frac{x^2}{2+x^2}<\\frac{x}{2+x}<\\frac{1}{2+x}<\\frac{1}{1+x^2}\\). Therefore their integrals have the same increasing order."
+    },
+
+
+    /* =====================================
+       SET 3
+    ===================================== */
+
+    {
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\int\\limits_{-1}^1 x^4\\,dx\\)",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\int\\limits_{-1}^1 x^2\\,dx\\)",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\int\\limits_{-1}^1 |x|\\,dx\\)",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\int\\limits_{-1}^1 1\\,dx\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "For \\(-1<x<1\\), \\(x^4\\le x^2\\le |x|\\le1\\), with strict inequalities except at selected points. Integrating over the same interval preserves this ordering."
+    },
+
+
+    /* =====================================
+       SET 4
+    ===================================== */
+
+    {
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^{\\pi/4}\\sin^2x\\,dx\\)",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^{\\pi/4}\\sin x\\cos x\\,dx\\)",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^{\\pi/4}\\cos^2x\\,dx\\)",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^{\\pi/4}\\cos x\\,dx\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "On \\(0<x<\\frac{\\pi}{4}\\), we have \\(0<\\sin x<\\cos x<1\\). Therefore \\(\\sin^2x<\\sin x\\cos x<\\cos^2x<\\cos x\\), so the integrals follow the same order."
+    },
+
+
+    /* =====================================
+       SET 5
+    ===================================== */
+
+    {
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{x}{1+x}\\,dx\\)",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\ln(1+x)\\,dx\\)",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 x\\,dx\\)",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\sqrt{x}\\,dx\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "For \\(0<x<1\\), \\(\\frac{x}{1+x}<\\ln(1+x)<x<\\sqrt{x}\\). Since the interval is the same for all four integrals, this gives their increasing order."
+    }
+
+  ]
+},
+  {
+  course: "calculus-2",
   section: "Integration Techniques",
   id: "integration-method-1",
   type: "randomized-multiple-choice",
