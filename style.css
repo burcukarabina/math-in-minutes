@@ -1254,15 +1254,6 @@ footer p {
 }
 
 
-/* Drag handle */
-
-.drag-order-grip {
-  color: var(--uw-teal);
-
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
 
 /* Integral content */
 
