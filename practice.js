@@ -3,7 +3,6 @@ const library = document.getElementById("practice-library");
 const calc2Questions = questions.filter(
   question => question.course === "calculus-2"
 );
-
 const sections = [
   ...new Set(calc2Questions.map(question => question.section))
 ];
@@ -682,8 +681,12 @@ sections.forEach(sectionName => {
         question.id;
 
 
-      const choicesHTML =
-        question.choices
+      const choices =
+  currentItem.choices ||
+  question.choices;
+
+const choicesHTML =
+  choices
           .map(
             (
               choice,
