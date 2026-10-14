@@ -554,6 +554,370 @@ const questions = [
   {
   course: "calculus-2",
   section: "Improper Integrals",
+  id: "improper-integral-two-stage",
+  type: "two-stage-classification",
+
+  question:
+    "Classify each improper integral, then determine whether it converges or diverges.",
+
+  numberToDraw: 4,
+
+  stage1: {
+    label: "Part I: Identify the type of each improper integral.",
+    key: "type",
+    columnLabel: "Type",
+    choices: [
+      "Type I",
+      "Type II"
+    ]
+  },
+
+  stage2: {
+    label: "Part II: Determine whether each improper integral converges or diverges.",
+    key: "behavior",
+    columnLabel: "Behavior",
+    choices: [
+      "Converges",
+      "Diverges"
+    ]
+  },
+
+  pool: [
+
+    /* =====================================
+       TYPE I — CONVERGES
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^2}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_2^\\infty \\frac{1}{x^3}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^{3/2}}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^\\infty e^{-x}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_{-\\infty}^0 e^x\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^\\infty \\frac{1}{1+x^2}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{\\ln x}{x^2}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^\\infty x e^{-x}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Converges"
+      }
+    },
+
+
+    /* =====================================
+       TYPE I — DIVERGES
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{\\sqrt{x}}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_2^\\infty \\frac{1}{x^{2/3}}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^\\infty 1\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{x+1}{x^2}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^{1/3}}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^\\infty \\frac{x}{x+1}\\,dx\\)",
+
+      answers: {
+        type: "Type I",
+        behavior: "Diverges"
+      }
+    },
+
+
+    /* =====================================
+       TYPE II — CONVERGES
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{\\sqrt{x}}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{x^{1/3}}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^2 \\frac{1}{(x-1)^{1/2}}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^4 \\frac{1}{\\sqrt{4-x}}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_{-2}^0 \\frac{1}{\\sqrt{x+2}}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\ln x\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{(1-x)^{1/3}}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Converges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_{-1}^1 \\frac{1}{(x+1)^{2/3}}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Converges"
+      }
+    },
+
+
+    /* =====================================
+       TYPE II — DIVERGES
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{x}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{x^2}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^2 \\frac{1}{(x-1)^2}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_{-1}^1 \\frac{1}{x^2}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^{\\pi/2} \\tan x\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^2 \\frac{1}{x-1}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{(1-x)^{3/2}}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Diverges"
+      }
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_{-2}^0 \\frac{1}{x+2}\\,dx\\)",
+
+      answers: {
+        type: "Type II",
+        behavior: "Diverges"
+      }
+    }
+
+  ]
+},
+  {
+  course: "calculus-2",
+  section: "Improper Integrals",
   id: "improper-type-and-convergence",
   type: "randomized-multiple-choice",
 
