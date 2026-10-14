@@ -97,17 +97,6 @@ sections.forEach(sectionName => {
           [];
 
 
-        const shuffledPool =
-          shuffleArray(question.pool);
-
-
-        const selectedItems =
-          shuffledPool.slice(
-            0,
-            question.numberToDraw
-          );
-
-
         const card =
           document.createElement("article");
 
@@ -120,13 +109,21 @@ sections.forEach(sectionName => {
 
         let selectedItem = null;
 
+        let selectedItems =
+          shuffleArray(question.pool)
+            .slice(
+              0,
+              question.numberToDraw
+            );
+
 
         /* -----------------------------------------
-           BUILD SORTING ITEMS
+           BUILD ITEMS HTML
         ----------------------------------------- */
 
-        const itemsHTML =
-          selectedItems
+        function buildItemsHTML() {
+
+          return selectedItems
             .map((item, itemIndex) => {
 
               const content =
@@ -166,9 +163,11 @@ sections.forEach(sectionName => {
             })
             .join("");
 
+        }
+
 
         /* -----------------------------------------
-           BUILD BUCKETS
+           BUILD BUCKETS HTML
         ----------------------------------------- */
 
         const bucketsHTML =
@@ -206,7 +205,7 @@ sections.forEach(sectionName => {
 
 
         /* -----------------------------------------
-           BUILD CARD
+           BUILD QUESTION CARD
         ----------------------------------------- */
 
         card.innerHTML = `
@@ -236,21 +235,35 @@ sections.forEach(sectionName => {
             </h4>
 
             <div class="sorting-item-container">
-              ${itemsHTML}
+              ${buildItemsHTML()}
             </div>
 
           </div>
+
 
           <div class="sorting-buckets">
             ${bucketsHTML}
           </div>
 
-          <button
-            type="button"
-            class="check-answer sorting-check-button"
-          >
-            Check Answers
-          </button>
+
+          <div class="random-question-actions">
+
+            <button
+              type="button"
+              class="check-answer sorting-check-button"
+            >
+              Check Answers
+            </button>
+
+            <button
+              type="button"
+              class="try-another-button sorting-try-another-button"
+            >
+              Try Another
+            </button>
+
+          </div>
+
 
           <div
             class="question-feedback sorting-summary"
@@ -304,95 +317,99 @@ sections.forEach(sectionName => {
 
 
         /* -----------------------------------------
-           ITEM SELECTION + DRAGGING
+           ATTACH EVENTS TO SORTING ITEMS
         ----------------------------------------- */
 
-        const sortingItems =
-          card.querySelectorAll(
-            ".sorting-item"
-          );
+        function attachSortingItemEvents() {
+
+          const sortingItems =
+            card.querySelectorAll(
+              ".sorting-item"
+            );
 
 
-        sortingItems.forEach(item => {
+          sortingItems.forEach(item => {
 
-          item.addEventListener(
-            "click",
-            () => {
+            item.addEventListener(
+              "click",
+              () => {
 
-              card
-                .querySelectorAll(
-                  ".sorting-item"
-                )
-                .forEach(otherItem => {
+                card
+                  .querySelectorAll(
+                    ".sorting-item"
+                  )
+                  .forEach(otherItem => {
 
-                  otherItem.classList.remove(
-                    "selected"
-                  );
+                    otherItem.classList.remove(
+                      "selected"
+                    );
 
-                });
-
-
-              item.classList.add(
-                "selected"
-              );
-
-              selectedItem = item;
-
-            }
-          );
+                  });
 
 
-          item.addEventListener(
-            "keydown",
-            event => {
+                item.classList.add(
+                  "selected"
+                );
 
-              if (
-                event.key === "Enter" ||
-                event.key === " "
-              ) {
-
-                event.preventDefault();
-
-                item.click();
+                selectedItem = item;
 
               }
-
-            }
-          );
+            );
 
 
-          item.addEventListener(
-            "dragstart",
-            event => {
+            item.addEventListener(
+              "keydown",
+              event => {
 
-              event.dataTransfer.setData(
-                "text/plain",
-                item.dataset.index
-              );
+                if (
+                  event.key === "Enter" ||
+                  event.key === " "
+                ) {
 
-              event.dataTransfer.effectAllowed =
-                "move";
+                  event.preventDefault();
 
-              item.classList.add(
-                "dragging"
-              );
+                  item.click();
 
-            }
-          );
+                }
+
+              }
+            );
 
 
-          item.addEventListener(
-            "dragend",
-            () => {
+            item.addEventListener(
+              "dragstart",
+              event => {
 
-              item.classList.remove(
-                "dragging"
-              );
+                event.dataTransfer.setData(
+                  "text/plain",
+                  item.dataset.index
+                );
 
-            }
-          );
+                event.dataTransfer.effectAllowed =
+                  "move";
 
-        });
+                item.classList.add(
+                  "dragging"
+                );
+
+              }
+            );
+
+
+            item.addEventListener(
+              "dragend",
+              () => {
+
+                item.classList.remove(
+                  "dragging"
+                );
+
+              }
+            );
+
+          });
+
+        }
 
 
         /* -----------------------------------------
@@ -529,6 +546,12 @@ sections.forEach(sectionName => {
           );
 
 
+        const tryAnotherButton =
+          card.querySelector(
+            ".sorting-try-another-button"
+          );
+
+
         const summary =
           card.querySelector(
             ".sorting-summary"
@@ -638,6 +661,64 @@ sections.forEach(sectionName => {
 
           }
         );
+
+
+        /* -----------------------------------------
+           TRY ANOTHER SORTING SET
+        ----------------------------------------- */
+
+        tryAnotherButton.addEventListener(
+          "click",
+          () => {
+
+            selectedItems =
+              shuffleArray(question.pool)
+                .slice(
+                  0,
+                  question.numberToDraw
+                );
+
+
+            const itemContainer =
+              card.querySelector(
+                ".sorting-item-container"
+              );
+
+
+            itemContainer.innerHTML =
+              buildItemsHTML();
+
+
+            card
+              .querySelectorAll(
+                ".sorting-dropzone"
+              )
+              .forEach(dropzone => {
+
+                dropzone.innerHTML = "";
+
+              });
+
+
+            selectedItem = null;
+
+
+            summary.textContent = "";
+
+            summary.className =
+              "question-feedback sorting-summary";
+
+
+            attachSortingItemEvents();
+
+
+            renderMath(card);
+
+          }
+        );
+
+
+        attachSortingItemEvents();
 
 
         section.appendChild(card);
