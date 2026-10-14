@@ -1665,19 +1665,27 @@ let currentSet = null;
 
 
         if (
-          correctCount ===
-          orderedItems.length
-        ) {
+  correctCount ===
+  orderedItems.length
+) {
 
-          feedback.className =
-            "question-feedback feedback-correct drag-order-feedback";
+  feedback.className =
+    "question-feedback feedback-correct drag-order-feedback";
 
-          feedback.innerHTML = `
-            <strong>Correct!</strong>
-            ${currentSet.explanation || ""}
-          `;
+  feedback.innerHTML = `
+    <strong>Correct!</strong>
+    <span class="drag-order-explanation"></span>
+  `;
 
-        }
+  const explanationSpan =
+    feedback.querySelector(
+      ".drag-order-explanation"
+    );
+
+  explanationSpan.textContent =
+    currentSet.explanation || "";
+
+}
 
         else {
 
