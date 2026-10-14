@@ -6,8 +6,8 @@ const questions = [
     id: "integration-method-1",
     type: "multiple-choice",
 
-    question:
-      "Which integration technique is most appropriate for ∫ x e^x dx?",
+      question:
+  "Which integration technique is most appropriate for \\(\\int x e^x\\,dx\\)?"
 
     choices: [
       "u-Substitution",
@@ -29,15 +29,15 @@ const questions = [
     id: "p-integral-1",
     type: "multiple-choice",
 
-    question:
-      "For which values of p does the integral ∫₁^∞ 1/x^p dx converge?",
+      question:
+  "For which values of \\(p\\) does \\(\\displaystyle \\int_1^\\infty \\frac{1}{x^p}\\,dx\\) converge?"
 
-    choices: [
-      "p > 0",
-      "p ≥ 1",
-      "p > 1",
-      "p < 1"
-    ],
+   choices: [
+  "\\(p>0\\)",
+  "\\(p\\ge 1\\)",
+  "\\(p>1\\)",
+  "\\(p<1\\)"
+]
 
     correct: 2,
 
