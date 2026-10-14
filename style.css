@@ -732,3 +732,188 @@ footer p {
   background: #f5f5f5;
   border-left: 5px solid var(--uw-charcoal);
 }
+/* =========================================
+   DRAG-AND-DROP INTEGRATION BUCKET
+========================================= */
+
+.integral-bank {
+  margin: 1.5rem 0 2rem;
+}
+
+.integral-bank h4 {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+
+/* Integral cards */
+
+.integral-chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.integral-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  min-height: 58px;
+
+  padding: 0.8rem 1rem;
+
+  background: white;
+
+  border: 2px solid var(--border);
+  border-radius: 8px;
+
+  cursor: grab;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.integral-chip:hover {
+  border-color: var(--uw-gold);
+}
+
+.integral-chip.selected {
+  border-color: var(--uw-teal);
+  background: #eefafa;
+}
+
+.integral-chip.dragging {
+  opacity: 0.55;
+}
+
+.integral-chip-number {
+  font-weight: 700;
+  color: var(--uw-teal);
+}
+
+
+/* Four buckets */
+
+.integration-buckets {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(230px, 1fr));
+
+  gap: 1rem;
+
+  margin-bottom: 1.5rem;
+}
+
+
+.integration-bucket {
+  border: 2px solid var(--uw-charcoal);
+  border-radius: 10px;
+
+  background: #fafafa;
+
+  overflow: hidden;
+}
+
+
+.bucket-heading {
+  background: var(--uw-charcoal);
+  color: white;
+
+  padding: 0.85rem 1rem;
+
+  text-align: center;
+
+  font-weight: 700;
+
+  border-bottom:
+    4px solid var(--uw-gold);
+}
+
+
+.bucket-dropzone {
+  min-height: 140px;
+
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+
+  transition:
+    background 0.15s ease;
+}
+
+
+.bucket-dropzone.drag-over {
+  background: var(--uw-light-gold);
+}
+
+
+/* Integral cards once inside bucket */
+
+.bucket-dropzone .integral-chip {
+  width: 100%;
+
+  background: white;
+}
+
+
+.place-here-button {
+  width: calc(100% - 1.5rem);
+
+  margin:
+    0 0.75rem
+    0.75rem;
+
+  padding:
+    0.65rem 0.8rem;
+
+  background: white;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 6px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.place-here-button:hover {
+  background:
+    var(--uw-light-gold);
+}
+
+
+/* Answer feedback */
+
+.integral-chip.bucket-correct {
+  border-color: #2e7d32;
+  background: #e8f5e9;
+}
+
+.integral-chip.bucket-incorrect {
+  border-color: #c46a00;
+  background: #fff3e0;
+}
+
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+  .integration-buckets {
+    grid-template-columns: 1fr;
+  }
+
+  .integral-chip {
+    width: 100%;
+  }
+
+}
