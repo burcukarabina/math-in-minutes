@@ -1170,3 +1170,158 @@ footer p {
     width: 100%;
   }
 }
+/* =========================================
+   DRAG-ORDER QUESTIONS
+========================================= */
+
+.drag-order-question {
+  padding: 2rem;
+}
+
+
+/* Smallest / Largest labels */
+
+.drag-order-labels {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 1.5rem 0 0.6rem;
+
+  color: var(--muted-text);
+
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+
+/* Horizontal ordering area */
+
+.drag-order-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 1rem;
+
+  margin-bottom: 1.5rem;
+}
+
+
+/* Individual draggable cards */
+
+.drag-order-item {
+  min-height: 120px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.6rem;
+
+  padding: 1rem;
+
+  background: white;
+
+  border: 2px solid var(--uw-charcoal);
+  border-radius: 10px;
+
+  cursor: grab;
+
+  text-align: center;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.drag-order-item:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.12);
+
+  border-color: var(--uw-gold);
+}
+
+.drag-order-item.dragging {
+  opacity: 0.55;
+
+  cursor: grabbing;
+}
+
+
+/* Drag handle */
+
+.drag-order-grip {
+  color: var(--uw-teal);
+
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+
+/* Integral content */
+
+.drag-order-content {
+  font-size: 1rem;
+}
+
+
+/* Correct / incorrect positions */
+
+.drag-order-item.drag-order-correct {
+  border-color: #2e7d32;
+
+  background: #e8f5e9;
+}
+
+.drag-order-item.drag-order-incorrect {
+  border-color: #ef6c00;
+
+  background: #fff3e0;
+}
+
+
+/* Feedback */
+
+.drag-order-feedback {
+  margin-top: 1rem;
+}
+
+
+/* =========================================
+   TABLET / MOBILE
+========================================= */
+
+@media (max-width: 850px) {
+
+  .drag-order-list {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 550px) {
+
+  .drag-order-question {
+    padding: 1.25rem;
+  }
+
+  .drag-order-list {
+    grid-template-columns: 1fr;
+  }
+
+  .drag-order-labels {
+    display: none;
+  }
+
+  .drag-order-item {
+    min-height: 90px;
+  }
+}
