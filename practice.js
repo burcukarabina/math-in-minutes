@@ -1319,7 +1319,390 @@ sections.forEach(sectionName => {
         return;
       }
 
+/* =========================================
+   DRAG-ORDER QUESTION
+========================================= */
 
+if (
+  question.type === "drag-order"
+) {
+
+  const card =
+    document.createElement("article");
+
+  card.className =
+    "question-card drag-order-question";
+
+  card.id =
+    question.id;
+
+
+  let displayedItems = [];
+
+
+  /* -----------------------------------------
+     SHUFFLE THE ITEMS
+  ----------------------------------------- */
+
+  function prepareItems() {
+
+    displayedItems =
+      shuffleArray(question.items);
+
+  }
+
+
+  /* -----------------------------------------
+     BUILD ITEM CARDS
+  ----------------------------------------- */
+
+  function buildItemsHTML() {
+
+    return displayedItems
+      .map((item, itemIndex) => `
+
+        <div
+          class="drag-order-item"
+          draggable="true"
+          tabindex="0"
+          data-id="${item.id}"
+          data-rank="${item.rank}"
+          data-index="${itemIndex}"
+        >
+
+          <span class="drag-order-grip">
+            ↕
+          </span>
+
+          <span class="drag-order-content">
+            ${item.content}
+          </span>
+
+        </div>
+
+      `)
+      .join("");
+
+  }
+
+
+  /* -----------------------------------------
+     RENDER QUESTION
+  ----------------------------------------- */
+
+  function renderDragOrderQuestion() {
+
+    prepareItems();
+
+
+    card.innerHTML = `
+
+      <p class="question-number">
+        Question ${index + 1}
+      </p>
+
+      <h3>
+        ${question.question}
+      </h3>
+
+
+      <div class="drag-order-labels">
+
+        <span>
+          Smallest
+        </span>
+
+        <span>
+          Largest
+        </span>
+
+      </div>
+
+
+      <div
+        class="drag-order-list"
+        aria-label="Drag items into increasing order"
+      >
+
+        ${buildItemsHTML()}
+
+      </div>
+
+
+      <div class="random-question-actions">
+
+        <button
+          type="button"
+          class="check-answer drag-order-check-button"
+        >
+          Check Order
+        </button>
+
+        <button
+          type="button"
+          class="try-another-button drag-order-try-another-button"
+        >
+          Try Another
+        </button>
+
+      </div>
+
+
+      <div
+        class="question-feedback drag-order-feedback"
+        aria-live="polite"
+      ></div>
+
+    `;
+
+
+    const list =
+      card.querySelector(
+        ".drag-order-list"
+      );
+
+
+    const feedback =
+      card.querySelector(
+        ".drag-order-feedback"
+      );
+
+
+    let draggedItem = null;
+
+
+    /* -----------------------------------------
+       DRAG EVENTS
+    ----------------------------------------- */
+
+    function attachDragEvents() {
+
+      const items =
+        card.querySelectorAll(
+          ".drag-order-item"
+        );
+
+
+      items.forEach(item => {
+
+
+        item.addEventListener(
+          "dragstart",
+          event => {
+
+            draggedItem = item;
+
+            item.classList.add(
+              "dragging"
+            );
+
+            event.dataTransfer.effectAllowed =
+              "move";
+
+          }
+        );
+
+
+        item.addEventListener(
+          "dragend",
+          () => {
+
+            item.classList.remove(
+              "dragging"
+            );
+
+            draggedItem = null;
+
+          }
+        );
+
+
+        item.addEventListener(
+          "dragover",
+          event => {
+
+            event.preventDefault();
+
+            if (
+              !draggedItem ||
+              draggedItem === item
+            ) {
+              return;
+            }
+
+
+            const rectangle =
+              item.getBoundingClientRect();
+
+
+            const midpoint =
+              rectangle.left +
+              rectangle.width / 2;
+
+
+            if (
+              event.clientX <
+              midpoint
+            ) {
+
+              list.insertBefore(
+                draggedItem,
+                item
+              );
+
+            }
+
+            else {
+
+              list.insertBefore(
+                draggedItem,
+                item.nextSibling
+              );
+
+            }
+
+          }
+        );
+
+      });
+
+    }
+
+
+    attachDragEvents();
+
+
+    /* -----------------------------------------
+       CHECK ORDER
+    ----------------------------------------- */
+
+    const checkButton =
+      card.querySelector(
+        ".drag-order-check-button"
+      );
+
+
+    checkButton.addEventListener(
+      "click",
+      () => {
+
+        const orderedItems =
+          [
+            ...card.querySelectorAll(
+              ".drag-order-item"
+            )
+          ];
+
+
+        let correctCount = 0;
+
+
+        orderedItems.forEach(
+          (item, position) => {
+
+            item.classList.remove(
+              "drag-order-correct",
+              "drag-order-incorrect"
+            );
+
+
+            const rank =
+              Number(
+                item.dataset.rank
+              );
+
+
+            if (
+              rank ===
+              position + 1
+            ) {
+
+              correctCount++;
+
+              item.classList.add(
+                "drag-order-correct"
+              );
+
+            }
+
+            else {
+
+              item.classList.add(
+                "drag-order-incorrect"
+              );
+
+            }
+
+          }
+        );
+
+
+        if (
+          correctCount ===
+          orderedItems.length
+        ) {
+
+          feedback.className =
+            "question-feedback feedback-correct drag-order-feedback";
+
+          feedback.innerHTML = `
+            <strong>Correct!</strong>
+            ${question.explanation || ""}
+          `;
+
+        }
+
+        else {
+
+          feedback.className =
+            "question-feedback feedback-incorrect drag-order-feedback";
+
+          feedback.innerHTML = `
+            <strong>Not quite.</strong>
+            ${correctCount} out of ${orderedItems.length}
+            positions are correct.
+          `;
+
+        }
+
+
+        renderMath(feedback);
+
+      }
+    );
+
+
+    /* -----------------------------------------
+       TRY ANOTHER
+    ----------------------------------------- */
+
+    const tryAnotherButton =
+      card.querySelector(
+        ".drag-order-try-another-button"
+      );
+
+
+    tryAnotherButton.addEventListener(
+      "click",
+      () => {
+
+        renderDragOrderQuestion();
+
+      }
+    );
+
+
+    renderMath(card);
+
+  }
+
+
+  renderDragOrderQuestion();
+
+  section.appendChild(card);
+
+  return;
+}
 
       /* =========================================
          RANDOMIZED MULTIPLE CHOICE
