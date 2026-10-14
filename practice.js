@@ -1338,6 +1338,7 @@ if (
 
 
   let displayedItems = [];
+let currentSet = null;
 
 
   /* -----------------------------------------
@@ -1346,10 +1347,36 @@ if (
 
   function prepareItems() {
 
-    displayedItems =
-      shuffleArray(question.items);
+  let newSet;
+
+  if (question.pool.length === 1) {
+
+    newSet = question.pool[0];
+
+  } else {
+
+    do {
+
+      newSet =
+        question.pool[
+          Math.floor(
+            Math.random() * question.pool.length
+          )
+        ];
+
+    } while (
+      newSet === currentSet
+    );
 
   }
+
+  currentSet = newSet;
+
+  displayedItems =
+    shuffleArray(
+      currentSet.items
+    );
+}
 
 
   /* -----------------------------------------
@@ -1647,7 +1674,7 @@ if (
 
           feedback.innerHTML = `
             <strong>Correct!</strong>
-            ${question.explanation || ""}
+            ${currentSet.explanation || ""}
           `;
 
         }
