@@ -337,6 +337,13 @@ sections.forEach(sectionName => {
 
         }
 
+        if (
+  window.MathJax &&
+  window.MathJax.typesetPromise
+) {
+  MathJax.typesetPromise([feedback]);
+}
+
       });
 
 
