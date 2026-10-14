@@ -47,25 +47,25 @@ const questions = [
 
 
   {
-    course: "calculus-2",
-    section: "Fundamental Theorem of Calculus",
-    id: "ftc-1",
-    type: "multiple-choice",
+  course: "calculus-2",
+  section: "Fundamental Theorem of Calculus",
+  id: "ftc-1",
+  type: "multiple-choice",
 
-    question:
-      "If F(x) = ∫₀ˣ f(t) dt and f is continuous, what is F'(x)?",
+  question:
+    "If \\(F(x)=\\displaystyle\\int_0^x f(t)\\,dt\\) and \\(f\\) is continuous, what is \\(F'(x)\\)?",
 
-    choices: [
-      "f(0)",
-      "f(x)",
-      "∫₀ˣ f'(t) dt",
-      "x f(x)"
-    ],
+  choices: [
+    "\\(f(0)\\)",
+    "\\(f(x)\\)",
+    "\\(\\displaystyle\\int_0^x f'(t)\\,dt\\)",
+    "\\(x f(x)\\)"
+  ],
 
-    correct: 1,
+  correct: 1,
 
-    explanation:
-      "By the Fundamental Theorem of Calculus Part I, differentiating the accumulated-area function gives F'(x) = f(x)."
-  }
+  explanation:
+    "By the Fundamental Theorem of Calculus Part I, \\(F'(x)=f(x)\\)."
+}
 
 ];
