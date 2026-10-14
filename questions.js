@@ -21,6 +21,7 @@ const questions = [
     explanation:
       "Integration by Parts is appropriate because the integrand is a product of an algebraic function and an exponential function."
   },
+
 {
   course: "calculus-2",
   section: "Integration Techniques",
@@ -177,7 +178,7 @@ const questions = [
   "\\(p\\ge 1\\)",
   "\\(p>1\\)",
   "\\(p<1\\)"
-]
+],
 
     correct: 2,
 
