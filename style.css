@@ -1009,3 +1009,164 @@ footer p {
     padding: 1rem;
   }
 }
+
+/* =========================================
+   TWO-STAGE CLASSIFICATION
+========================================= */
+
+.two-stage-question {
+  padding: 2rem;
+}
+
+.two-stage-part {
+  margin-top: 1.5rem;
+}
+
+.two-stage-heading {
+  margin: 0 0 1rem;
+
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+
+/* Table-style layout */
+
+.two-stage-table {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  margin-bottom: 1.25rem;
+}
+
+.two-stage-header,
+.two-stage-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 2fr)
+    minmax(170px, 1fr);
+
+  align-items: center;
+}
+
+.two-stage-header {
+  background: var(--uw-charcoal);
+  color: white;
+
+  font-weight: 700;
+}
+
+.two-stage-header > div,
+.two-stage-row > div {
+  padding: 0.9rem 1rem;
+}
+
+.two-stage-row {
+  background: white;
+
+  border-top: 1px solid var(--border);
+}
+
+.two-stage-integral {
+  font-size: 1.05rem;
+}
+
+.two-stage-answer {
+  border-left: 1px solid var(--border);
+}
+
+
+/* Dropdowns */
+
+.two-stage-select {
+  width: 100%;
+
+  padding: 0.65rem 0.75rem;
+
+  background: white;
+
+  border: 1px solid var(--border);
+  border-radius: 6px;
+
+  font-size: 0.95rem;
+
+  cursor: pointer;
+}
+
+.two-stage-select:focus {
+  outline: 3px solid var(--uw-teal);
+  outline-offset: 2px;
+}
+
+
+/* Correct / incorrect selections */
+
+.two-stage-select.two-stage-correct {
+  border: 2px solid #2e7d32;
+  background: #e8f5e9;
+}
+
+.two-stage-select.two-stage-incorrect {
+  border: 2px solid #ef6c00;
+  background: #fff3e0;
+}
+
+
+/* Part II reveal */
+
+.stage2-part {
+  margin-top: 2rem;
+
+  padding-top: 1.5rem;
+
+  border-top: 4px solid var(--uw-gold);
+}
+
+.stage2-part[hidden] {
+  display: none;
+}
+
+
+/* Buttons */
+
+.stage1-check-button {
+  margin-top: 0.25rem;
+}
+
+.stage2-feedback,
+.stage1-feedback {
+  margin-top: 1rem;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .two-stage-question {
+    padding: 1.25rem;
+  }
+
+  .two-stage-header,
+  .two-stage-row {
+    grid-template-columns: 1fr;
+  }
+
+  .two-stage-header > div:last-child {
+    display: none;
+  }
+
+  .two-stage-answer {
+    border-left: none;
+    border-top: 1px solid var(--border);
+
+    padding-top: 0.75rem;
+  }
+
+  .two-stage-select {
+    width: 100%;
+  }
+}
