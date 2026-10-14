@@ -161,7 +161,7 @@ const questions = [
     }
 
   ]
-}
+},
 
   {
     course: "calculus-2",
