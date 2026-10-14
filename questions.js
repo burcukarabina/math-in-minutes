@@ -4,10 +4,10 @@ const questions = [
   course: "calculus-2",
   section: "Integration Techniques",
   id: "integration-method-1",
-  type: "multiple-choice",
+  type: "randomized-multiple-choice",
 
   question:
-    "Which integration technique is most appropriate for \\(\\displaystyle\\int x e^x\\,dx\\)?",
+    "Which integration technique is most appropriate for the following integral?",
 
   choices: [
     "u-Substitution",
@@ -16,11 +16,149 @@ const questions = [
     "Partial Fractions"
   ],
 
-  correct: 1,
+  pool: [
 
-  explanation:
-    "Integration by Parts is appropriate because the integrand is a product of an algebraic function and an exponential function."
-},
+    // u-SUBSTITUTION
+
+    {
+      content:
+        "\\(\\displaystyle \\int 2x\\cos(x^2)\\,dx\\)",
+      correct: 0,
+      explanation:
+        "u-Substitution is most efficient because the derivative of \\(x^2\\) appears as a factor in the integrand."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{x}{(x^2+4)^3}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "u-Substitution is most efficient with \\(u=x^2+4\\), since its derivative is proportional to \\(x\\,dx\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{e^x}{1+e^x}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "u-Substitution is most efficient with \\(u=1+e^x\\), since \\(du=e^x\\,dx\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{\\sec^2 x}{3+\\tan x}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "u-Substitution is most efficient with \\(u=3+\\tan x\\), since \\(du=\\sec^2x\\,dx\\)."
+    },
+
+
+    // INTEGRATION BY PARTS
+
+    {
+      content:
+        "\\(\\displaystyle \\int xe^x\\,dx\\)",
+      correct: 1,
+      explanation:
+        "Integration by Parts is most efficient because the integrand is a product of an algebraic function and an exponential function."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int x\\cos x\\,dx\\)",
+      correct: 1,
+      explanation:
+        "Integration by Parts is most efficient because the integrand is a product of an algebraic and a trigonometric function."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\ln x\\,dx\\)",
+      correct: 1,
+      explanation:
+        "Integration by Parts is appropriate by viewing the integrand as \\(1\\cdot\\ln x\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int x^2\\ln x\\,dx\\)",
+      correct: 1,
+      explanation:
+        "Integration by Parts is most efficient because differentiating \\(\\ln x\\) simplifies it while \\(x^2\\) is easy to integrate."
+    },
+
+
+    // TRIGONOMETRIC SUBSTITUTION
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\sqrt{9-x^2}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "Trigonometric Substitution is appropriate because the integrand contains the form \\(\\sqrt{a^2-x^2}\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{1}{\\sqrt{x^2+4}}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "Trigonometric Substitution is appropriate because the radical contains the form \\(x^2+a^2\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{x^2}{\\sqrt{x^2+9}}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "Trigonometric Substitution is appropriate because the radical contains the form \\(x^2+a^2\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{\\sqrt{x^2-25}}{x}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "Trigonometric Substitution is appropriate because the radical contains the form \\(x^2-a^2\\)."
+    },
+
+
+    // PARTIAL FRACTIONS
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{1}{x^2-1}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "Partial Fractions is most efficient because the integrand is a proper rational function whose denominator factors as \\((x-1)(x+1)\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{1}{x(x+2)}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "Partial Fractions is most efficient because the integrand is a proper rational function with distinct linear factors."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{x+1}{x^2-4x+3}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "Partial Fractions is appropriate because the denominator factors into linear factors."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{x^2+1}{x(x-1)(x+1)}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "Partial Fractions is appropriate because this is a proper rational function whose denominator is already factored into linear factors."
+    }
+
+  ]
+},,
   {
   course: "calculus-2",
   section: "Integration Techniques",
