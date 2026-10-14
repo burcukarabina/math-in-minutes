@@ -25,125 +25,185 @@ const questions = [
   course: "calculus-2",
   section: "Integration Techniques",
   id: "choose-integration-method",
-  type: "integration-method-bucket",
+  type: "sorting-bucket",
 
   question:
     "For each integral below, choose the most efficient integration method.",
 
   instructions:
-    "You do not need to evaluate the integrals. Identify the most efficient method for each one.",
+    "You do not need to evaluate the integrals. Sort each integral into the box for the most efficient method.",
 
-  methods: [
+  bankTitle:
+    "Integrals to Sort",
+
+  buckets: [
     "u-Substitution",
     "Integration by Parts",
     "Trigonometric Substitution",
     "Partial Fractions"
   ],
 
-  selectPrompt: "Choose a method",
-
   numberToDraw: 6,
 
   pool: [
 
+    // -------------------------
+    // u-SUBSTITUTION
+    // -------------------------
+
     {
-      integral: "\\(\\displaystyle \\int 2x\\cos(x^2)\\,dx\\)",
-      correct: "u-Substitution"
+      content:
+        "\\(\\displaystyle \\int 2x\\cos(x^2)\\,dx\\)",
+      correctBucket:
+        "u-Substitution"
     },
 
     {
-      integral: "\\(\\displaystyle \\int \\frac{x}{(x^2+4)^3}\\,dx\\)",
-      correct: "u-Substitution"
+      content:
+        "\\(\\displaystyle \\int \\frac{x}{(x^2+4)^3}\\,dx\\)",
+      correctBucket:
+        "u-Substitution"
     },
 
     {
-      integral: "\\(\\displaystyle \\int e^{3x+1}\\,dx\\)",
-      correct: "u-Substitution"
+      content:
+        "\\(\\displaystyle \\int e^{3x+1}\\,dx\\)",
+      correctBucket:
+        "u-Substitution"
     },
 
     {
-      integral: "\\(\\displaystyle \\int \\frac{e^x}{1+e^x}\\,dx\\)",
-      correct: "u-Substitution"
+      content:
+        "\\(\\displaystyle \\int \\frac{e^x}{1+e^x}\\,dx\\)",
+      correctBucket:
+        "u-Substitution"
     },
 
     {
-      integral: "\\(\\displaystyle \\int \\frac{\\sec^2 x}{3+\\tan x}\\,dx\\)",
-      correct: "u-Substitution"
+      content:
+        "\\(\\displaystyle \\int \\frac{\\sec^2 x}{3+\\tan x}\\,dx\\)",
+      correctBucket:
+        "u-Substitution"
+    },
+
+
+    // -------------------------
+    // INTEGRATION BY PARTS
+    // -------------------------
+
+    {
+      content:
+        "\\(\\displaystyle \\int xe^x\\,dx\\)",
+      correctBucket:
+        "Integration by Parts"
     },
 
     {
-      integral: "\\(\\displaystyle \\int xe^x\\,dx\\)",
-      correct: "Integration by Parts"
+      content:
+        "\\(\\displaystyle \\int x\\cos x\\,dx\\)",
+      correctBucket:
+        "Integration by Parts"
     },
 
     {
-      integral: "\\(\\displaystyle \\int x\\cos x\\,dx\\)",
-      correct: "Integration by Parts"
+      content:
+        "\\(\\displaystyle \\int \\ln x\\,dx\\)",
+      correctBucket:
+        "Integration by Parts"
     },
 
     {
-      integral: "\\(\\displaystyle \\int \\ln x\\,dx\\)",
-      correct: "Integration by Parts"
+      content:
+        "\\(\\displaystyle \\int x^2\\ln x\\,dx\\)",
+      correctBucket:
+        "Integration by Parts"
     },
 
     {
-      integral: "\\(\\displaystyle \\int x^2\\ln x\\,dx\\)",
-      correct: "Integration by Parts"
+      content:
+        "\\(\\displaystyle \\int x\\arctan x\\,dx\\)",
+      correctBucket:
+        "Integration by Parts"
+    },
+
+
+    // -------------------------
+    // TRIGONOMETRIC SUBSTITUTION
+    // -------------------------
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\sqrt{9-x^2}\\,dx\\)",
+      correctBucket:
+        "Trigonometric Substitution"
     },
 
     {
-      integral: "\\(\\displaystyle \\int x\\arctan x\\,dx\\)",
-      correct: "Integration by Parts"
+      content:
+        "\\(\\displaystyle \\int \\frac{1}{\\sqrt{x^2+4}}\\,dx\\)",
+      correctBucket:
+        "Trigonometric Substitution"
     },
 
     {
-      integral: "\\(\\displaystyle \\int \\sqrt{9-x^2}\\,dx\\)",
-      correct: "Trigonometric Substitution"
+      content:
+        "\\(\\displaystyle \\int \\frac{x^2}{\\sqrt{x^2+9}}\\,dx\\)",
+      correctBucket:
+        "Trigonometric Substitution"
     },
 
     {
-      integral: "\\(\\displaystyle \\int \\frac{1}{\\sqrt{x^2+4}}\\,dx\\)",
-      correct: "Trigonometric Substitution"
+      content:
+        "\\(\\displaystyle \\int \\frac{1}{(x^2+16)^{3/2}}\\,dx\\)",
+      correctBucket:
+        "Trigonometric Substitution"
     },
 
     {
-      integral: "\\(\\displaystyle \\int \\frac{x^2}{\\sqrt{x^2+9}}\\,dx\\)",
-      correct: "Trigonometric Substitution"
+      content:
+        "\\(\\displaystyle \\int \\frac{\\sqrt{x^2-25}}{x}\\,dx\\)",
+      correctBucket:
+        "Trigonometric Substitution"
+    },
+
+
+    // -------------------------
+    // PARTIAL FRACTIONS
+    // -------------------------
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{1}{x^2-1}\\,dx\\)",
+      correctBucket:
+        "Partial Fractions"
     },
 
     {
-      integral: "\\(\\displaystyle \\int \\frac{1}{(x^2+16)^{3/2}}\\,dx\\)",
-      correct: "Trigonometric Substitution"
+      content:
+        "\\(\\displaystyle \\int \\frac{2x+3}{x^2+x-2}\\,dx\\)",
+      correctBucket:
+        "Partial Fractions"
     },
 
     {
-      integral: "\\(\\displaystyle \\int \\frac{\\sqrt{x^2-25}}{x}\\,dx\\)",
-      correct: "Trigonometric Substitution"
+      content:
+        "\\(\\displaystyle \\int \\frac{1}{x(x+2)}\\,dx\\)",
+      correctBucket:
+        "Partial Fractions"
     },
 
     {
-      integral: "\\(\\displaystyle \\int \\frac{1}{x^2-1}\\,dx\\)",
-      correct: "Partial Fractions"
+      content:
+        "\\(\\displaystyle \\int \\frac{x+1}{x^2-4x+3}\\,dx\\)",
+      correctBucket:
+        "Partial Fractions"
     },
 
     {
-      integral: "\\(\\displaystyle \\int \\frac{2x+3}{x^2+x-2}\\,dx\\)",
-      correct: "Partial Fractions"
-    },
-
-    {
-      integral: "\\(\\displaystyle \\int \\frac{1}{x(x+2)}\\,dx\\)",
-      correct: "Partial Fractions"
-    },
-
-    {
-      integral: "\\(\\displaystyle \\int \\frac{x+1}{x^2-4x+3}\\,dx\\)",
-      correct: "Partial Fractions"
-    },
-
-    {
-      integral: "\\(\\displaystyle \\int \\frac{x^2+1}{x(x-1)(x+1)}\\,dx\\)",
-      correct: "Partial Fractions"
+      content:
+        "\\(\\displaystyle \\int \\frac{x^2+1}{x(x-1)(x+1)}\\,dx\\)",
+      correctBucket:
+        "Partial Fractions"
     }
 
   ]
