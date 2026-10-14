@@ -9,12 +9,41 @@ const sections = [
 ];
 
 
+/* =========================================
+   HELPER: SHUFFLE ARRAY
+========================================= */
+
+function shuffleArray(array) {
+
+  const shuffled = [...array];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+
+    const j = Math.floor(
+      Math.random() * (i + 1)
+    );
+
+    [shuffled[i], shuffled[j]] =
+      [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
+
+/* =========================================
+   BUILD SECTIONS
+========================================= */
+
 sections.forEach(sectionName => {
 
   const section = document.createElement("section");
+
   section.className = "practice-section";
 
+
   const heading = document.createElement("h2");
+
   heading.textContent = sectionName;
 
   section.appendChild(heading);
@@ -29,74 +58,143 @@ sections.forEach(sectionName => {
 
 
     /* =========================================
-       BUCKET / CLASSIFICATION QUESTIONS
+       SORTING BUCKET QUESTION
     ========================================= */
 
     if (
+      question.type === "sorting-bucket" ||
+
+      // Temporary backwards compatibility
       question.type === "integration-method-bucket" ||
       question.type === "classification-bucket"
     ) {
 
-      const shuffled = [...question.pool]
-        .sort(() => Math.random() - 0.5);
+      /*
+        New preferred names:
 
-      const selectedItems = shuffled.slice(
-        0,
-        question.numberToDraw
-      );
+        question.buckets
+        item.content
+        item.correctBucket
+
+        Older names are supported temporarily:
+
+        question.methods
+        item.integral
+        item.correct
+      */
+
+      const bucketNames =
+        question.buckets ||
+        question.methods ||
+        [];
 
 
-      const card = document.createElement("article");
+      const shuffledPool =
+        shuffleArray(question.pool);
 
-      card.className = "question-card";
+
+      const selectedItems =
+        shuffledPool.slice(
+          0,
+          question.numberToDraw
+        );
+
+
+      const card =
+        document.createElement("article");
+
+      card.className =
+        "question-card sorting-question";
+
       card.id = question.id;
 
 
-      const rowsHTML = selectedItems
+      let selectedItem = null;
+
+
+      /* -----------------------------------------
+         BUILD ITEMS
+      ----------------------------------------- */
+
+      const itemsHTML = selectedItems
         .map((item, itemIndex) => {
 
-          const methodOptions = question.methods
-            .map(method => `
-              <option value="${method}">
-                ${method}
-              </option>
-            `)
-            .join("");
+          const content =
+            item.content ||
+            item.integral ||
+            "";
 
+          const correctBucket =
+            item.correctBucket ||
+            item.correct ||
+            "";
 
           return `
-            <div class="method-row">
+            <div
+              class="sorting-item"
+              draggable="true"
+              tabindex="0"
+              data-index="${itemIndex}"
+              data-correct-bucket="${correctBucket}"
+              role="button"
+              aria-label="Item ${itemIndex + 1}. Select or drag this item."
+            >
 
-              <div class="method-integral">
-                <span class="method-number">
-                  ${itemIndex + 1}.
-                </span>
+              <span class="sorting-item-number">
+                ${itemIndex + 1}.
+              </span>
 
-                ${item.integral}
-              </div>
-
-              <select
-                class="method-select"
-                data-correct="${item.correct}"
-                aria-label="Choose answer for item ${itemIndex + 1}"
-              >
-                <option value="">
-                  ${question.selectPrompt || "Choose an answer"}
-                </option>
-
-                ${methodOptions}
-              </select>
-
-              <div
-                class="method-result"
-                aria-live="polite"
-              ></div>
+              <span class="sorting-item-content">
+                ${content}
+              </span>
 
             </div>
           `;
+
         })
         .join("");
 
+
+      /* -----------------------------------------
+         BUILD BUCKETS
+      ----------------------------------------- */
+
+      const bucketsHTML = bucketNames
+        .map(bucketName => `
+
+          <div
+            class="sorting-bucket"
+            data-bucket="${bucketName}"
+          >
+
+            <div class="sorting-bucket-title">
+              ${bucketName}
+            </div>
+
+            <div
+              class="sorting-dropzone"
+              data-bucket="${bucketName}"
+              aria-label="${bucketName} drop zone"
+            >
+            </div>
+
+            <button
+              type="button"
+              class="sorting-place-button"
+              data-bucket="${bucketName}"
+            >
+              Place selected item here
+            </button>
+
+          </div>
+
+        `)
+        .join("");
+
+
+      /* -----------------------------------------
+         BUILD QUESTION CARD
+      ----------------------------------------- */
 
       card.innerHTML = `
 
@@ -110,112 +208,451 @@ sections.forEach(sectionName => {
 
         ${
           question.instructions
-            ? `<p class="method-instructions">${question.instructions}</p>`
+            ? `
+              <p class="sorting-instructions">
+                ${question.instructions}
+              </p>
+            `
             : ""
         }
 
-        <div class="method-question-list">
-          ${rowsHTML}
+        <div class="sorting-bank">
+
+          <h4>
+            ${question.bankTitle || "Items to Sort"}
+          </h4>
+
+          <div class="sorting-item-container">
+            ${itemsHTML}
+          </div>
+
         </div>
 
+
+        <div class="sorting-buckets">
+          ${bucketsHTML}
+        </div>
+
+
         <button
-          class="check-answer check-methods"
           type="button"
+          class="check-answer sorting-check-button"
         >
           Check Answers
         </button>
 
+
         <div
-          class="question-feedback method-summary"
+          class="question-feedback sorting-summary"
           aria-live="polite"
         ></div>
+
       `;
 
 
-      const checkButton =
-        card.querySelector(".check-methods");
+      /* -----------------------------------------
+         MOVE ITEM TO BUCKET
+      ----------------------------------------- */
 
-      const summary =
-        card.querySelector(".method-summary");
+      function moveItemToBucket(
+        item,
+        bucketName
+      ) {
 
-
-      checkButton.addEventListener("click", () => {
-
-        const selects =
-          card.querySelectorAll(".method-select");
-
-        let correctCount = 0;
-        let unanswered = 0;
+        if (!item) {
+          return;
+        }
 
 
-        selects.forEach(select => {
+        const dropzone =
+          [...card.querySelectorAll(
+            ".sorting-dropzone"
+          )]
+          .find(
+            zone =>
+              zone.dataset.bucket ===
+              bucketName
+          );
 
-          const result =
-            select.parentElement.querySelector(
-              ".method-result"
+
+        if (!dropzone) {
+          return;
+        }
+
+
+        dropzone.appendChild(item);
+
+
+        item.dataset.assignedBucket =
+          bucketName;
+
+
+        item.classList.remove(
+          "selected"
+        );
+
+
+        selectedItem = null;
+      }
+
+
+      /* -----------------------------------------
+         ITEM SELECTION + DRAGGING
+      ----------------------------------------- */
+
+      const sortingItems =
+        card.querySelectorAll(
+          ".sorting-item"
+        );
+
+
+      sortingItems.forEach(item => {
+
+
+        /* Select by click */
+
+        item.addEventListener(
+          "click",
+          () => {
+
+            card
+              .querySelectorAll(
+                ".sorting-item"
+              )
+              .forEach(otherItem => {
+
+                otherItem.classList.remove(
+                  "selected"
+                );
+
+              });
+
+
+            item.classList.add(
+              "selected"
             );
 
 
-          if (select.value === "") {
-
-            unanswered++;
-
-            result.className =
-              "method-result method-unanswered";
-
-            result.textContent =
-              "Choose an answer.";
+            selectedItem = item;
 
           }
+        );
 
-          else if (
-            select.value === select.dataset.correct
+
+        /* Keyboard selection */
+
+        item.addEventListener(
+          "keydown",
+          event => {
+
+            if (
+              event.key === "Enter" ||
+              event.key === " "
+            ) {
+
+              event.preventDefault();
+
+              item.click();
+            }
+
+          }
+        );
+
+
+        /* Drag start */
+
+        item.addEventListener(
+          "dragstart",
+          event => {
+
+            event.dataTransfer.setData(
+              "text/plain",
+              item.dataset.index
+            );
+
+
+            event.dataTransfer.effectAllowed =
+              "move";
+
+
+            item.classList.add(
+              "dragging"
+            );
+
+          }
+        );
+
+
+        /* Drag end */
+
+        item.addEventListener(
+          "dragend",
+          () => {
+
+            item.classList.remove(
+              "dragging"
+            );
+
+          }
+        );
+
+      });
+
+
+      /* -----------------------------------------
+         DROP ZONES
+      ----------------------------------------- */
+
+      const dropzones =
+        card.querySelectorAll(
+          ".sorting-dropzone"
+        );
+
+
+      dropzones.forEach(dropzone => {
+
+
+        dropzone.addEventListener(
+          "dragover",
+          event => {
+
+            event.preventDefault();
+
+            event.dataTransfer.dropEffect =
+              "move";
+
+
+            dropzone.classList.add(
+              "drag-over"
+            );
+
+          }
+        );
+
+
+        dropzone.addEventListener(
+          "dragleave",
+          () => {
+
+            dropzone.classList.remove(
+              "drag-over"
+            );
+
+          }
+        );
+
+
+        dropzone.addEventListener(
+          "drop",
+          event => {
+
+            event.preventDefault();
+
+
+            dropzone.classList.remove(
+              "drag-over"
+            );
+
+
+            const itemIndex =
+              event.dataTransfer.getData(
+                "text/plain"
+              );
+
+
+            const item =
+              card.querySelector(
+                `.sorting-item[data-index="${itemIndex}"]`
+              );
+
+
+            moveItemToBucket(
+              item,
+              dropzone.dataset.bucket
+            );
+
+          }
+        );
+
+      });
+
+
+      /* -----------------------------------------
+         CLICK "PLACE HERE"
+      ----------------------------------------- */
+
+      const placeButtons =
+        card.querySelectorAll(
+          ".sorting-place-button"
+        );
+
+
+      placeButtons.forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const summary =
+              card.querySelector(
+                ".sorting-summary"
+              );
+
+
+            if (!selectedItem) {
+
+              summary.className =
+                "question-feedback feedback-neutral sorting-summary";
+
+
+              summary.textContent =
+                "Select an item first.";
+
+              return;
+            }
+
+
+            moveItemToBucket(
+              selectedItem,
+              button.dataset.bucket
+            );
+
+
+            summary.textContent = "";
+
+            summary.className =
+              "question-feedback sorting-summary";
+
+          }
+        );
+
+      });
+
+
+      /* -----------------------------------------
+         CHECK SORTING ANSWERS
+      ----------------------------------------- */
+
+      const checkButton =
+        card.querySelector(
+          ".sorting-check-button"
+        );
+
+
+      const summary =
+        card.querySelector(
+          ".sorting-summary"
+        );
+
+
+      checkButton.addEventListener(
+        "click",
+        () => {
+
+          const allItems =
+            card.querySelectorAll(
+              ".sorting-item"
+            );
+
+
+          let correctCount = 0;
+          let unassignedCount = 0;
+
+
+          allItems.forEach(item => {
+
+            item.classList.remove(
+              "sorting-correct",
+              "sorting-incorrect"
+            );
+
+
+            const assignedBucket =
+              item.dataset.assignedBucket;
+
+
+            const correctBucket =
+              item.dataset.correctBucket;
+
+
+            if (!assignedBucket) {
+
+              unassignedCount++;
+
+              return;
+            }
+
+
+            if (
+              assignedBucket ===
+              correctBucket
+            ) {
+
+              correctCount++;
+
+
+              item.classList.add(
+                "sorting-correct"
+              );
+
+            }
+
+            else {
+
+              item.classList.add(
+                "sorting-incorrect"
+              );
+
+            }
+
+          });
+
+
+          if (unassignedCount > 0) {
+
+            summary.className =
+              "question-feedback feedback-neutral sorting-summary";
+
+
+            summary.textContent =
+              `Place all ${selectedItems.length} items into a bucket before checking your answers.`;
+
+
+            return;
+          }
+
+
+          if (
+            correctCount ===
+            selectedItems.length
           ) {
 
-            correctCount++;
+            summary.className =
+              "question-feedback feedback-correct sorting-summary";
 
-            result.className =
-              "method-result method-correct";
 
-            result.textContent =
-              "✓ Correct";
+            summary.innerHTML = `
+              <strong>Excellent!</strong>
+              All ${selectedItems.length} items are correctly classified.
+            `;
 
           }
 
           else {
 
-            result.className =
-              "method-result method-incorrect";
+            summary.className =
+              "question-feedback feedback-incorrect sorting-summary";
 
-            result.textContent =
-              "Try again.";
+
+            summary.innerHTML = `
+              <strong>${correctCount} out of ${selectedItems.length} correct.</strong>
+              The highlighted items need another look.
+            `;
 
           }
 
-        });
-
-
-        if (unanswered > 0) {
-
-          summary.className =
-            "question-feedback feedback-neutral method-summary";
-
-          summary.textContent =
-            "Complete all items before checking your final score.";
-
         }
-
-        else {
-
-          summary.className =
-            "question-feedback feedback-correct method-summary";
-
-          summary.innerHTML =
-            `<strong>${correctCount} out of ${selectedItems.length} correct.</strong>`;
-
-        }
-
-      });
+      );
 
 
       section.appendChild(card);
@@ -224,33 +661,52 @@ sections.forEach(sectionName => {
     }
 
 
+
     /* =========================================
-       REGULAR MULTIPLE CHOICE QUESTIONS
+       REGULAR MULTIPLE-CHOICE QUESTION
     ========================================= */
 
-    if (question.type === "multiple-choice") {
+    if (
+      question.type === "multiple-choice"
+    ) {
 
-      const card = document.createElement("article");
-
-      card.className = "question-card";
-      card.id = question.id;
+      const card =
+        document.createElement("article");
 
 
-      const choicesHTML = question.choices
-        .map((choice, choiceIndex) => `
-          <label class="question-choice">
+      card.className =
+        "question-card";
 
-            <input
-              type="radio"
-              name="${question.id}"
-              value="${choiceIndex}"
-            >
 
-            <span>${choice}</span>
+      card.id =
+        question.id;
 
-          </label>
-        `)
-        .join("");
+
+      const choicesHTML =
+        question.choices
+          .map(
+            (
+              choice,
+              choiceIndex
+            ) => `
+
+              <label class="question-choice">
+
+                <input
+                  type="radio"
+                  name="${question.id}"
+                  value="${choiceIndex}"
+                >
+
+                <span>
+                  ${choice}
+                </span>
+
+              </label>
+
+            `
+          )
+          .join("");
 
 
       card.innerHTML = `
@@ -283,68 +739,92 @@ sections.forEach(sectionName => {
 
 
       const button =
-        card.querySelector(".check-answer");
+        card.querySelector(
+          ".check-answer"
+        );
+
 
       const feedback =
-        card.querySelector(".question-feedback");
+        card.querySelector(
+          ".question-feedback"
+        );
 
 
-      button.addEventListener("click", () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-        const selected =
-          card.querySelector(
-            `input[name="${question.id}"]:checked`
-          );
+          const selected =
+            card.querySelector(
+              `input[name="${question.id}"]:checked`
+            );
 
 
-        if (!selected) {
+          if (!selected) {
 
-          feedback.className =
-            "question-feedback feedback-neutral";
+            feedback.className =
+              "question-feedback feedback-neutral";
 
-          feedback.textContent =
-            "Please select an answer first.";
 
-          return;
+            feedback.textContent =
+              "Please select an answer first.";
+
+
+            return;
+          }
+
+
+          const selectedIndex =
+            Number(
+              selected.value
+            );
+
+
+          if (
+            selectedIndex ===
+            question.correct
+          ) {
+
+            feedback.className =
+              "question-feedback feedback-correct";
+
+
+            feedback.innerHTML = `
+              <strong>Correct!</strong>
+              ${question.explanation}
+            `;
+
+          }
+
+          else {
+
+            feedback.className =
+              "question-feedback feedback-incorrect";
+
+
+            feedback.innerHTML = `
+              <strong>Not quite.</strong>
+              ${question.explanation}
+            `;
+
+          }
+
+
+          /* Render any LaTeX in feedback */
+
+          if (
+            window.MathJax &&
+            window.MathJax.typesetPromise
+          ) {
+
+            MathJax.typesetPromise(
+              [feedback]
+            );
+
+          }
+
         }
-
-
-        const selectedIndex =
-          Number(selected.value);
-
-
-        if (selectedIndex === question.correct) {
-
-          feedback.className =
-            "question-feedback feedback-correct";
-
-          feedback.innerHTML = `
-            <strong>Correct!</strong>
-            ${question.explanation}
-          `;
-
-        }
-
-        else {
-
-          feedback.className =
-            "question-feedback feedback-incorrect";
-
-          feedback.innerHTML = `
-            <strong>Not quite.</strong>
-            ${question.explanation}
-          `;
-
-        }
-
-        if (
-  window.MathJax &&
-  window.MathJax.typesetPromise
-) {
-  MathJax.typesetPromise([feedback]);
-}
-
-      });
+      );
 
 
       section.appendChild(card);
@@ -359,12 +839,16 @@ sections.forEach(sectionName => {
 
 
 /* =========================================
-   RENDER MATHJAX AFTER QUESTIONS ARE BUILT
+   INITIAL MATHJAX RENDER
 ========================================= */
 
 if (
   window.MathJax &&
   window.MathJax.typesetPromise
 ) {
-  MathJax.typesetPromise();
+
+  MathJax.typesetPromise(
+    [library]
+  );
+
 }
