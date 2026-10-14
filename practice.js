@@ -1681,16 +1681,32 @@ let currentSet = null;
 
         else {
 
-          feedback.className =
-            "question-feedback feedback-incorrect drag-order-feedback";
+  feedback.className =
+    "question-feedback feedback-incorrect drag-order-feedback";
 
-          feedback.innerHTML = `
-            <strong>Not quite.</strong>
-            ${correctCount} out of ${orderedItems.length}
-            positions are correct.
-          `;
+  const wrongPositions =
+    orderedItems
+      .map((item, position) => {
 
-        }
+        const rank =
+          Number(item.dataset.rank);
+
+        return rank === position + 1
+          ? null
+          : position + 1;
+
+      })
+      .filter(position => position !== null);
+
+
+  feedback.innerHTML = `
+    <strong>Not quite.</strong>
+    ${correctCount} out of ${orderedItems.length} positions are correct.
+    Reconsider position${wrongPositions.length > 1 ? "s" : ""}
+    ${wrongPositions.join(", ")}.
+  `;
+
+}
 
 
         renderMath(feedback);
