@@ -1339,6 +1339,86 @@ const questions = [
 
   explanation:
     "By the Fundamental Theorem of Calculus Part I, \\(F'(x)=f(x)\\)."
+}, {
+  course: "calculus-2",
+  section: "Fundamental Theorem of Calculus",
+  id: "ftc-chain-rule-composite-upper-limit",
+  type: "randomized-multiple-choice",
+
+  question:
+    "Differentiate the following function using the Fundamental Theorem of Calculus and the Chain Rule.",
+
+  pool: [
+
+    {
+      content:
+        "\\(\\displaystyle \\frac{d}{dx}\\left[\\int\\limits_1^{(x^2+1)^3}\\sqrt{t}\\,dt\\right]\\)",
+
+      choices: [
+        "\\(\\displaystyle 6x(x^2+1)^2\\sqrt{(x^2+1)^3}\\)",
+        "\\(\\displaystyle 3(x^2+1)^2\\sqrt{(x^2+1)^3}\\)",
+        "\\(\\displaystyle 6x\\sqrt{x^2+1}\\)",
+        "\\(\\displaystyle 2x\\sqrt{(x^2+1)^3}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Using FTC, first evaluate the integrand at the upper limit, giving \\(\\sqrt{(x^2+1)^3}\\). Then differentiate the upper limit: \\(\\frac{d}{dx}(x^2+1)^3=6x(x^2+1)^2\\). Multiply the two factors."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\frac{d}{dx}\\left[\\int\\limits_0^{\\sin(x^2)} e^t\\,dt\\right]\\)",
+
+      choices: [
+        "\\(\\displaystyle 2x\\cos(x^2)e^{\\sin(x^2)}\\)",
+        "\\(\\displaystyle \\cos(x^2)e^{\\sin(x^2)}\\)",
+        "\\(\\displaystyle 2x\\sin(x^2)e^{\\sin(x^2)}\\)",
+        "\\(\\displaystyle 2x e^{x^2}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "FTC gives \\(e^{\\sin(x^2)}\\), and the Chain Rule gives \\(\\frac{d}{dx}\\sin(x^2)=2x\\cos(x^2)\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\frac{d}{dx}\\left[\\int\\limits_2^{e^{x^2}} \\frac{1}{1+t^2}\\,dt\\right]\\)",
+
+      choices: [
+        "\\(\\displaystyle \\frac{2xe^{x^2}}{1+e^{2x^2}}\\)",
+        "\\(\\displaystyle \\frac{e^{x^2}}{1+e^{2x^2}}\\)",
+        "\\(\\displaystyle \\frac{2x}{1+e^{2x^2}}\\)",
+        "\\(\\displaystyle \\frac{2xe^{2x^2}}{1+e^{2x^2}}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Evaluate the integrand at \\(t=e^{x^2}\\), then multiply by \\(\\frac{d}{dx}e^{x^2}=2xe^{x^2}\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\frac{d}{dx}\\left[\\int\\limits_1^{\\ln(x^2+1)} \\cos t\\,dt\\right]\\)",
+
+      choices: [
+        "\\(\\displaystyle \\frac{2x}{x^2+1}\\cos\\!\\bigl(\\ln(x^2+1)\\bigr)\\)",
+        "\\(\\displaystyle \\cos\\!\\bigl(\\ln(x^2+1)\\bigr)\\)",
+        "\\(\\displaystyle -\\frac{2x}{x^2+1}\\sin\\!\\bigl(\\ln(x^2+1)\\bigr)\\)",
+        "\\(\\displaystyle \\frac{1}{x^2+1}\\cos\\!\\bigl(\\ln(x^2+1)\\bigr)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "FTC gives \\(\\cos(\\ln(x^2+1))\\), and the Chain Rule gives \\(\\frac{d}{dx}\\ln(x^2+1)=\\frac{2x}{x^2+1}\\)."
+    }
+
+  ]
 }
 
 ];
