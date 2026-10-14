@@ -1,26 +1,26 @@
 const questions = [
 
   {
-    course: "calculus-2",
-    section: "Integration Techniques",
-    id: "integration-method-1",
-    type: "multiple-choice",
+  course: "calculus-2",
+  section: "Integration Techniques",
+  id: "integration-method-1",
+  type: "multiple-choice",
 
-      question:
-  "Which integration technique is most appropriate for \\(\\int x e^x\\,dx\\)?"
+  question:
+    "Which integration technique is most appropriate for \\(\\int x e^x\\,dx\\)?",
 
-    choices: [
-      "u-Substitution",
-      "Integration by Parts",
-      "Trigonometric Substitution",
-      "Partial Fractions"
-    ],
+  choices: [
+    "u-Substitution",
+    "Integration by Parts",
+    "Trigonometric Substitution",
+    "Partial Fractions"
+  ],
 
-    correct: 1,
+  correct: 1,
 
-    explanation:
-      "Integration by Parts is appropriate because the integrand is a product of an algebraic function and an exponential function."
-  },
+  explanation:
+    "Integration by Parts is appropriate because the integrand is a product of an algebraic function and an exponential function."
+},
 
 {
   course: "calculus-2",
@@ -165,26 +165,26 @@ const questions = [
 },
 
   {
-    course: "calculus-2",
-    section: "Improper Integrals",
-    id: "p-integral-1",
-    type: "multiple-choice",
+  course: "calculus-2",
+  section: "Improper Integrals",
+  id: "p-integral-1",
+  type: "multiple-choice",
 
   question:
-  "For which values of \\(p\\) does \\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^p}\\,dx\\) converge?"
+    "For which values of \\(p\\) does \\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^p}\\,dx\\) converge?",
 
-   choices: [
-  "\\(p>0\\)",
-  "\\(p\\ge 1\\)",
-  "\\(p>1\\)",
-  "\\(p<1\\)"
-],
+  choices: [
+    "\\(p>0\\)",
+    "\\(p\\ge 1\\)",
+    "\\(p>1\\)",
+    "\\(p<1\\)"
+  ],
 
-    correct: 2,
+  correct: 2,
 
-    explanation:
-      "The p-integral \\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^p}\\,dx\\) converges precisely when p > 1."
-  },
+  explanation:
+    "The p-integral \\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^p}\\,dx\\) converges precisely when \\(p>1\\)."
+},
 
 
   {
