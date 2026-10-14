@@ -169,8 +169,8 @@ const questions = [
     id: "p-integral-1",
     type: "multiple-choice",
 
-      question:
-  "For which values of \\(p\\) does \\(\\displaystyle \\int_1^\\infty \\frac{1}{x^p}\\,dx\\) converge?"
+  question:
+  "For which values of \\(p\\) does \\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^p}\\,dx\\) converge?"
 
    choices: [
   "\\(p>0\\)",
@@ -182,7 +182,7 @@ const questions = [
     correct: 2,
 
     explanation:
-      "The p-integral ∫₁^∞ 1/x^p dx converges precisely when p > 1."
+      "The p-integral \\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^p}\\,dx\\) converges precisely when p > 1."
   },
 
 
@@ -193,12 +193,12 @@ const questions = [
   type: "multiple-choice",
 
   question:
-    "If \\(F(x)=\\displaystyle\\int_0^x f(t)\\,dt\\) and \\(f\\) is continuous, what is \\(F'(x)\\)?",
+    "If \\(F(x)=\\displaystyle\\int\\limits_0^x f(t)\\,dt\\) and \\(f\\) is continuous, what is \\(F'(x)\\)?",
 
   choices: [
     "\\(f(0)\\)",
     "\\(f(x)\\)",
-    "\\(\\displaystyle\\int_0^x f'(t)\\,dt\\)",
+    "\\(\\displaystyle\\int\\limits_0^x f'(t)\\,dt\\)",
     "\\(x f(x)\\)"
   ],
 
