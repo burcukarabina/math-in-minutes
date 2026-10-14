@@ -24,7 +24,10 @@ sections.forEach(sectionName => {
     question => question.section === sectionName
   );
 
-
+if (window.MathJax && window.MathJax.typesetPromise) {
+  MathJax.typesetPromise();
+}
+  
   sectionQuestions.forEach((question, index) => {
 
     const card = document.createElement("article");
