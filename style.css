@@ -576,3 +576,159 @@ footer p {
   outline: 4px solid var(--uw-gold);
   outline-offset: 4px;
 }
+/* =========================================
+   INTERACTIVE PRACTICE
+========================================= */
+
+.practice-intro {
+  max-width: 750px;
+  margin-bottom: 3rem;
+}
+
+.practice-intro h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.practice-intro p {
+  color: var(--muted-text);
+}
+
+
+/* Sections */
+
+.practice-section {
+  margin-bottom: 4rem;
+}
+
+.practice-section > h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+
+  border-bottom: 4px solid var(--uw-gold);
+  padding-bottom: 0.5rem;
+}
+
+
+/* Question card */
+
+.question-card {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  padding: 2rem;
+
+  margin-bottom: 1.5rem;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.question-number {
+  margin: 0 0 0.5rem;
+
+  color: var(--uw-teal);
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.question-card h3 {
+  margin-top: 0;
+
+  font-size: 1.15rem;
+}
+
+
+/* Choices */
+
+.question-choices {
+  display: grid;
+  gap: 0.75rem;
+
+  margin: 1.5rem 0;
+}
+
+.question-choice {
+  display: flex;
+  align-items: center;
+
+  gap: 0.75rem;
+
+  padding: 0.85rem 1rem;
+
+  border: 1px solid var(--border);
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  background: white;
+}
+
+.question-choice:hover {
+  background: var(--uw-light-gold);
+}
+
+.question-choice input {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* Check button */
+
+.check-answer {
+  background: var(--uw-black);
+  color: white;
+
+  border: none;
+  border-radius: 6px;
+
+  padding: 0.75rem 1.25rem;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.check-answer:hover {
+  background: var(--uw-charcoal);
+}
+
+
+/* Feedback */
+
+.question-feedback {
+  margin-top: 1rem;
+
+  padding: 1rem;
+
+  border-radius: 6px;
+
+  display: none;
+}
+
+.question-feedback:not(:empty) {
+  display: block;
+}
+
+.feedback-correct {
+  background: #e8f5e9;
+  border-left: 5px solid #2e7d32;
+}
+
+.feedback-incorrect {
+  background: #fff3e0;
+  border-left: 5px solid #ef6c00;
+}
+
+.feedback-neutral {
+  background: #f5f5f5;
+  border-left: 5px solid var(--uw-charcoal);
+}
