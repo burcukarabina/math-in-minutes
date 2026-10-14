@@ -7,7 +7,7 @@ const questions = [
   type: "multiple-choice",
 
   question:
-    "Which integration technique is most appropriate for \\(\\int x e^x\\,dx\\)?",
+    "Which integration technique is most appropriate for \\(\\displaystyle\\int x e^x\\,dx\\)?",
 
   choices: [
     "u-Substitution",
