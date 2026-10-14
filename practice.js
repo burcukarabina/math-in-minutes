@@ -711,7 +711,6 @@ sections.forEach(sectionName => {
 
             attachSortingItemEvents();
 
-
             renderMath(card);
 
           }
@@ -720,10 +719,602 @@ sections.forEach(sectionName => {
 
         attachSortingItemEvents();
 
-
         section.appendChild(card);
 
         renderMath(card);
+
+        return;
+      }
+
+
+
+      /* =========================================
+         TWO-STAGE CLASSIFICATION
+      ========================================= */
+
+      if (
+        question.type ===
+        "two-stage-classification"
+      ) {
+
+        const card =
+          document.createElement("article");
+
+        card.className =
+          "question-card two-stage-question";
+
+        card.id =
+          question.id;
+
+
+        let selectedItems =
+          shuffleArray(question.pool)
+            .slice(
+              0,
+              question.numberToDraw
+            );
+
+
+        /* -----------------------------------------
+           BUILD SELECT OPTIONS
+        ----------------------------------------- */
+
+        function buildOptions(
+          choices
+        ) {
+
+          return `
+            <option value="">
+              Choose...
+            </option>
+
+            ${choices
+              .map(
+                choice => `
+                  <option value="${choice}">
+                    ${choice}
+                  </option>
+                `
+              )
+              .join("")}
+          `;
+
+        }
+
+
+        /* -----------------------------------------
+           BUILD PART I ROWS
+        ----------------------------------------- */
+
+        function buildStage1Rows() {
+
+          return selectedItems
+            .map(
+              (item, itemIndex) => `
+
+                <div
+                  class="two-stage-row"
+                  data-index="${itemIndex}"
+                >
+
+                  <div class="two-stage-integral">
+                    ${item.content}
+                  </div>
+
+                  <div class="two-stage-answer">
+
+                    <select
+                      class="two-stage-select stage1-select"
+                      data-index="${itemIndex}"
+                      aria-label="Part I answer for integral ${itemIndex + 1}"
+                    >
+                      ${buildOptions(
+                        question.stage1.choices
+                      )}
+                    </select>
+
+                  </div>
+
+                </div>
+
+              `
+            )
+            .join("");
+
+        }
+
+
+        /* -----------------------------------------
+           BUILD PART II ROWS
+        ----------------------------------------- */
+
+        function buildStage2Rows() {
+
+          return selectedItems
+            .map(
+              (item, itemIndex) => `
+
+                <div
+                  class="two-stage-row"
+                  data-index="${itemIndex}"
+                >
+
+                  <div class="two-stage-integral">
+                    ${item.content}
+                  </div>
+
+                  <div class="two-stage-answer">
+
+                    <select
+                      class="two-stage-select stage2-select"
+                      data-index="${itemIndex}"
+                      aria-label="Part II answer for integral ${itemIndex + 1}"
+                    >
+                      ${buildOptions(
+                        question.stage2.choices
+                      )}
+                    </select>
+
+                  </div>
+
+                </div>
+
+              `
+            )
+            .join("");
+
+        }
+
+
+        /* -----------------------------------------
+           RENDER TWO-STAGE QUESTION
+        ----------------------------------------- */
+
+        function renderTwoStageQuestion() {
+
+          card.innerHTML = `
+
+            <p class="question-number">
+              Question ${index + 1}
+            </p>
+
+            <h3>
+              ${question.question}
+            </h3>
+
+
+            <!-- ===============================
+                 PART I
+            ================================ -->
+
+            <div class="two-stage-part stage1-part">
+
+              <h4 class="two-stage-heading">
+                ${question.stage1.label}
+              </h4>
+
+              <div class="two-stage-table">
+
+                <div class="two-stage-header">
+
+                  <div>
+                    Integral
+                  </div>
+
+                  <div>
+                    ${question.stage1.columnLabel || "Type"}
+                  </div>
+
+                </div>
+
+                ${buildStage1Rows()}
+
+              </div>
+
+
+              <button
+                type="button"
+                class="check-answer stage1-check-button"
+              >
+                Check Part I
+              </button>
+
+
+              <div
+                class="question-feedback stage1-feedback"
+                aria-live="polite"
+              ></div>
+
+            </div>
+
+
+            <!-- ===============================
+                 PART II
+            ================================ -->
+
+            <div
+              class="two-stage-part stage2-part"
+              hidden
+            >
+
+              <h4 class="two-stage-heading">
+                ${question.stage2.label}
+              </h4>
+
+              <div class="two-stage-table">
+
+                <div class="two-stage-header">
+
+                  <div>
+                    Integral
+                  </div>
+
+                  <div>
+                    ${question.stage2.columnLabel || "Behavior"}
+                  </div>
+
+                </div>
+
+                ${buildStage2Rows()}
+
+              </div>
+
+
+              <div class="random-question-actions">
+
+                <button
+                  type="button"
+                  class="check-answer stage2-check-button"
+                >
+                  Check Part II
+                </button>
+
+                <button
+                  type="button"
+                  class="try-another-button two-stage-try-another-button"
+                >
+                  Try Another
+                </button>
+
+              </div>
+
+
+              <div
+                class="question-feedback stage2-feedback"
+                aria-live="polite"
+              ></div>
+
+            </div>
+
+          `;
+
+
+          const stage1Button =
+            card.querySelector(
+              ".stage1-check-button"
+            );
+
+
+          const stage2Button =
+            card.querySelector(
+              ".stage2-check-button"
+            );
+
+
+          const tryAnotherButton =
+            card.querySelector(
+              ".two-stage-try-another-button"
+            );
+
+
+          const stage1Feedback =
+            card.querySelector(
+              ".stage1-feedback"
+            );
+
+
+          const stage2Feedback =
+            card.querySelector(
+              ".stage2-feedback"
+            );
+
+
+          const stage2Part =
+            card.querySelector(
+              ".stage2-part"
+            );
+
+
+          /* -----------------------------------------
+             CHECK PART I
+          ----------------------------------------- */
+
+          stage1Button.addEventListener(
+            "click",
+            () => {
+
+              const selects =
+                card.querySelectorAll(
+                  ".stage1-select"
+                );
+
+
+              let unanswered = 0;
+              let correctCount = 0;
+
+
+              selects.forEach(select => {
+
+                select.classList.remove(
+                  "two-stage-correct",
+                  "two-stage-incorrect"
+                );
+
+
+                const itemIndex =
+                  Number(
+                    select.dataset.index
+                  );
+
+
+                const item =
+                  selectedItems[
+                    itemIndex
+                  ];
+
+
+                const selectedAnswer =
+                  select.value;
+
+
+                const correctAnswer =
+                  item.answers[
+                    question.stage1.key
+                  ];
+
+
+                if (!selectedAnswer) {
+
+                  unanswered++;
+
+                  return;
+                }
+
+
+                if (
+                  selectedAnswer ===
+                  correctAnswer
+                ) {
+
+                  correctCount++;
+
+                  select.classList.add(
+                    "two-stage-correct"
+                  );
+
+                }
+
+                else {
+
+                  select.classList.add(
+                    "two-stage-incorrect"
+                  );
+
+                }
+
+              });
+
+
+              if (unanswered > 0) {
+
+                stage1Feedback.className =
+                  "question-feedback feedback-neutral stage1-feedback";
+
+                stage1Feedback.textContent =
+                  "Please answer every item before checking Part I.";
+
+                return;
+              }
+
+
+              if (
+                correctCount ===
+                selectedItems.length
+              ) {
+
+                stage1Feedback.className =
+                  "question-feedback feedback-correct stage1-feedback";
+
+                stage1Feedback.innerHTML = `
+                  <strong>Part I complete!</strong>
+                  All ${selectedItems.length} classifications are correct.
+                `;
+
+              }
+
+              else {
+
+                stage1Feedback.className =
+                  "question-feedback feedback-incorrect stage1-feedback";
+
+                stage1Feedback.innerHTML = `
+                  <strong>${correctCount} out of ${selectedItems.length} correct.</strong>
+                  Review the highlighted classifications.
+                `;
+
+              }
+
+
+              /*
+                Reveal Part II after the student
+                has answered and checked all Part I items.
+              */
+
+              stage2Part.hidden =
+                false;
+
+
+              renderMath(stage2Part);
+
+            }
+          );
+
+
+          /* -----------------------------------------
+             CHECK PART II
+          ----------------------------------------- */
+
+          stage2Button.addEventListener(
+            "click",
+            () => {
+
+              const selects =
+                card.querySelectorAll(
+                  ".stage2-select"
+                );
+
+
+              let unanswered = 0;
+              let correctCount = 0;
+
+
+              selects.forEach(select => {
+
+                select.classList.remove(
+                  "two-stage-correct",
+                  "two-stage-incorrect"
+                );
+
+
+                const itemIndex =
+                  Number(
+                    select.dataset.index
+                  );
+
+
+                const item =
+                  selectedItems[
+                    itemIndex
+                  ];
+
+
+                const selectedAnswer =
+                  select.value;
+
+
+                const correctAnswer =
+                  item.answers[
+                    question.stage2.key
+                  ];
+
+
+                if (!selectedAnswer) {
+
+                  unanswered++;
+
+                  return;
+                }
+
+
+                if (
+                  selectedAnswer ===
+                  correctAnswer
+                ) {
+
+                  correctCount++;
+
+                  select.classList.add(
+                    "two-stage-correct"
+                  );
+
+                }
+
+                else {
+
+                  select.classList.add(
+                    "two-stage-incorrect"
+                  );
+
+                }
+
+              });
+
+
+              if (unanswered > 0) {
+
+                stage2Feedback.className =
+                  "question-feedback feedback-neutral stage2-feedback";
+
+                stage2Feedback.textContent =
+                  "Please answer every item before checking Part II.";
+
+                return;
+              }
+
+
+              if (
+                correctCount ===
+                selectedItems.length
+              ) {
+
+                stage2Feedback.className =
+                  "question-feedback feedback-correct stage2-feedback";
+
+                stage2Feedback.innerHTML = `
+                  <strong>Excellent!</strong>
+                  All ${selectedItems.length} convergence classifications are correct.
+                `;
+
+              }
+
+              else {
+
+                stage2Feedback.className =
+                  "question-feedback feedback-incorrect stage2-feedback";
+
+                stage2Feedback.innerHTML = `
+                  <strong>${correctCount} out of ${selectedItems.length} correct.</strong>
+                  Review the highlighted answers.
+                `;
+
+              }
+
+            }
+          );
+
+
+          /* -----------------------------------------
+             TRY ANOTHER TWO-STAGE SET
+          ----------------------------------------- */
+
+          tryAnotherButton.addEventListener(
+            "click",
+            () => {
+
+              selectedItems =
+                shuffleArray(
+                  question.pool
+                )
+                .slice(
+                  0,
+                  question.numberToDraw
+                );
+
+
+              renderTwoStageQuestion();
+
+            }
+          );
+
+
+          renderMath(card);
+
+        }
+
+
+        renderTwoStageQuestion();
+
+        section.appendChild(card);
 
         return;
       }
