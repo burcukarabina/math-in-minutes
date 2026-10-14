@@ -1419,6 +1419,193 @@ const questions = [
     }
 
   ]
+}, {
+  course: "calculus-2",
+  section: "Fundamental Theorem of Calculus",
+  id: "area-function-and-derivative",
+  type: "randomized-multiple-choice",
+
+  question:
+    "Let the following integral define an area function. Find the ordered pair \\(\\bigl(A(c),A'(c)\\bigr)\\).",
+
+  pool: [
+
+    /* =====================================
+       QUESTION 1
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x t\\,dt, \\qquad c=2\\)",
+
+      choices: [
+        "\\(\\left(2,2\\right)\\)",
+        "\\(\\left(4,2\\right)\\)",
+        "\\(\\left(2,1\\right)\\)",
+        "\\(\\left(4,1\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The value \\(A(2)\\) is the area of the triangle under \\(y=t\\) from \\(0\\) to \\(2\\), so \\(A(2)=\\frac12(2)(2)=2\\). By FTC I, \\(A'(2)=2\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 2
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x 3\\,dt, \\qquad c=4\\)",
+
+      choices: [
+        "\\(\\left(12,3\\right)\\)",
+        "\\(\\left(3,12\\right)\\)",
+        "\\(\\left(12,4\\right)\\)",
+        "\\(\\left(4,3\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The accumulated area is a rectangle of width \\(4\\) and height \\(3\\), so \\(A(4)=12\\). By FTC I, \\(A'(4)=3\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 3
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x (4-t)\\,dt, \\qquad c=4\\)",
+
+      choices: [
+        "\\(\\left(8,0\\right)\\)",
+        "\\(\\left(8,4\\right)\\)",
+        "\\(\\left(16,0\\right)\\)",
+        "\\(\\left(4,8\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "From \\(0\\) to \\(4\\), the graph of \\(4-t\\) forms a triangle with base \\(4\\) and height \\(4\\). Thus \\(A(4)=8\\). By FTC I, \\(A'(4)=4-4=0\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 4
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x (2t+1)\\,dt, \\qquad c=2\\)",
+
+      choices: [
+        "\\(\\left(6,5\\right)\\)",
+        "\\(\\left(5,6\\right)\\)",
+        "\\(\\left(10,5\\right)\\)",
+        "\\(\\left(6,4\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The graph is a line increasing from height \\(1\\) to height \\(5\\). The accumulated area is the area of a trapezoid: \\(A(2)=\\frac12(1+5)(2)=6\\). By FTC I, \\(A'(2)=2(2)+1=5\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 5
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x (3-t)\\,dt, \\qquad c=2\\)",
+
+      choices: [
+        "\\(\\left(4,1\\right)\\)",
+        "\\(\\left(2,1\\right)\\)",
+        "\\(\\left(4,3\\right)\\)",
+        "\\(\\left(1,4\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "From \\(0\\) to \\(2\\), the graph decreases from height \\(3\\) to height \\(1\\). The trapezoid has area \\(A(2)=\\frac12(3+1)(2)=4\\). By FTC I, \\(A'(2)=3-2=1\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 6
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x (t-1)\\,dt, \\qquad c=2\\)",
+
+      choices: [
+        "\\(\\left(0,1\\right)\\)",
+        "\\(\\left(1,0\\right)\\)",
+        "\\(\\left(2,1\\right)\\)",
+        "\\(\\left(0,2\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "From \\(0\\) to \\(1\\), the graph is below the axis and contributes area \\(-\\frac12\\). From \\(1\\) to \\(2\\), it contributes \\(+\\frac12\\). These cancel, so \\(A(2)=0\\). By FTC I, \\(A'(2)=2-1=1\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 7
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_{-2}^x (t+2)\\,dt, \\qquad c=2\\)",
+
+      choices: [
+        "\\(\\left(8,4\\right)\\)",
+        "\\(\\left(4,8\\right)\\)",
+        "\\(\\left(8,2\\right)\\)",
+        "\\(\\left(16,4\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "From \\(-2\\) to \\(2\\), the graph forms a triangle with base \\(4\\) and height \\(4\\), so \\(A(2)=8\\). By FTC I, \\(A'(2)=2+2=4\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 8
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x (2-t)\\,dt, \\qquad c=3\\)",
+
+      choices: [
+        "\\(\\left(\\frac32,-1\\right)\\)",
+        "\\(\\left(\\frac52,-1\\right)\\)",
+        "\\(\\left(\\frac32,1\\right)\\)",
+        "\\(\\left(-\\frac32,-1\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "From \\(0\\) to \\(2\\), the positive triangular area is \\(2\\). From \\(2\\) to \\(3\\), the graph lies below the axis and contributes \\(-\\frac12\\). Therefore \\(A(3)=2-\\frac12=\\frac32\\). By FTC I, \\(A'(3)=2-3=-1\\)."
+    }
+
+  ]
 }
 
 ];
