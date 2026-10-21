@@ -625,7 +625,7 @@ const questions = [
     }
 
   ]
-},,
+},
   {
   course: "calculus-2",
   section: "Integration Techniques",
@@ -784,7 +784,7 @@ const questions = [
     }
 
   ]
-},,
+},
   {
   course: "calculus-2",
   section: "Integration Techniques",
