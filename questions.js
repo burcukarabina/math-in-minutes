@@ -1818,6 +1818,238 @@ const questions = [
     }
 
   ]
+},
+  {
+  course: "calculus-3",
+  section: "Functions of Several Variables",
+  id: "identify-level-curve",
+  type: "randomized-multiple-choice",
+
+  question:
+    "Which equation describes the level curve of the given function at the specified value of \\(c\\)?",
+
+  pool: [
+
+    /* =====================================
+       QUESTION 1
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=x^2+4y^2, \\qquad c=16\\)",
+
+      choices: [
+        "\\(x^2+4y^2=16\\)",
+        "\\(x^2+4y^2=4\\)",
+        "\\(x^2+y^2=16\\)",
+        "\\(x^2+4y^2\\le 16\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "A level curve at level \\(c\\) is obtained by setting \\(f(x,y)=c\\). Therefore \\(x^2+4y^2=16\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 2
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=x^2-y^2, \\qquad c=4\\)",
+
+      choices: [
+        "\\(x^2-y^2=4\\)",
+        "\\(x^2+y^2=4\\)",
+        "\\(x-y=4\\)",
+        "\\(x^2-y^2\\le4\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Set the function equal to the specified level: \\(f(x,y)=4\\). This gives \\(x^2-y^2=4\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 3
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=\\sqrt{x^2+y^2}, \\qquad c=3\\)",
+
+      choices: [
+        "\\(x^2+y^2=9\\)",
+        "\\(x^2+y^2=3\\)",
+        "\\(x+y=3\\)",
+        "\\(x^2+y^2\\le9\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The level equation is \\(\\sqrt{x^2+y^2}=3\\). Squaring both sides gives \\(x^2+y^2=9\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 4
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=e^{x-y}, \\qquad c=e^2\\)",
+
+      choices: [
+        "\\(x-y=2\\)",
+        "\\(x-y=e^2\\)",
+        "\\(x+y=2\\)",
+        "\\(y-x=2\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Setting \\(e^{x-y}=e^2\\) gives \\(x-y=2\\). Thus the level curve is a straight line."
+    },
+
+
+    /* =====================================
+       QUESTION 5
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=\\ln(x^2+y^2), \\qquad c=\\ln 4\\)",
+
+      choices: [
+        "\\(x^2+y^2=4\\)",
+        "\\(x^2+y^2=\\ln4\\)",
+        "\\(x^2+y^2=2\\)",
+        "\\(x+y=4\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Set \\(\\ln(x^2+y^2)=\\ln4\\). Since the logarithm is one-to-one, \\(x^2+y^2=4\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 6
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=xy, \\qquad c=6\\)",
+
+      choices: [
+        "\\(xy=6\\)",
+        "\\(x+y=6\\)",
+        "\\(x^2+y^2=6\\)",
+        "\\(y=6x\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "A level curve is found by setting \\(f(x,y)=c\\), so here the equation is \\(xy=6\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 7
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=x^2+y, \\qquad c=5\\)",
+
+      choices: [
+        "\\(y=5-x^2\\)",
+        "\\(y=x^2-5\\)",
+        "\\(y=5+x^2\\)",
+        "\\(x^2+y^2=5\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Setting \\(x^2+y=5\\) and solving for \\(y\\) gives \\(y=5-x^2\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 8
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=\\frac{x}{y}, \\qquad c=2\\)",
+
+      choices: [
+        "\\(x=2y\\)",
+        "\\(y=2x\\)",
+        "\\(xy=2\\)",
+        "\\(x-y=2\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Setting \\(\\frac{x}{y}=2\\) gives \\(x=2y\\), with \\(y\\ne0\\) because the original function is undefined when \\(y=0\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 9
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=x^2+2x+y^2, \\qquad c=3\\)",
+
+      choices: [
+        "\\((x+1)^2+y^2=4\\)",
+        "\\((x+1)^2+y^2=3\\)",
+        "\\((x-1)^2+y^2=4\\)",
+        "\\(x^2+y^2=3\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "From \\(x^2+2x+y^2=3\\), complete the square: \\((x+1)^2-1+y^2=3\\), so \\((x+1)^2+y^2=4\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 10
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=\\frac{1}{x^2+y^2}, \\qquad c=\\frac14\\)",
+
+      choices: [
+        "\\(x^2+y^2=4\\)",
+        "\\(x^2+y^2=\\frac14\\)",
+        "\\(x^2+y^2=2\\)",
+        "\\(x^2+y^2\\le4\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Setting \\(\\frac{1}{x^2+y^2}=\\frac14\\) gives \\(x^2+y^2=4\\)."
+    }
+
+  ]
 }
 
 ];
