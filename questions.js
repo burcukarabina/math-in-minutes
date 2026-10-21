@@ -2305,6 +2305,213 @@ const questions = [
     }
 
   ]
+}, {
+  course: "calculus-3",
+  section: "Directional Derivatives and Gradient",
+  id: "order-directional-derivatives",
+  type: "drag-order",
+
+  question:
+    "Drag the directions into increasing order according to the value of the directional derivative.",
+
+  pool: [
+
+    /* =====================================
+       SET 1
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\nabla f(a,b)=\\langle 3,4\\rangle\\)",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle -1,0\\rangle\\)",
+          rank: 1
+        },
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac45,-\\frac35\\right\\rangle\\)",
+          rank: 2
+        },
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 0,1\\rangle\\)",
+          rank: 3
+        },
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac35,\\frac45\\right\\rangle\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "The directional derivatives are \\(-3\\), \\(0\\), \\(4\\), and \\(5\\), respectively."
+    },
+
+    /* =====================================
+       SET 2
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\nabla f(a,b)=\\langle 4,-3\\rangle\\)",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle -\\frac45,\\frac35\\right\\rangle\\)",
+          rank: 1
+        },
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 0,1\\rangle\\)",
+          rank: 2
+        },
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 1,0\\rangle\\)",
+          rank: 3
+        },
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac45,-\\frac35\\right\\rangle\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "The directional derivatives are \\(-5\\), \\(-3\\), \\(4\\), and \\(5\\), respectively."
+    },
+
+    /* =====================================
+       SET 3
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\nabla f(a,b)=\\langle 1,2\\rangle\\)",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle -1,0\\rangle\\)",
+          rank: 1
+        },
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac{2}{\\sqrt5},-\\frac{1}{\\sqrt5}\\right\\rangle\\)",
+          rank: 2
+        },
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 1,0\\rangle\\)",
+          rank: 3
+        },
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac{1}{\\sqrt5},\\frac{2}{\\sqrt5}\\right\\rangle\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "The directional derivatives are \\(-1\\), \\(0\\), \\(1\\), and \\(\\sqrt5\\), respectively."
+    },
+
+    /* =====================================
+       SET 4
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\nabla f(a,b)=\\langle -2,2\\rangle\\)",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac{1}{\\sqrt2},-\\frac{1}{\\sqrt2}\\right\\rangle\\)",
+          rank: 1
+        },
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 1,0\\rangle\\)",
+          rank: 2
+        },
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 0,1\\rangle\\)",
+          rank: 3
+        },
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle -\\frac{1}{\\sqrt2},\\frac{1}{\\sqrt2}\\right\\rangle\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "The directional derivatives are \\(-2\\sqrt2\\), \\(-2\\), \\(2\\), and \\(2\\sqrt2\\), respectively."
+    },
+
+    /* =====================================
+       SET 5
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\nabla f(a,b)=\\langle 5,0\\rangle\\)",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle -1,0\\rangle\\)",
+          rank: 1
+        },
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle -\\frac35,\\frac45\\right\\rangle\\)",
+          rank: 2
+        },
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 0,1\\rangle\\)",
+          rank: 3
+        },
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac35,\\frac45\\right\\rangle\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "The directional derivatives are \\(-5\\), \\(-3\\), \\(0\\), and \\(3\\), respectively."
+    }
+
+  ]
 }
 
 ];
