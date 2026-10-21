@@ -1,13 +1,12 @@
 const library = document.getElementById("practice-library");
 
-const calc2Questions = questions.filter(
-  question => question.course === "calculus-2"
-);
+const practiceQuestions = questions;
 
 const sections = [
-  ...new Set(calc2Questions.map(question => question.section))
+  ...new Set(
+    practiceQuestions.map(q => q.section)
+  )
 ];
-
 
 /* =========================================
    HELPER: SHUFFLE ARRAY
@@ -71,7 +70,7 @@ sections.forEach(sectionName => {
 
 
   const sectionQuestions =
-    calc2Questions.filter(
+    practiceQuestions.filter(
       question =>
         question.section === sectionName
     );
