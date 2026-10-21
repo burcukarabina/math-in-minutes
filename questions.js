@@ -2147,6 +2147,164 @@ const questions = [
     }
 
   ]
+}, {
+  course: "calculus-3",
+  section: "Partial Derivatives",
+  id: "classify-partial-derivatives",
+  type: "sorting-bucket",
+
+  question:
+    "Drag each expression into the correct partial derivative category.",
+
+  instructions:
+    "For each card, use the given function to identify whether the expression represents \\(f_x\\), \\(f_y\\), \\(f_{xx}\\), or \\(f_{xy}\\).",
+
+  bankTitle:
+    "Expressions to Classify",
+
+  buckets: [
+    "\\(f_x\\)",
+    "\\(f_y\\)",
+    "\\(f_{xx}\\)",
+    "\\(f_{xy}\\)"
+  ],
+
+  numberToDraw: 6,
+
+  pool: [
+
+    /* =====================================
+       f_x
+    ===================================== */
+
+    {
+      content:
+        "\\(f(x,y)=x^2y+3y^2,\\quad 2xy\\)",
+      correctBucket:
+        "\\(f_x\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=x^3+xy^2,\\quad 3x^2+y^2\\)",
+      correctBucket:
+        "\\(f_x\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=e^{xy}+y,\\quad ye^{xy}\\)",
+      correctBucket:
+        "\\(f_x\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=\\sin(xy)+x,\\quad y\\cos(xy)+1\\)",
+      correctBucket:
+        "\\(f_x\\)"
+    },
+
+
+    /* =====================================
+       f_y
+    ===================================== */
+
+    {
+      content:
+        "\\(f(x,y)=x^2y+3y^2,\\quad x^2+6y\\)",
+      correctBucket:
+        "\\(f_y\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=x^3+xy^2,\\quad 2xy\\)",
+      correctBucket:
+        "\\(f_y\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=e^{xy}+y,\\quad xe^{xy}+1\\)",
+      correctBucket:
+        "\\(f_y\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=\\sin(xy)+x,\\quad x\\cos(xy)\\)",
+      correctBucket:
+        "\\(f_y\\)"
+    },
+
+
+    /* =====================================
+       f_xx
+    ===================================== */
+
+    {
+      content:
+        "\\(f(x,y)=x^3y+x^2,\\quad 6xy+2\\)",
+      correctBucket:
+        "\\(f_{xx}\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=x^2e^y+y^2,\\quad 2e^y\\)",
+      correctBucket:
+        "\\(f_{xx}\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=\\cos x+xy,\\quad -\\cos x\\)",
+      correctBucket:
+        "\\(f_{xx}\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=x^4+y\\sin x,\\quad 12x^2-y\\sin x\\)",
+      correctBucket:
+        "\\(f_{xx}\\)"
+    },
+
+
+    /* =====================================
+       f_xy
+    ===================================== */
+
+    {
+      content:
+        "\\(f(x,y)=x^2y+3y^2,\\quad 2x\\)",
+      correctBucket:
+        "\\(f_{xy}\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=x^3y^2+x,\\quad 6x^2y\\)",
+      correctBucket:
+        "\\(f_{xy}\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=e^{xy},\\quad (1+xy)e^{xy}\\)",
+      correctBucket:
+        "\\(f_{xy}\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=x^2\\sin y,\\quad 2x\\cos y\\)",
+      correctBucket:
+        "\\(f_{xy}\\)"
+    }
+
+  ]
 }
 
 ];
