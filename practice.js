@@ -1431,7 +1431,11 @@ let currentSet = null;
       <h3>
         ${question.question}
       </h3>
-
+  
+    ${currentSet.prompt
+    ? `<div class="random-question-content">${currentSet.prompt}</div>`
+    : ""
+     }
 
       <div class="drag-order-labels">
 
