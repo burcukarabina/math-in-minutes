@@ -2050,6 +2050,103 @@ const questions = [
     }
 
   ]
+},{
+  course: "calculus-3",
+  section: "Multivariable Limits",
+  id: "direct-substitution-multivariable-limits",
+  type: "randomized-multi-select",
+
+  question:
+    "Select all limits that can be evaluated by direct substitution.",
+
+  instructions:
+    "Choose every limit for which direct substitution gives the value of the limit.",
+
+  numberToDraw: 4,
+
+  pool: [
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(1,2)} (x^2+3xy-y^2)\\)",
+      correct: true,
+      explanation:
+        "This is a polynomial expression, so it is continuous everywhere. Direct substitution can be used."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(2,1)} \\frac{x+y}{x^2+y^2}\\)",
+      correct: true,
+      explanation:
+        "The denominator is nonzero at \\((2,1)\\), so the rational function is continuous there and direct substitution can be used."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(0,0)} \\frac{x+y}{x^2+y^2}\\)",
+      correct: false,
+      explanation:
+        "Direct substitution produces division by zero, so direct substitution cannot determine the limit."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(1,1)} \\sqrt{x^2+y^2+2}\\)",
+      correct: true,
+      explanation:
+        "The expression inside the square root is positive near \\((1,1)\\), so the function is continuous there."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(0,0)} \\frac{x^2-y^2}{x^2+y^2}\\)",
+      correct: false,
+      explanation:
+        "Direct substitution gives \\(0/0\\), so another method is needed."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(1,0)} e^{xy+x}\\)",
+      correct: true,
+      explanation:
+        "Exponential functions and polynomials are continuous, so their composition is continuous at \\((1,0)\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(0,0)} \\frac{\\sin(xy)}{xy}\\)",
+      correct: false,
+      explanation:
+        "Direct substitution gives \\(0/0\\). The limit may still exist, but direct substitution alone does not evaluate it."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(2,3)} \\ln(x+y)\\)",
+      correct: true,
+      explanation:
+        "Since \\(x+y=5>0\\) at the point, the logarithm is continuous there, so direct substitution works."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(0,0)} \\frac{x^2y}{x^4+y^2}\\)",
+      correct: false,
+      explanation:
+        "Direct substitution gives \\(0/0\\), so direct substitution does not determine the limit."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(1,-1)} \\cos(x^2+y^2)\\)",
+      correct: true,
+      explanation:
+        "The cosine function and the polynomial inside it are continuous, so direct substitution can be used."
+    }
+
+  ]
 }
 
 ];
