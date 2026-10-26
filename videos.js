@@ -500,5 +500,17 @@ const videos = [
   youtubeId: "3Xk9eCesUgw",
   description:
     "An explanation of when partial derivatives and regular derivatives appear when applying the multivariable Chain Rule."
+},
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "gradient-vector-properties-directional-derivative",
+  section: "Directional Derivatives and Gradient",
+  topic: "Gradient Vector",
+  title: "Gradient Vector Properties and Directional Derivative",
+  youtubeId: "76XPDqm4Cfg",
+  description:
+    "An explanation of key properties of the gradient vector and its connection to directional derivatives."
 }
 ];
