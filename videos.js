@@ -476,5 +476,17 @@ const videos = [
   youtubeId: "zHatEfWAxpQ",
   description:
     "A worked example showing how to construct the Hessian matrix from second-order partial derivatives."
+}, 
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "chain-rule-simple-example",
+  section: "Chain Rule",
+  topic: "Chain Rule",
+  title: "Chain Rule Simple Example",
+  youtubeId: "6U-OanLcxec",
+  description:
+    "A simple worked example illustrating how to apply the multivariable Chain Rule."
 }
 ];
