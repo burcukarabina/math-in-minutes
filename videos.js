@@ -330,6 +330,18 @@ const videos = [
     "An introduction to sequences, infinite series, and partial sums, with a focus on how partial sums are used to understand convergence."
 },
   {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "convergence-sequence-versus-series",
+  section: "Numerical Series",
+  topic: "Convergence",
+  title: "Convergence of Sequence versus Convergence of Series",
+  youtubeId: "yzXqQt_dpRQ",
+  description:
+    "A comparison of sequence convergence and series convergence, emphasizing the role of partial sums in determining whether an infinite series converges."
+},
+  {
   course: "calculus-3",
   courseName: "Calculus III",
   page: "calculus-3.html",
