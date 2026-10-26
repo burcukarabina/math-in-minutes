@@ -318,6 +318,18 @@ const videos = [
     "An introduction to the shell method for finding volumes of solids of revolution, including how to set up the corresponding integral."
 },
   {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "sequences-series-partial-sums",
+  section: "Numerical Series",
+  topic: "Sequences and Series",
+  title: "Sequences, Series, and Partial Sums",
+  youtubeId: "ZTHJBFw_UpU",
+  description:
+    "An introduction to sequences, infinite series, and partial sums, with a focus on how partial sums are used to understand convergence."
+},
+  {
   course: "calculus-3",
   courseName: "Calculus III",
   page: "calculus-3.html",
