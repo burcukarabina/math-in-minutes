@@ -488,5 +488,17 @@ const videos = [
   youtubeId: "6U-OanLcxec",
   description:
     "A simple worked example illustrating how to apply the multivariable Chain Rule."
+},
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "partial-versus-regular-derivative-chain-rule",
+  section: "Chain Rule",
+  topic: "Chain Rule",
+  title: "Partial versus Regular Derivative in Chain Rule",
+  youtubeId: "3Xk9eCesUgw",
+  description:
+    "An explanation of when partial derivatives and regular derivatives appear when applying the multivariable Chain Rule."
 }
 ];
