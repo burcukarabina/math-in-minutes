@@ -342,6 +342,18 @@ const videos = [
     "A comparison of sequence convergence and series convergence, emphasizing the role of partial sums in determining whether an infinite series converges."
 },
   {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "geometric-series-converge-or-diverge",
+  section: "Numerical Series",
+  topic: "Geometric Series",
+  title: "Geometric Series: Converge or Diverge",
+  youtubeId: "6wFRS2l-BIU",
+  description:
+    "Worked examples using the Geometric Series Test to determine whether a series converges or diverges and, when it converges, to find its sum."
+},
+  {
   course: "calculus-3",
   courseName: "Calculus III",
   page: "calculus-3.html",
