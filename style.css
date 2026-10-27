@@ -21,8 +21,8 @@
   --max-width: 1100px;
 
   /* Practice activity accents */
-  --sorting-bank-bg: #f0bfdc;
-  --sorting-drop-bg: #e4d2ec;
+  --sorting-bank-bg: #ffeaa0;
+  --sorting-drop-bg: #fff4cc;
 }
 
 
@@ -292,7 +292,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
-.sorting-item:focus-visible {
+.-item:focus-visible {
   outline: 3px solid var(--uw-teal);
   outline-offset: 4px;
 }
