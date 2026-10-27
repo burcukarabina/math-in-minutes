@@ -4181,15 +4181,93 @@ if (question.type === "chain-rule-builder") {
     </div>
 
 
-    <div class="dependency-tree">
+    <div class="dependency-graph">
 
-      <div class="dependency-level dependency-top">
+  <svg
+    class="dependency-graph-svg"
+    viewBox="0 0 700 360"
+    role="img"
+    aria-label="Dependency graph"
+  >
 
-        <div class="dependency-node">
-          z
-        </div>
+    <defs>
 
-      </div>
+      <marker
+        id="dependency-arrow"
+        markerWidth="10"
+        markerHeight="10"
+        refX="9"
+        refY="3"
+        orient="auto"
+        markerUnits="strokeWidth"
+      >
+        <path
+          d="M0,0 L0,6 L9,3 z"
+          class="dependency-arrowhead"
+        />
+      </marker>
+
+    </defs>
+
+
+    ${question.graph.edges
+      .map(([from, to]) => {
+
+        const start =
+          question.graph.nodes.find(
+            node => node.id === from
+          );
+
+        const end =
+          question.graph.nodes.find(
+            node => node.id === to
+          );
+
+        return `
+          <line
+            x1="${start.x}"
+            y1="${start.y}"
+            x2="${end.x}"
+            y2="${end.y}"
+            class="dependency-edge"
+            marker-end="url(#dependency-arrow)"
+          />
+        `;
+
+      })
+      .join("")}
+
+
+    ${question.graph.nodes
+      .map(node => `
+
+        <g class="dependency-graph-node">
+
+          <rect
+            x="${node.x - 32}"
+            y="${node.y - 26}"
+            width="64"
+            height="52"
+            rx="9"
+            ry="9"
+          />
+
+          <text
+            x="${node.x}"
+            y="${node.y + 7}"
+            text-anchor="middle"
+          >
+            ${node.id}
+          </text>
+
+        </g>
+
+      `)
+      .join("")}
+
+  </svg>
+
+</div>
 
 
       <div class="dependency-connectors dependency-connectors-top">
