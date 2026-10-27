@@ -1775,8 +1775,8 @@ if (
     question.id;
 
 
-  let displayedItems =
-    shuffleArray(question.items);
+  let displayedItems = [];
+let currentSet = null;renderLogicalOrderQuestion
 
 
   /* -----------------------------------------
@@ -1815,8 +1815,36 @@ if (
 
   function renderLogicalOrderQuestion() {
 
-    displayedItems =
-      shuffleArray(question.items);
+   let newSet;
+
+if (question.pool.length === 1) {
+
+  newSet = question.pool[0];
+
+} else {
+
+  do {
+
+    newSet =
+      question.pool[
+        Math.floor(
+          Math.random() *
+          question.pool.length
+        )
+      ];
+
+  } while (
+    newSet === currentSet
+  );
+
+}
+
+currentSet = newSet;
+
+displayedItems =
+  shuffleArray(
+    currentSet.items
+  );
 
 
     card.innerHTML = `
@@ -1830,14 +1858,14 @@ if (
       </h3>
 
       ${
-        question.prompt
-          ? `
-            <div class="logical-order-prompt">
-              ${question.prompt}
-            </div>
-          `
-          : ""
-      }
+  currentSet.prompt
+    ? `
+      <div class="logical-order-prompt">
+        ${currentSet.prompt}
+      </div>
+    `
+    : ""
+}
 
       <div
         class="logical-order-list"
@@ -2073,7 +2101,7 @@ if (
 
 
           explanationSpan.textContent =
-            question.explanation || "";
+            currentSet.explanation || "";
 
         }
 
@@ -2525,7 +2553,7 @@ if (
 
               feedback.innerHTML = `
                 <strong>Correct!</strong>
-                ${question.explanation}
+                ${currentSet.explanation}
               `;
 
             }
@@ -2537,7 +2565,7 @@ if (
 
               feedback.innerHTML = `
                 <strong>Not quite.</strong>
-                ${question.explanation}
+                ${currentSet.explanation}
               `;
 
             }
