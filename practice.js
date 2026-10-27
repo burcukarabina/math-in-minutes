@@ -4162,373 +4162,372 @@ if (question.type === "chain-rule-builder") {
   card.id =
     question.id;
 
-  const selectedPaths =
-    new Set();
+
+  let currentSet = null;
 
 
-  card.innerHTML = `
+  /* =====================================
+     CHOOSE RANDOM GRAPH
+  ===================================== */
 
-    <p class="question-number">
-      Question ${index + 1}
-    </p>
+  function chooseChainRuleSet() {
 
-    <h3>
-      ${question.question}
-    </h3>
-
-    <div class="chain-rule-target">
-      Find ${question.target}
-    </div>
+    let newSet;
 
 
-    <div class="dependency-graph">
+    if (question.pool.length === 1) {
 
-  <svg
-    class="dependency-graph-svg"
-    viewBox="0 0 700 360"
-    role="img"
-    aria-label="Dependency graph"
-  >
+      newSet =
+        question.pool[0];
 
-    <defs>
+    } else {
 
-      <marker
-        id="dependency-arrow"
-        markerWidth="10"
-        markerHeight="10"
-        refX="9"
-        refY="3"
-        orient="auto"
-        markerUnits="strokeWidth"
-      >
-        <path
-          d="M0,0 L0,6 L9,3 z"
-          class="dependency-arrowhead"
-        />
-      </marker>
+      do {
 
-    </defs>
+        newSet =
+          question.pool[
+            Math.floor(
+              Math.random() *
+              question.pool.length
+            )
+          ];
+
+      } while (
+        newSet === currentSet
+      );
+
+    }
 
 
-    ${question.graph.edges
-      .map(([from, to]) => {
-
-        const start =
-          question.graph.nodes.find(
-            node => node.id === from
-          );
-
-        const end =
-          question.graph.nodes.find(
-            node => node.id === to
-          );
-
-        return `
-          <line
-            x1="${start.x}"
-            y1="${start.y}"
-            x2="${end.x}"
-            y2="${end.y}"
-            class="dependency-edge"
-            marker-end="url(#dependency-arrow)"
-          />
-        `;
-
-      })
-      .join("")}
+    currentSet =
+      newSet;
+  }
 
 
-    ${question.graph.nodes
-      .map(node => `
+  /* =====================================
+     BUILD GRAPH EDGES
+  ===================================== */
 
-        <g class="dependency-graph-node">
+  function buildGraphEdges() {
 
-          <rect
-            x="${node.x - 32}"
-            y="${node.y - 26}"
-            width="64"
-            height="52"
-            rx="9"
-            ry="9"
-          />
+    return currentSet.graph.edges
+      .map(
+        ([from, to], edgeIndex) => {
 
-          <text
-            x="${node.x}"
-            y="${node.y + 7}"
-            text-anchor="middle"
+          const start =
+            currentSet.graph.nodes.find(
+              node =>
+                node.id === from
+            );
+
+
+          const end =
+            currentSet.graph.nodes.find(
+              node =>
+                node.id === to
+            );
+
+
+          return `
+
+            <line
+              x1="${start.x}"
+              y1="${start.y}"
+              x2="${end.x}"
+              y2="${end.y}"
+              class="dependency-edge"
+              data-edge-index="${edgeIndex}"
+              data-from="${from}"
+              data-to="${to}"
+              marker-end="url(#dependency-arrow)"
+            />
+
+          `;
+
+        }
+      )
+      .join("");
+  }
+
+
+  /* =====================================
+     BUILD GRAPH NODES
+  ===================================== */
+
+  function buildGraphNodes() {
+
+    return currentSet.graph.nodes
+      .map(
+        node => `
+
+          <g
+            class="dependency-graph-node"
+            data-node="${node.id}"
           >
-            ${node.id}
-          </text>
 
-        </g>
+            <rect
+              x="${node.x - 32}"
+              y="${node.y - 26}"
+              width="64"
+              height="52"
+              rx="9"
+              ry="9"
+            />
 
-      `)
-      .join("")}
+            <text
+              x="${node.x}"
+              y="${node.y + 7}"
+              text-anchor="middle"
+            >
+              ${node.id}
+            </text>
 
-  </svg>
+          </g>
 
-</div>
+        `
+      )
+      .join("");
+  }
 
 
-   
+  /* =====================================
+     RENDER QUESTION
+  ===================================== */
 
-    <div class="chain-rule-stage">
+  function renderChainRuleBuilder() {
 
-      <h4>
-        Stage 1
-      </h4>
+    chooseChainRuleSet();
 
-      <p class="chain-rule-stage-prompt">
-        ${question.stage1.prompt}
+
+    card.innerHTML = `
+
+      <p class="question-number">
+        Question ${index + 1}
       </p>
 
 
-      <div class="chain-rule-path-options">
+      <h3>
+        ${question.question}
+      </h3>
 
-        ${question.stage1.choices
-          .map(
-            choice => `
-              <button
-                type="button"
-                class="chain-rule-path"
-                data-path-id="${choice.id}"
-              >
-                ${choice.content}
-              </button>
-            `
-          )
-          .join("")}
+
+      <!-- DEPENDENCY GRAPH -->
+
+      <div class="dependency-graph">
+
+        <svg
+          class="dependency-graph-svg"
+          viewBox="0 0 700 360"
+          role="img"
+          aria-label="Dependency graph"
+        >
+
+
+          <defs>
+
+            <marker
+              id="dependency-arrow-${question.id}"
+              markerWidth="10"
+              markerHeight="10"
+              refX="9"
+              refY="3"
+              orient="auto"
+              markerUnits="strokeWidth"
+            >
+
+              <path
+                d="M0,0 L0,6 L9,3 z"
+                class="dependency-arrowhead"
+              />
+
+            </marker>
+
+          </defs>
+
+
+          ${currentSet.graph.edges
+            .map(
+              ([from, to], edgeIndex) => {
+
+                const start =
+                  currentSet.graph.nodes.find(
+                    node =>
+                      node.id === from
+                  );
+
+
+                const end =
+                  currentSet.graph.nodes.find(
+                    node =>
+                      node.id === to
+                  );
+
+
+                return `
+
+                  <line
+                    x1="${start.x}"
+                    y1="${start.y}"
+                    x2="${end.x}"
+                    y2="${end.y}"
+                    class="dependency-edge"
+                    data-edge-index="${edgeIndex}"
+                    data-from="${from}"
+                    data-to="${to}"
+                    marker-end="url(#dependency-arrow-${question.id})"
+                  />
+
+                `;
+
+              }
+            )
+            .join("")}
+
+
+          ${buildGraphNodes()}
+
+        </svg>
 
       </div>
 
 
-      <div class="chain-rule-actions">
+      <!-- STAGE 1 -->
 
-        <button
-          type="button"
-          class="check-answer chain-rule-check-paths"
-        >
-          Check Paths
-        </button>
+      <div class="chain-rule-stage">
 
-        <button
-          type="button"
-          class="chain-rule-reset-paths"
-        >
-          Reset
-        </button>
+        <h4>
+          Stage 1
+        </h4>
+
+
+        <p class="chain-rule-stage-prompt">
+
+          Select all dependency paths from
+          \\(${currentSet.start}\\)
+          to
+          \\(${currentSet.target}\\).
+
+        </p>
+
+
+        <div class="chain-rule-actions">
+
+          <button
+            type="button"
+            class="check-answer chain-rule-check-paths"
+          >
+            Check Paths
+          </button>
+
+
+          <button
+            type="button"
+            class="chain-rule-reset-paths"
+          >
+            Reset
+          </button>
+
+
+          <button
+            type="button"
+            class="try-another-button chain-rule-try-another"
+          >
+            Try Another
+          </button>
+
+        </div>
+
+
+        <div
+          class="question-feedback chain-rule-feedback"
+          aria-live="polite"
+        ></div>
 
       </div>
 
-
-      <div
-        class="question-feedback chain-rule-feedback"
-        aria-live="polite"
-      ></div>
-
-    </div>
-  `;
+    `;
 
 
-  const pathButtons =
-    card.querySelectorAll(
-      ".chain-rule-path"
-    );
+    const feedback =
+      card.querySelector(
+        ".chain-rule-feedback"
+      );
 
 
-  const feedback =
-    card.querySelector(
-      ".chain-rule-feedback"
-    );
+    /* =====================================
+       TEMPORARY CHECK MESSAGE
+    ===================================== */
+
+    const checkButton =
+      card.querySelector(
+        ".chain-rule-check-paths"
+      );
 
 
-  pathButtons.forEach(button => {
-
-    button.addEventListener(
+    checkButton.addEventListener(
       "click",
       () => {
 
-        const id =
-          button.dataset.pathId;
+        feedback.className =
+          "question-feedback feedback-neutral chain-rule-feedback";
+
+        feedback.innerHTML = `
+          Branch selection will be activated
+          in the next step.
+        `;
+
+      }
+    );
 
 
-        if (
-          selectedPaths.has(id)
-        ) {
+    /* =====================================
+       RESET
+    ===================================== */
 
-          selectedPaths.delete(id);
-
-          button.classList.remove(
-            "chain-rule-path-selected"
-          );
-
-        } else {
-
-          selectedPaths.add(id);
-
-          button.classList.add(
-            "chain-rule-path-selected"
-          );
-        }
+    const resetButton =
+      card.querySelector(
+        ".chain-rule-reset-paths"
+      );
 
 
-        button.classList.remove(
-          "chain-rule-path-correct",
-          "chain-rule-path-incorrect"
-        );
-
+    resetButton.addEventListener(
+      "click",
+      () => {
 
         feedback.className =
           "question-feedback chain-rule-feedback";
 
         feedback.innerHTML = "";
+
       }
     );
 
-  });
+
+    /* =====================================
+       TRY ANOTHER
+    ===================================== */
+
+    const tryAnotherButton =
+      card.querySelector(
+        ".chain-rule-try-another"
+      );
 
 
-  const checkButton =
-    card.querySelector(
-      ".chain-rule-check-paths"
-    );
+    tryAnotherButton.addEventListener(
+      "click",
+      () => {
 
+        renderChainRuleBuilder();
 
-  checkButton.addEventListener(
-    "click",
-    () => {
-
-      const correctIds =
-        question.stage1.choices
-          .filter(
-            choice => choice.correct
-          )
-          .map(
-            choice => choice.id
-          );
-
-
-      const selectedIds =
-        [...selectedPaths];
-
-
-      const allCorrectSelected =
-        correctIds.every(
-          id => selectedPaths.has(id)
-        );
-
-
-      const noIncorrectSelected =
-        selectedIds.every(
-          id => correctIds.includes(id)
-        );
-
-
-      pathButtons.forEach(button => {
-
-        const id =
-          button.dataset.pathId;
-
-
-        const choice =
-          question.stage1.choices.find(
-            item => item.id === id
-          );
-
-
-        button.classList.remove(
-          "chain-rule-path-correct",
-          "chain-rule-path-incorrect"
-        );
-
-
-        if (
-          selectedPaths.has(id) &&
-          choice.correct
-        ) {
-
-          button.classList.add(
-            "chain-rule-path-correct"
-          );
-        }
-
-
-        if (
-          selectedPaths.has(id) &&
-          !choice.correct
-        ) {
-
-          button.classList.add(
-            "chain-rule-path-incorrect"
-          );
-        }
-
-      });
-
-
-      if (
-        allCorrectSelected &&
-        noIncorrectSelected
-      ) {
-
-        feedback.className =
-          "question-feedback feedback-correct chain-rule-feedback";
-
-        feedback.innerHTML = `
-          <strong>Correct!</strong>
-          There are two dependency paths from
-          \\(z\\) to \\(u\\).
-        `;
-
-      } else {
-
-        feedback.className =
-          "question-feedback feedback-incorrect chain-rule-feedback";
-
-        feedback.innerHTML = `
-          <strong>Not quite.</strong>
-          Trace every route from \\(z\\) down to \\(u\\).
-        `;
       }
-
-
-      renderMath(feedback);
-    }
-  );
-
-
-  const resetButton =
-    card.querySelector(
-      ".chain-rule-reset-paths"
     );
 
 
-  resetButton.addEventListener(
-    "click",
-    () => {
-
-      selectedPaths.clear();
+    renderMath(card);
+  }
 
 
-      pathButtons.forEach(button => {
-
-        button.classList.remove(
-          "chain-rule-path-selected",
-          "chain-rule-path-correct",
-          "chain-rule-path-incorrect"
-        );
-      });
-
-
-      feedback.className =
-        "question-feedback chain-rule-feedback";
-
-      feedback.innerHTML = "";
-    }
-  );
-
-
-  renderMath(card);
+  renderChainRuleBuilder();
 
   section.appendChild(card);
 
