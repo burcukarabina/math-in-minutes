@@ -1813,3 +1813,131 @@ footer p {
   }
 
 }
+/* =========================================
+   GRAPH CLICK QUESTIONS
+========================================= */
+
+.graph-click-question {
+  padding: 2rem;
+}
+
+
+.graph-click-formula {
+  margin: 1rem 0;
+
+  font-size: 1.2rem;
+}
+
+
+.graph-click-instructions {
+  margin-bottom: 1rem;
+
+  color: var(--muted-text);
+}
+
+
+.graph-click-wrapper {
+  max-width: 760px;
+
+  margin: 1.5rem auto;
+
+  padding: 1rem;
+
+  background: white;
+
+  border: 3px solid var(--uw-charcoal);
+  border-radius: 10px;
+}
+
+
+.graph-click-svg {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  cursor: crosshair;
+}
+
+
+.graph-click-axis {
+  stroke: var(--uw-charcoal);
+
+  stroke-width: 2;
+}
+
+
+.graph-click-tick {
+  stroke: var(--uw-charcoal);
+
+  stroke-width: 1.5;
+}
+
+
+.graph-click-label {
+  fill: var(--text);
+
+  font-size: 14px;
+}
+
+
+.graph-click-curve {
+  fill: none;
+
+  stroke: var(--uw-teal);
+
+  stroke-width: 4;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+.graph-click-selected-point {
+  fill: var(--uw-gold);
+
+  stroke: var(--uw-charcoal);
+
+  stroke-width: 3;
+}
+
+
+.graph-click-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.75rem;
+
+  margin-top: 1.25rem;
+}
+
+
+.graph-click-clear {
+  padding: 0.7rem 1rem;
+
+  background: white;
+
+  border: 2px solid var(--uw-charcoal);
+  border-radius: 7px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.graph-click-clear:hover {
+  background: var(--uw-light-gold);
+}
+
+
+@media (max-width: 700px) {
+
+  .graph-click-question {
+    padding: 1.25rem;
+  }
+
+  .graph-click-wrapper {
+    padding: 0.5rem;
+  }
+}
