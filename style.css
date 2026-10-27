@@ -2108,3 +2108,301 @@ footer p {
   }
 
 }
+
+/* =========================================
+   MATCHING
+========================================= */
+
+.matching-question {
+  padding: 2rem;
+}
+
+
+/* Instructions */
+
+.matching-instructions {
+  margin: 1rem 0 1.5rem;
+
+  color: var(--muted-text);
+}
+
+
+/* Main two-column layout */
+
+.matching-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 2rem;
+
+  margin-top: 1.5rem;
+}
+
+
+.matching-column {
+  min-width: 0;
+}
+
+
+.matching-column h4 {
+  margin: 0 0 1rem;
+
+  font-size: 1.05rem;
+}
+
+
+/* =========================================
+   FUNCTION BANK
+========================================= */
+
+.matching-bank {
+  min-height: 260px;
+
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.85rem;
+
+  background: var(--sorting-bank-bg);
+
+  border: 3px solid var(--uw-charcoal);
+  border-radius: 12px;
+}
+
+
+/* Draggable function card */
+
+.matching-item {
+  padding: 1rem 1.15rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 66px;
+
+  background: white;
+
+  border: 2px solid var(--uw-charcoal);
+  border-radius: 9px;
+
+  text-align: center;
+
+  cursor: grab;
+
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.08);
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+
+.matching-item:hover {
+  transform: translateY(-1px);
+
+  border-color: var(--uw-gold);
+
+  box-shadow:
+    0 4px 9px rgba(0, 0, 0, 0.12);
+}
+
+
+.matching-item:active {
+  cursor: grabbing;
+}
+
+
+.matching-item.matching-dragging {
+  opacity: 0.45;
+}
+
+
+.matching-item-content {
+  width: 100%;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   DOMAIN TARGETS
+========================================= */
+
+.matching-target-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.85rem;
+}
+
+
+.matching-target {
+  padding: 0.85rem;
+
+  background: var(--sorting-drop-bg);
+
+  border: 2px solid var(--uw-charcoal);
+  border-radius: 10px;
+}
+
+
+.matching-target-label {
+  margin-bottom: 0.65rem;
+
+  text-align: center;
+
+  font-size: 1.05rem;
+  font-weight: 600;
+
+  line-height: 1.5;
+}
+
+
+/* Drop area under each domain */
+
+.matching-dropzone {
+  min-height: 72px;
+
+  padding: 0.45rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+
+  border: 2px dashed var(--uw-charcoal);
+  border-radius: 8px;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+
+/* Active drop target */
+
+.matching-dropzone.matching-drop-active {
+  border-color: var(--uw-gold);
+
+  background: var(--uw-light-gold);
+}
+
+
+/* Function cards placed inside dropzones */
+
+.matching-dropzone .matching-item {
+  width: 100%;
+
+  margin: 0;
+
+  box-shadow: none;
+}
+
+
+/* =========================================
+   CHECKING FEEDBACK
+========================================= */
+
+.matching-item.matching-correct {
+  border-color: #2e7d32;
+
+  background: #e8f5e9;
+}
+
+
+.matching-item.matching-incorrect {
+  border-color: #c46a00;
+
+  background: #fff3e0;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.matching-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.75rem;
+
+  margin-top: 1.5rem;
+}
+
+
+.matching-reset {
+  padding: 0.7rem 1rem;
+
+  background: white;
+
+  border: 2px solid var(--uw-charcoal);
+  border-radius: 7px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+
+.matching-reset:hover {
+  border-color: var(--uw-gold);
+
+  background: var(--uw-light-gold);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .matching-question {
+    padding: 1.25rem;
+  }
+
+
+  .matching-layout {
+    grid-template-columns: 1fr;
+
+    gap: 1.5rem;
+  }
+
+
+  .matching-bank {
+    min-height: auto;
+  }
+
+
+  .matching-item {
+    min-height: 60px;
+
+    padding: 0.9rem 1rem;
+  }
+
+
+  .matching-dropzone {
+    min-height: 66px;
+  }
+
+
+  .matching-actions {
+    align-items: stretch;
+  }
+
+}
