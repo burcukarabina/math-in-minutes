@@ -2918,6 +2918,452 @@ if (question.type === "statement-builder") {
 
   return;
 }
+
+      /* =========================================
+   GRAPH CLICK
+========================================= */
+
+if (question.type === "graph-click") {
+
+  const card = document.createElement("article");
+  card.className = "question-card graph-click-question";
+  card.id = question.id;
+
+  const width = 700;
+  const height = 420;
+
+  const padding = {
+    left: 55,
+    right: 25,
+    top: 25,
+    bottom: 45
+  };
+
+  const graph = question.graph;
+
+  let selectedPoints = [];
+
+
+  function xToPixel(x) {
+
+    return (
+      padding.left +
+      ((x - graph.xMin) /
+        (graph.xMax - graph.xMin)) *
+      (width - padding.left - padding.right)
+    );
+  }
+
+
+  function yToPixel(y) {
+
+    return (
+      padding.top +
+      ((graph.yMax - y) /
+        (graph.yMax - graph.yMin)) *
+      (height - padding.top - padding.bottom)
+    );
+  }
+
+
+  function pixelToX(px) {
+
+    return (
+      graph.xMin +
+      ((px - padding.left) /
+        (width - padding.left - padding.right)) *
+      (graph.xMax - graph.xMin)
+    );
+  }
+
+
+  function buildCurvePath() {
+
+    const steps = 500;
+
+    let path = "";
+
+    for (let i = 0; i <= steps; i++) {
+
+      const x =
+        graph.xMin +
+        (i / steps) *
+        (graph.xMax - graph.xMin);
+
+      const y =
+        graph.evaluate(x);
+
+      const px = xToPixel(x);
+      const py = yToPixel(y);
+
+      if (
+        y < graph.yMin - 2 ||
+        y > graph.yMax + 2
+      ) {
+        continue;
+      }
+
+      path +=
+        path === ""
+          ? `M ${px} ${py}`
+          : ` L ${px} ${py}`;
+    }
+
+    return path;
+  }
+
+
+  function buildTicks() {
+
+    let html = "";
+
+    /* x-axis ticks */
+
+    for (
+      let x = Math.ceil(graph.xMin);
+      x <= Math.floor(graph.xMax);
+      x++
+    ) {
+
+      if (x === 0) {
+        continue;
+      }
+
+      const px = xToPixel(x);
+      const py = yToPixel(0);
+
+      html += `
+        <line
+          x1="${px}"
+          y1="${py - 5}"
+          x2="${px}"
+          y2="${py + 5}"
+          class="graph-click-tick"
+        />
+
+        <text
+          x="${px}"
+          y="${py + 22}"
+          text-anchor="middle"
+          class="graph-click-label"
+        >
+          ${x}
+        </text>
+      `;
+    }
+
+
+    /* y-axis ticks */
+
+    for (
+      let y = Math.ceil(graph.yMin);
+      y <= Math.floor(graph.yMax);
+      y++
+    ) {
+
+      if (y === 0) {
+        continue;
+      }
+
+      const px = xToPixel(0);
+      const py = yToPixel(y);
+
+      html += `
+        <line
+          x1="${px - 5}"
+          y1="${py}"
+          x2="${px + 5}"
+          y2="${py}"
+          class="graph-click-tick"
+        />
+
+        <text
+          x="${px - 12}"
+          y="${py + 4}"
+          text-anchor="end"
+          class="graph-click-label"
+        >
+          ${y}
+        </text>
+      `;
+    }
+
+    return html;
+  }
+
+
+  function renderSelectedPoints() {
+
+    const layer =
+      card.querySelector(
+        ".graph-click-selected-layer"
+      );
+
+    layer.innerHTML =
+      selectedPoints
+        .map(
+          point => `
+            <circle
+              cx="${point.px}"
+              cy="${point.py}"
+              r="8"
+              class="graph-click-selected-point"
+            />
+          `
+        )
+        .join("");
+  }
+
+
+  card.innerHTML = `
+
+    <p class="question-number">
+      Question ${index + 1}
+    </p>
+
+    <h3>
+      ${question.question}
+    </h3>
+
+    <div class="graph-click-formula">
+      ${question.formula}
+    </div>
+
+    <p class="graph-click-instructions">
+      Click on the graph to select points.
+      Select all points before checking your answer.
+    </p>
+
+
+    <div class="graph-click-wrapper">
+
+      <svg
+        class="graph-click-svg"
+        viewBox="0 0 ${width} ${height}"
+        role="img"
+        aria-label="Graph of the function"
+      >
+
+        <!-- x-axis -->
+
+        <line
+          x1="${xToPixel(graph.xMin)}"
+          y1="${yToPixel(0)}"
+          x2="${xToPixel(graph.xMax)}"
+          y2="${yToPixel(0)}"
+          class="graph-click-axis"
+        />
+
+
+        <!-- y-axis -->
+
+        <line
+          x1="${xToPixel(0)}"
+          y1="${yToPixel(graph.yMin)}"
+          x2="${xToPixel(0)}"
+          y2="${yToPixel(graph.yMax)}"
+          class="graph-click-axis"
+        />
+
+
+        ${buildTicks()}
+
+
+        <!-- function -->
+
+        <path
+          d="${buildCurvePath()}"
+          class="graph-click-curve"
+        />
+
+
+        <!-- student selections -->
+
+        <g class="graph-click-selected-layer">
+        </g>
+
+      </svg>
+
+    </div>
+
+
+    <div class="graph-click-actions">
+
+      <button
+        type="button"
+        class="graph-click-clear"
+      >
+        Clear Points
+      </button>
+
+      <button
+        type="button"
+        class="check-answer graph-click-check"
+      >
+        Check Answer
+      </button>
+
+    </div>
+
+
+    <div
+      class="question-feedback graph-click-feedback"
+      aria-live="polite"
+    ></div>
+  `;
+
+
+  const svg =
+    card.querySelector(".graph-click-svg");
+
+  const feedback =
+    card.querySelector(".graph-click-feedback");
+
+
+  svg.addEventListener("click", event => {
+
+    const rectangle =
+      svg.getBoundingClientRect();
+
+    const scaleX =
+      width / rectangle.width;
+
+    const scaleY =
+      height / rectangle.height;
+
+    const px =
+      (event.clientX - rectangle.left) *
+      scaleX;
+
+    const py =
+      (event.clientY - rectangle.top) *
+      scaleY;
+
+
+    /* Convert click to x-value */
+
+    const x =
+      pixelToX(px);
+
+
+    /* Snap marker vertically to the curve */
+
+    const y =
+      graph.evaluate(x);
+
+    const snappedX =
+      xToPixel(x);
+
+    const snappedY =
+      yToPixel(y);
+
+
+    selectedPoints.push({
+      x,
+      y,
+      px: snappedX,
+      py: snappedY
+    });
+
+
+    renderSelectedPoints();
+
+    feedback.innerHTML = "";
+  });
+
+
+  const clearButton =
+    card.querySelector(".graph-click-clear");
+
+  clearButton.addEventListener("click", () => {
+
+    selectedPoints = [];
+
+    renderSelectedPoints();
+
+    feedback.innerHTML = "";
+  });
+
+
+  const checkButton =
+    card.querySelector(".graph-click-check");
+
+  checkButton.addEventListener("click", () => {
+
+    const tolerance = 0.25;
+
+    let matchedTargets = 0;
+
+
+    question.targets.forEach(target => {
+
+      const match =
+        selectedPoints.some(point =>
+          Math.abs(point.x - target.x) <=
+          tolerance
+        );
+
+      if (match) {
+        matchedTargets++;
+      }
+    });
+
+
+    const allTargetsFound =
+      matchedTargets ===
+      question.targets.length;
+
+
+    const noExtraPoints =
+      selectedPoints.length ===
+      question.targets.length;
+
+
+    if (
+      allTargetsFound &&
+      noExtraPoints
+    ) {
+
+      feedback.className =
+        "question-feedback feedback-correct graph-click-feedback";
+
+      feedback.innerHTML = `
+        <strong>Correct!</strong>
+        <span class="graph-click-explanation"></span>
+      `;
+
+      const explanation =
+        feedback.querySelector(
+          ".graph-click-explanation"
+        );
+
+      explanation.textContent =
+        question.explanation;
+
+    } else {
+
+      feedback.className =
+        "question-feedback feedback-incorrect graph-click-feedback";
+
+      feedback.innerHTML = `
+        <strong>Not quite.</strong>
+        Look for points where the function changes
+        from increasing to decreasing or from
+        decreasing to increasing.
+      `;
+    }
+
+    renderMath(feedback);
+  });
+
+
+  renderMath(card);
+
+  section.appendChild(card);
+
+  return;
+}
+      
       
       /* =========================================
          RANDOMIZED MULTIPLE CHOICE
