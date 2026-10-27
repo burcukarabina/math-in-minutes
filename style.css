@@ -726,6 +726,12 @@ footer p {
 .multi-select-explanations {
   margin-top: 1rem;
 }
+
+.randomized-multi-select-question .random-question-actions {
+  margin-top: 1.25rem;
+}
+
+
 /* =========================================
    BUTTONS
 ========================================= */
