@@ -43,7 +43,7 @@ const questions = [
         {
           id: "A",
           content:
-            "Let \\(\\varepsilon \\gt 0\\) be given.",
+            "Let \\(\\varepsilon > 0\\) be given.",
           rank: 1
         },
 
@@ -138,28 +138,28 @@ const questions = [
         {
           id: "A",
           content:
-            "Let \\(L=\\operatorname{lub}(\\{a_n\\})\\) and let \\(\\varepsilon\\gt0\\) be given.",
+            "Let \\(L=\\operatorname{lub}(\\{a_n\\})\\) and let \\(\\varepsilon>0\\) be given.",
           rank: 1
         },
 
         {
           id: "B",
           content:
-            "Since \\(L-\\varepsilon\\ltL\\), the number \\(L-\\varepsilon\\) is not an upper bound for \\(\\{a_n\\}\\).",
+            "Since \\(L-\\varepsilon < L\\), the number \\(L-\\varepsilon\\) is not an upper bound for \\(\\{a_n\\}\\).",
           rank: 2
         },
 
         {
           id: "C",
           content:
-            "Therefore there exists \\(M\\in\\mathbb{N}\\) such that \\(L-\\varepsilon\\lta_M\\).",
+            "Therefore there exists \\(M\\in\\mathbb{N}\\) such that \\(L-\\varepsilon < a_M\\).",
           rank: 3
         },
 
         {
           id: "D",
           content:
-            "Since \\(\\{a_n\\}\\) is increasing and \\(L\\) is an upper bound, for \\(n\\gtM\\) we have \\(L-\\varepsilon\\lta_M\\le a_n\\le L\\).",
+            "Since \\(\\{a_n\\}\\) is increasing and \\(L\\) is an upper bound, for \\(n\\gtM\\) we have \\(L-\\varepsilon < a_M\\le a_n\\le L\\).",
           rank: 4
         },
 
