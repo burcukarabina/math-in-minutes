@@ -2167,5 +2167,699 @@ const questions = [
     }
 
   ]
+},
+  {
+  course: "calculus-3",
+  section: "Functions of Several Variables",
+  id: "identify-level-curve",
+  type: "randomized-multiple-choice",
+
+  question:
+    "Which equation describes the level curve of the given function at the specified value of \\(c\\)?",
+
+  pool: [
+
+    /* =====================================
+       QUESTION 1
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=x^2+4y^2, \\qquad c=16\\)",
+
+      choices: [
+        "\\(x^2+4y^2=16\\)",
+        "\\(x^2+4y^2=4\\)",
+        "\\(x^2+y^2=16\\)",
+        "\\(x^2+4y^2\\le 16\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "A level curve at level \\(c\\) is obtained by setting \\(f(x,y)=c\\). Therefore \\(x^2+4y^2=16\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 2
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=x^2-y^2, \\qquad c=4\\)",
+
+      choices: [
+        "\\(x^2-y^2=4\\)",
+        "\\(x^2+y^2=4\\)",
+        "\\(x-y=4\\)",
+        "\\(x^2-y^2\\le4\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Set the function equal to the specified level: \\(f(x,y)=4\\). This gives \\(x^2-y^2=4\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 3
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=\\sqrt{x^2+y^2}, \\qquad c=3\\)",
+
+      choices: [
+        "\\(x^2+y^2=9\\)",
+        "\\(x^2+y^2=3\\)",
+        "\\(x+y=3\\)",
+        "\\(x^2+y^2\\le9\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The level equation is \\(\\sqrt{x^2+y^2}=3\\). Squaring both sides gives \\(x^2+y^2=9\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 4
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=e^{x-y}, \\qquad c=e^2\\)",
+
+      choices: [
+        "\\(x-y=2\\)",
+        "\\(x-y=e^2\\)",
+        "\\(x+y=2\\)",
+        "\\(y-x=2\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Setting \\(e^{x-y}=e^2\\) gives \\(x-y=2\\). Thus the level curve is a straight line."
+    },
+
+
+    /* =====================================
+       QUESTION 5
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=\\ln(x^2+y^2), \\qquad c=\\ln 4\\)",
+
+      choices: [
+        "\\(x^2+y^2=4\\)",
+        "\\(x^2+y^2=\\ln4\\)",
+        "\\(x^2+y^2=2\\)",
+        "\\(x+y=4\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Set \\(\\ln(x^2+y^2)=\\ln4\\). Since the logarithm is one-to-one, \\(x^2+y^2=4\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 6
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=xy, \\qquad c=6\\)",
+
+      choices: [
+        "\\(xy=6\\)",
+        "\\(x+y=6\\)",
+        "\\(x^2+y^2=6\\)",
+        "\\(y=6x\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "A level curve is found by setting \\(f(x,y)=c\\), so here the equation is \\(xy=6\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 7
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=x^2+y, \\qquad c=5\\)",
+
+      choices: [
+        "\\(y=5-x^2\\)",
+        "\\(y=x^2-5\\)",
+        "\\(y=5+x^2\\)",
+        "\\(x^2+y^2=5\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Setting \\(x^2+y=5\\) and solving for \\(y\\) gives \\(y=5-x^2\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 8
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=\\frac{x}{y}, \\qquad c=2\\)",
+
+      choices: [
+        "\\(x=2y\\)",
+        "\\(y=2x\\)",
+        "\\(xy=2\\)",
+        "\\(x-y=2\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Setting \\(\\frac{x}{y}=2\\) gives \\(x=2y\\), with \\(y\\ne0\\) because the original function is undefined when \\(y=0\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 9
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=x^2+2x+y^2, \\qquad c=3\\)",
+
+      choices: [
+        "\\((x+1)^2+y^2=4\\)",
+        "\\((x+1)^2+y^2=3\\)",
+        "\\((x-1)^2+y^2=4\\)",
+        "\\(x^2+y^2=3\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "From \\(x^2+2x+y^2=3\\), complete the square: \\((x+1)^2-1+y^2=3\\), so \\((x+1)^2+y^2=4\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 10
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle f(x,y)=\\frac{1}{x^2+y^2}, \\qquad c=\\frac14\\)",
+
+      choices: [
+        "\\(x^2+y^2=4\\)",
+        "\\(x^2+y^2=\\frac14\\)",
+        "\\(x^2+y^2=2\\)",
+        "\\(x^2+y^2\\le4\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Setting \\(\\frac{1}{x^2+y^2}=\\frac14\\) gives \\(x^2+y^2=4\\)."
+    }
+
+  ]
+},{
+  course: "calculus-3",
+  section: "Multivariable Limits",
+  id: "direct-substitution-multivariable-limits",
+  type: "randomized-multi-select",
+
+  question:
+    "Select all limits that can be evaluated by direct substitution.",
+
+  instructions:
+    "Choose every limit for which direct substitution gives the value of the limit.",
+
+  numberToDraw: 4,
+
+  pool: [
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(1,2)} (x^2+3xy-y^2)\\)",
+      correct: true,
+      explanation:
+        "This is a polynomial expression, so it is continuous everywhere. Direct substitution can be used."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(2,1)} \\frac{x+y}{x^2+y^2}\\)",
+      correct: true,
+      explanation:
+        "The denominator is nonzero at \\((2,1)\\), so the rational function is continuous there and direct substitution can be used."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(0,0)} \\frac{x+y}{x^2+y^2}\\)",
+      correct: false,
+      explanation:
+        "Direct substitution produces division by zero, so direct substitution cannot determine the limit."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(1,1)} \\sqrt{x^2+y^2+2}\\)",
+      correct: true,
+      explanation:
+        "The expression inside the square root is positive near \\((1,1)\\), so the function is continuous there."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(0,0)} \\frac{x^2-y^2}{x^2+y^2}\\)",
+      correct: false,
+      explanation:
+        "Direct substitution gives \\(0/0\\), so another method is needed."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(1,0)} e^{xy+x}\\)",
+      correct: true,
+      explanation:
+        "Exponential functions and polynomials are continuous, so their composition is continuous at \\((1,0)\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(0,0)} \\frac{\\sin(xy)}{xy}\\)",
+      correct: false,
+      explanation:
+        "Direct substitution gives \\(0/0\\). The limit may still exist, but direct substitution alone does not evaluate it."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(2,3)} \\ln(x+y)\\)",
+      correct: true,
+      explanation:
+        "Since \\(x+y=5>0\\) at the point, the logarithm is continuous there, so direct substitution works."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(0,0)} \\frac{x^2y}{x^4+y^2}\\)",
+      correct: false,
+      explanation:
+        "Direct substitution gives \\(0/0\\), so direct substitution does not determine the limit."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{(x,y)\\to(1,-1)} \\cos(x^2+y^2)\\)",
+      correct: true,
+      explanation:
+        "The cosine function and the polynomial inside it are continuous, so direct substitution can be used."
+    }
+
+  ]
+}, {
+  course: "calculus-3",
+  section: "Partial Derivatives",
+  id: "classify-partial-derivatives",
+  type: "sorting-bucket",
+
+  question:
+    "Drag each expression into the correct partial derivative category.",
+
+  instructions:
+    "For each card, use the given function to identify whether the expression represents \\(f_x\\), \\(f_y\\), \\(f_{xx}\\), or \\(f_{xy}\\).",
+
+  bankTitle:
+    "Expressions to Classify",
+
+  buckets: [
+    "\\(f_x\\)",
+    "\\(f_y\\)",
+    "\\(f_{xx}\\)",
+    "\\(f_{xy}\\)"
+  ],
+
+  numberToDraw: 6,
+
+  pool: [
+
+    /* =====================================
+       f_x
+    ===================================== */
+
+    {
+      content:
+        "\\(f(x,y)=x^2y+3y^2,\\quad 2xy\\)",
+      correctBucket:
+        "\\(f_x\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=x^3+xy^2,\\quad 3x^2+y^2\\)",
+      correctBucket:
+        "\\(f_x\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=e^{xy}+y,\\quad ye^{xy}\\)",
+      correctBucket:
+        "\\(f_x\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=\\sin(xy)+x,\\quad y\\cos(xy)+1\\)",
+      correctBucket:
+        "\\(f_x\\)"
+    },
+
+
+    /* =====================================
+       f_y
+    ===================================== */
+
+    {
+      content:
+        "\\(f(x,y)=x^2y+3y^2,\\quad x^2+6y\\)",
+      correctBucket:
+        "\\(f_y\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=x^3+xy^2,\\quad 2xy\\)",
+      correctBucket:
+        "\\(f_y\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=e^{xy}+y,\\quad xe^{xy}+1\\)",
+      correctBucket:
+        "\\(f_y\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=\\sin(xy)+x,\\quad x\\cos(xy)\\)",
+      correctBucket:
+        "\\(f_y\\)"
+    },
+
+
+    /* =====================================
+       f_xx
+    ===================================== */
+
+    {
+      content:
+        "\\(f(x,y)=x^3y+x^2,\\quad 6xy+2\\)",
+      correctBucket:
+        "\\(f_{xx}\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=x^2e^y+y^2,\\quad 2e^y\\)",
+      correctBucket:
+        "\\(f_{xx}\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=\\cos x+xy,\\quad -\\cos x\\)",
+      correctBucket:
+        "\\(f_{xx}\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=x^4+y\\sin x,\\quad 12x^2-y\\sin x\\)",
+      correctBucket:
+        "\\(f_{xx}\\)"
+    },
+
+
+    /* =====================================
+       f_xy
+    ===================================== */
+
+    {
+      content:
+        "\\(f(x,y)=x^2y+3y^2,\\quad 2x\\)",
+      correctBucket:
+        "\\(f_{xy}\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=x^3y^2+x,\\quad 6x^2y\\)",
+      correctBucket:
+        "\\(f_{xy}\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=e^{xy},\\quad (1+xy)e^{xy}\\)",
+      correctBucket:
+        "\\(f_{xy}\\)"
+    },
+
+    {
+      content:
+        "\\(f(x,y)=x^2\\sin y,\\quad 2x\\cos y\\)",
+      correctBucket:
+        "\\(f_{xy}\\)"
+    }
+
+  ]
+}, {
+  course: "calculus-3",
+  section: "Directional Derivatives and Gradient",
+  id: "order-directional-derivatives",
+  type: "drag-order",
+
+  question:
+    "Drag the directions into increasing order according to the value of the directional derivative.",
+
+  pool: [
+
+    /* =====================================
+       SET 1
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\nabla f(a,b)=\\langle 3,4\\rangle\\)",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle -1,0\\rangle\\)",
+          rank: 1
+        },
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac45,-\\frac35\\right\\rangle\\)",
+          rank: 2
+        },
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 0,1\\rangle\\)",
+          rank: 3
+        },
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac35,\\frac45\\right\\rangle\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "The directional derivatives are \\(-3\\), \\(0\\), \\(4\\), and \\(5\\), respectively."
+    },
+
+    /* =====================================
+       SET 2
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\nabla f(a,b)=\\langle 4,-3\\rangle\\)",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle -\\frac45,\\frac35\\right\\rangle\\)",
+          rank: 1
+        },
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 0,1\\rangle\\)",
+          rank: 2
+        },
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 1,0\\rangle\\)",
+          rank: 3
+        },
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac45,-\\frac35\\right\\rangle\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "The directional derivatives are \\(-5\\), \\(-3\\), \\(4\\), and \\(5\\), respectively."
+    },
+
+    /* =====================================
+       SET 3
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\nabla f(a,b)=\\langle 1,2\\rangle\\)",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle -1,0\\rangle\\)",
+          rank: 1
+        },
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac{2}{\\sqrt5},-\\frac{1}{\\sqrt5}\\right\\rangle\\)",
+          rank: 2
+        },
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 1,0\\rangle\\)",
+          rank: 3
+        },
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac{1}{\\sqrt5},\\frac{2}{\\sqrt5}\\right\\rangle\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "The directional derivatives are \\(-1\\), \\(0\\), \\(1\\), and \\(\\sqrt5\\), respectively."
+    },
+
+    /* =====================================
+       SET 4
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\nabla f(a,b)=\\langle -2,2\\rangle\\)",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac{1}{\\sqrt2},-\\frac{1}{\\sqrt2}\\right\\rangle\\)",
+          rank: 1
+        },
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 1,0\\rangle\\)",
+          rank: 2
+        },
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 0,1\\rangle\\)",
+          rank: 3
+        },
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle -\\frac{1}{\\sqrt2},\\frac{1}{\\sqrt2}\\right\\rangle\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "The directional derivatives are \\(-2\\sqrt2\\), \\(-2\\), \\(2\\), and \\(2\\sqrt2\\), respectively."
+    },
+
+    /* =====================================
+       SET 5
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\nabla f(a,b)=\\langle 5,0\\rangle\\)",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle -1,0\\rangle\\)",
+          rank: 1
+        },
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle -\\frac35,\\frac45\\right\\rangle\\)",
+          rank: 2
+        },
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\langle 0,1\\rangle\\)",
+          rank: 3
+        },
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\mathbf{u}=\\left\\langle \\frac35,\\frac45\\right\\rangle\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "The directional derivatives are \\(-5\\), \\(-3\\), \\(0\\), and \\(3\\), respectively."
+    }
+
+  ]
 }
 ];
