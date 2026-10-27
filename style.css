@@ -1519,10 +1519,10 @@ footer p {
 
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   width: 155px;
-  height: 140px;
+  height: 155px;
 
   margin: 0 0.5rem;
 }
@@ -1554,12 +1554,12 @@ footer p {
 
 
 .integral-upper {
-  top: 2px;
+  top: -18px;
   left: 62px;
 }
 
 .integral-lower {
-  bottom: 2px;
+  bottom: -18px;
   left: 62px;
 }
 
