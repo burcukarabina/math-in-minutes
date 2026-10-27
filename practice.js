@@ -2470,7 +2470,173 @@ if (
         return;
       }
 
+  /* =========================================
+         RANDOMIZED MULTI SELECT
+      ========================================= */
 
+      if (question.type === "randomized-multi-select") {
+
+  const card = document.createElement("article");
+  card.className = "question-card randomized-multi-select-question";
+  card.id = question.id;
+
+  let displayedItems = [];
+
+  function chooseItems() {
+    displayedItems = shuffleArray(question.pool)
+      .slice(0, question.numberToDraw || 4);
+  }
+
+  function renderMultiSelectQuestion() {
+
+    chooseItems();
+
+    card.innerHTML = `
+      <p class="question-number">
+        Question ${index + 1}
+      </p>
+
+      <h3>
+        ${question.question}
+      </h3>
+
+      ${
+        question.instructions
+          ? `<p class="sorting-instructions">${question.instructions}</p>`
+          : ""
+      }
+
+      <div class="multi-select-options">
+
+        ${displayedItems
+          .map(
+            (item, itemIndex) => `
+              <label class="multi-select-option">
+                <input
+                  type="checkbox"
+                  value="${itemIndex}"
+                >
+
+                <span class="multi-select-content">
+                  ${item.content}
+                </span>
+              </label>
+            `
+          )
+          .join("")}
+
+      </div>
+
+      <div class="random-question-actions">
+
+        <button
+          type="button"
+          class="check-answer multi-select-check-button"
+        >
+          Check Answer
+        </button>
+
+        <button
+          type="button"
+          class="try-another-button multi-select-try-another-button"
+        >
+          Try Another
+        </button>
+
+      </div>
+
+      <div
+        class="question-feedback multi-select-feedback"
+        aria-live="polite"
+      ></div>
+    `;
+
+    const feedback =
+      card.querySelector(".multi-select-feedback");
+
+    const checkButton =
+      card.querySelector(".multi-select-check-button");
+
+    checkButton.addEventListener("click", () => {
+
+      const checkboxes =
+        [...card.querySelectorAll('input[type="checkbox"]')];
+
+      let correctCount = 0;
+
+      checkboxes.forEach((checkbox, itemIndex) => {
+
+        const selected = checkbox.checked;
+        const shouldBeSelected =
+          displayedItems[itemIndex].correct;
+
+        const option =
+          checkbox.closest(".multi-select-option");
+
+        option.classList.remove(
+          "multi-select-correct",
+          "multi-select-incorrect"
+        );
+
+        if (selected === shouldBeSelected) {
+          correctCount++;
+          option.classList.add("multi-select-correct");
+        } else {
+          option.classList.add("multi-select-incorrect");
+        }
+      });
+
+      if (correctCount === displayedItems.length) {
+
+        feedback.className =
+          "question-feedback feedback-correct multi-select-feedback";
+
+        feedback.innerHTML = `
+          <strong>Correct!</strong>
+          <div class="multi-select-explanations">
+            ${displayedItems
+              .map(
+                item => `
+                  <p>
+                    ${item.content}<br>
+                    ${item.explanation}
+                  </p>
+                `
+              )
+              .join("")}
+          </div>
+        `;
+
+      } else {
+
+        feedback.className =
+          "question-feedback feedback-incorrect multi-select-feedback";
+
+        feedback.innerHTML = `
+          <strong>Not quite.</strong>
+          Review the highlighted choices and try again.
+        `;
+      }
+
+      renderMath(feedback);
+    });
+
+    const tryAnotherButton =
+      card.querySelector(".multi-select-try-another-button");
+
+    tryAnotherButton.addEventListener("click", () => {
+      renderMultiSelectQuestion();
+    });
+
+    renderMath(card);
+  }
+
+  renderMultiSelectQuestion();
+
+  section.appendChild(card);
+
+  return;
+}
 
       /* =========================================
          REGULAR MULTIPLE CHOICE
