@@ -164,32 +164,6 @@ const questions = [
 
   ]
 },
-
-    {
-      id: "C",
-      content:
-        "For \\(n>N\\), we have \\(L-\\varepsilon<a_n\\le b_n\\le c_n<L+\\varepsilon\\).",
-      rank: 3
-    },
-
-    {
-      id: "D",
-      content:
-        "Therefore \\(b_n\\in(L-\\varepsilon,L+\\varepsilon)\\) whenever \\(n>N\\).",
-      rank: 4
-    },
-
-    {
-      id: "E",
-      content:
-        "Hence \\(\\lim_{n\\to\\infty}b_n=L\\).",
-      rank: 5
-    }
-  ],
-
-  explanation:
-    "This follows the epsilon-based proof of the Squeeze Theorem given in the MATH 137 notes."
-},
   {
   course: "calculus-2",
   section: "Riemann Sums",
