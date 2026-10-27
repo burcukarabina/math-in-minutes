@@ -1211,6 +1211,43 @@ const questions = [
 
   ]
 },
+  {
+  course: "calculus-1",
+  section: "Curve Sketching",
+  id: "click-local-extrema-sample",
+  type: "graph-click",
+
+  question:
+    "Click on all local extrema of the function.",
+
+  formula:
+    "\\(\\displaystyle f(x)=x^3-3x\\)",
+
+  graph: {
+    xMin: -3,
+    xMax: 3,
+    yMin: -5,
+    yMax: 5,
+
+    evaluate: x => x ** 3 - 3 * x
+  },
+
+  targets: [
+    {
+      x: -1,
+      y: 2,
+      type: "local maximum"
+    },
+    {
+      x: 1,
+      y: -2,
+      type: "local minimum"
+    }
+  ],
+
+  explanation:
+    "The function has a local maximum at \\((-1,2)\\) and a local minimum at \\((1,-2)\\)."
+},
  {
   course: "calculus-2",
   section: "Riemann Sums",
