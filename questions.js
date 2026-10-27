@@ -2278,7 +2278,126 @@ const questions = [
     }
 
   ]
-},{
+},
+  {
+  course: "calculus-2",
+  section: "Riemann Sums",
+  id: "match-riemann-sum-integral",
+  type: "matching",
+
+  question:
+    "Match each Riemann sum to the corresponding definite integral.",
+
+  instructions:
+    "Drag each Riemann sum to the definite integral it represents.",
+
+  numberToDraw: 4,
+
+  pool: [
+
+    {
+      id: "r1",
+
+      left:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(1+\\frac{3i}{n}\\right)^2\\frac{3}{n}\\)",
+
+      right:
+        "\\(\\displaystyle \\int\\limits_{1}^{4} x^2\\,dx\\)"
+    },
+
+    {
+      id: "r2",
+
+      left:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\sqrt{2+\\frac{5i}{n}}\\frac{5}{n}\\)",
+
+      right:
+        "\\(\\displaystyle \\int\\limits_{2}^{7}\\sqrt{x}\\,dx\\)"
+    },
+
+    {
+      id: "r3",
+
+      left:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}e^{i/n}\\frac{1}{n}\\)",
+
+      right:
+        "\\(\\displaystyle \\int\\limits_{0}^{1}e^x\\,dx\\)"
+    },
+
+    {
+      id: "r4",
+
+      left:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\cos\\left(\\frac{\\pi i}{n}\\right)\\frac{\\pi}{n}\\)",
+
+      right:
+        "\\(\\displaystyle \\int\\limits_{0}^{\\pi}\\cos x\\,dx\\)"
+    },
+
+    {
+      id: "r5",
+
+      left:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(2+\\frac{4i}{n}\\right)^3\\frac{4}{n}\\)",
+
+      right:
+        "\\(\\displaystyle \\int\\limits_{2}^{6}x^3\\,dx\\)"
+    },
+
+    {
+      id: "r6",
+
+      left:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{2}{1+\\frac{2i}{n}}\\frac{2}{n}\\)",
+
+      right:
+        "\\(\\displaystyle \\int\\limits_{1}^{3}\\frac{2}{x}\\,dx\\)"
+    },
+
+    {
+      id: "r7",
+
+      left:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\sin\\left(2+\\frac{i}{n}\\right)\\frac{1}{n}\\)",
+
+      right:
+        "\\(\\displaystyle \\int\\limits_{2}^{3}\\sin x\\,dx\\)"
+    },
+
+    {
+      id: "r8",
+
+      left:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{1}{1+\\left(\\frac{2i}{n}\\right)^2}\\frac{2}{n}\\)",
+
+      right:
+        "\\(\\displaystyle \\int\\limits_{0}^{2}\\frac{1}{1+x^2}\\,dx\\)"
+    },
+
+    {
+      id: "r9",
+
+      left:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\ln\\left(1+\\frac{2i}{n}\\right)\\frac{2}{n}\\)",
+
+      right:
+        "\\(\\displaystyle \\int\\limits_{1}^{3}\\ln x\\,dx\\)"
+    },
+
+    {
+      id: "r10",
+
+      left:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(-2+\\frac{5i}{n}\\right)^2\\frac{5}{n}\\)",
+
+      right:
+        "\\(\\displaystyle \\int\\limits_{-2}^{3}x^2\\,dx\\)"
+    }
+
+  ]
+},
+  {
   course: "calculus-2",
   section: "Definite Integrals",
   id: "order-integrals-by-value",
