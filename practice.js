@@ -3442,6 +3442,219 @@ if (question.type === "graph-click") {
 
   return;
 }
+
+      /* =========================================
+   FLASHCARDS
+========================================= */
+
+if (question.type === "flashcard") {
+
+  const card = document.createElement("article");
+  card.className = "question-card flashcard-question";
+  card.id = question.id;
+
+  let currentCard = null;
+  let showingBack = false;
+
+
+  function chooseFlashcard() {
+
+    let newCard;
+
+    if (question.pool.length === 1) {
+
+      newCard = question.pool[0];
+
+    } else {
+
+      do {
+
+        newCard =
+          question.pool[
+            Math.floor(
+              Math.random() *
+              question.pool.length
+            )
+          ];
+
+      } while (newCard === currentCard);
+
+    }
+
+    currentCard = newCard;
+  }
+
+
+  function renderFlashcard() {
+
+    chooseFlashcard();
+
+    showingBack = false;
+
+
+    card.innerHTML = `
+
+      <p class="question-number">
+        Question ${index + 1}
+      </p>
+
+      <h3>
+        ${question.question}
+      </h3>
+
+      ${
+        question.instructions
+          ? `
+            <p class="sorting-instructions">
+              ${question.instructions}
+            </p>
+          `
+          : ""
+      }
+
+
+      <div
+        class="practice-flashcard"
+        tabindex="0"
+        role="button"
+        aria-label="Flashcard. Click to reveal the answer."
+      >
+
+        <div class="practice-flashcard-label">
+          QUESTION
+        </div>
+
+        <div class="practice-flashcard-content">
+          ${currentCard.front}
+        </div>
+
+      </div>
+
+
+      <div class="flashcard-actions">
+
+        <button
+          type="button"
+          class="check-answer flashcard-reveal"
+        >
+          Reveal Answer
+        </button>
+
+        <button
+          type="button"
+          class="try-another-button flashcard-try-another"
+        >
+          Try Another
+        </button>
+
+      </div>
+    `;
+
+
+    const flashcard =
+      card.querySelector(".practice-flashcard");
+
+    const revealButton =
+      card.querySelector(".flashcard-reveal");
+
+
+    function toggleFlashcard() {
+
+      showingBack = !showingBack;
+
+
+      if (showingBack) {
+
+        flashcard.innerHTML = `
+
+          <div class="practice-flashcard-label">
+            ANSWER
+          </div>
+
+          <div class="practice-flashcard-content">
+            ${currentCard.back}
+          </div>
+        `;
+
+        revealButton.textContent =
+          "Show Question";
+
+      } else {
+
+        flashcard.innerHTML = `
+
+          <div class="practice-flashcard-label">
+            QUESTION
+          </div>
+
+          <div class="practice-flashcard-content">
+            ${currentCard.front}
+          </div>
+        `;
+
+        revealButton.textContent =
+          "Reveal Answer";
+      }
+
+      renderMath(flashcard);
+    }
+
+
+    flashcard.addEventListener(
+      "click",
+      toggleFlashcard
+    );
+
+
+    flashcard.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Enter" ||
+          event.key === " "
+        ) {
+
+          event.preventDefault();
+
+          toggleFlashcard();
+        }
+      }
+    );
+
+
+    revealButton.addEventListener(
+      "click",
+      toggleFlashcard
+    );
+
+
+    const tryAnotherButton =
+      card.querySelector(
+        ".flashcard-try-another"
+      );
+
+
+    tryAnotherButton.addEventListener(
+      "click",
+      () => {
+
+        renderFlashcard();
+
+      }
+    );
+
+
+    renderMath(card);
+  }
+
+
+  renderFlashcard();
+
+  section.appendChild(card);
+
+  return;
+}
       
       /* =========================================
          RANDOMIZED MULTIPLE CHOICE
