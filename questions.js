@@ -1,25 +1,5 @@
 const questions = [
-  {
-    course: "calculus-2",
-    section: "Test",
-    id: "test-question",
-    type: "multiple-choice",
-
-    question:
-      "Which number is equal to \\(2+2\\)?",
-
-    choices: [
-      "\\(3\\)",
-      "\\(4\\)",
-      "\\(5\\)",
-      "\\(6\\)"
-    ],
-
-    correct: 1,
-
-    explanation:
-      "\\(2+2=4\\)."
-  },{
+ {
   course: "calculus-1",
   section: "Sequence Limits",
   id: "proof-order-sequence-limits",
@@ -64,7 +44,7 @@ const questions = [
         {
           id: "D",
           content:
-            "Therefore \\(b_n\\in(L-\\varepsilon,L+\\varepsilon)\\) whenever \\(n\\gtN\\).",
+            "Therefore \\(b_n\\in(L-\\varepsilon,L+\\varepsilon)\\) whenever \\(n > N\\).",
           rank: 4
         },
 
