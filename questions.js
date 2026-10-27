@@ -1521,5 +1521,465 @@ const questions = [
     }
 
   ]
+},
+ {
+  course: "calculus-2",
+  section: "Improper Integrals",
+  id: "improper-type-and-convergence",
+  type: "randomized-multiple-choice",
+
+  question:
+    "Classify the improper integral and determine whether it converges or diverges.",
+
+  choices: [
+    "Type I and converges",
+    "Type I and diverges",
+    "Type II and converges",
+    "Type II and diverges"
+  ],
+
+  pool: [
+
+    // =====================================
+    // TYPE I — CONVERGES
+    // correct: 0
+    // =====================================
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^2}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "This is Type I because the interval is infinite. It is a p-integral with \\(p=2>1\\), so it converges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_2^\\infty \\frac{1}{x^3}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "This is Type I because the upper limit is infinite. Since it is a p-integral with \\(p=3>1\\), it converges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^\\infty e^{-x}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "This is Type I because the interval is unbounded. The exponential decay is strong enough for the integral to converge."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x^{3/2}}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "This is Type I. It is a p-integral with \\(p=\\frac{3}{2}>1\\), so it converges."
+    },
+
+
+    // =====================================
+    // TYPE I — DIVERGES
+    // correct: 1
+    // =====================================
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{x}\\,dx\\)",
+      correct: 1,
+      explanation:
+        "This is Type I because the interval is infinite. It is the harmonic p-integral with \\(p=1\\), so it diverges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^\\infty \\frac{1}{\\sqrt{x}}\\,dx\\)",
+      correct: 1,
+      explanation:
+        "This is Type I. It is a p-integral with \\(p=\\frac12\\le 1\\), so it diverges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_2^\\infty \\frac{1}{x^{2/3}}\\,dx\\)",
+      correct: 1,
+      explanation:
+        "This is Type I because the upper limit is infinite. Since \\(p=\\frac23\\le1\\), the p-integral diverges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^\\infty 1\\,dx\\)",
+      correct: 1,
+      explanation:
+        "This is Type I because the interval is infinite. The accumulated area grows without bound, so the integral diverges."
+    },
+
+
+    // =====================================
+    // TYPE II — CONVERGES
+    // correct: 2
+    // =====================================
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{\\sqrt{x}}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "This is Type II because the integrand is unbounded at \\(x=0\\). Since the singularity behaves like \\(x^{-1/2}\\) with exponent less than 1, the integral converges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\ln x\\,dx\\)",
+      correct: 2,
+      explanation:
+        "This is Type II because \\(\\ln x\\) is unbounded as \\(x\\to0^+\\). The corresponding improper limit is finite, so the integral converges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^4 \\frac{1}{\\sqrt{4-x}}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "This is Type II because the integrand is unbounded at \\(x=4\\). The singularity has exponent \\(\\frac12<1\\), so the integral converges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^2 \\frac{1}{(x-1)^{1/3}}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "This is Type II because the integrand is unbounded at \\(x=1\\). Since the singularity has exponent \\(\\frac13<1\\), the integral converges."
+    },
+
+
+    // =====================================
+    // TYPE II — DIVERGES
+    // correct: 3
+    // =====================================
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{x}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "This is Type II because the integrand is unbounded at \\(x=0\\). The corresponding p-type singularity has exponent \\(1\\), so the integral diverges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{x^2}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "This is Type II because the integrand is unbounded at \\(x=0\\). Since the singularity has exponent \\(2\\ge1\\), the integral diverges."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^2 \\frac{1}{(x-1)^2}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "This is Type II because the integrand is unbounded at the interior point \\(x=1\\). Splitting the integral at \\(x=1\\) produces divergent improper integrals."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^{\\pi/2} \\tan x\\,dx\\)",
+      correct: 3,
+      explanation:
+        "This is Type II because \\(\\tan x\\) becomes unbounded as \\(x\\to\\frac{\\pi}{2}^-\\). The corresponding improper limit diverges."
+    }
+
+  ]
+},
+{
+  course: "calculus-2",
+  section: "Fundamental Theorem of Calculus",
+  id: "ftc-1",
+  type: "multiple-choice",
+
+  question:
+    "If \\(F(x)=\\displaystyle\\int\\limits_0^x f(t)\\,dt\\) and \\(f\\) is continuous, what is \\(F'(x)\\)?",
+
+  choices: [
+    "\\(f(0)\\)",
+    "\\(f(x)\\)",
+    "\\(\\displaystyle\\int\\limits_0^x f'(t)\\,dt\\)",
+    "\\(x f(x)\\)"
+  ],
+
+  correct: 1,
+
+  explanation:
+    "By the Fundamental Theorem of Calculus Part I, \\(F'(x)=f(x)\\)."
+}, {
+  course: "calculus-2",
+  section: "Fundamental Theorem of Calculus",
+  id: "ftc-chain-rule-composite-upper-limit",
+  type: "randomized-multiple-choice",
+
+  question:
+    "Differentiate the following function using the Fundamental Theorem of Calculus and the Chain Rule.",
+
+  pool: [
+
+    {
+      content:
+        "\\(\\displaystyle \\frac{d}{dx}\\left[\\int\\limits_1^{(x^2+1)^3}\\sqrt{t}\\,dt\\right]\\)",
+
+      choices: [
+        "\\(\\displaystyle 6x(x^2+1)^2\\sqrt{(x^2+1)^3}\\)",
+        "\\(\\displaystyle 3(x^2+1)^2\\sqrt{(x^2+1)^3}\\)",
+        "\\(\\displaystyle 6x\\sqrt{x^2+1}\\)",
+        "\\(\\displaystyle 2x\\sqrt{(x^2+1)^3}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Using FTC, first evaluate the integrand at the upper limit, giving \\(\\sqrt{(x^2+1)^3}\\). Then differentiate the upper limit: \\(\\frac{d}{dx}(x^2+1)^3=6x(x^2+1)^2\\). Multiply the two factors."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\frac{d}{dx}\\left[\\int\\limits_0^{\\sin(x^2)} e^t\\,dt\\right]\\)",
+
+      choices: [
+        "\\(\\displaystyle 2x\\cos(x^2)e^{\\sin(x^2)}\\)",
+        "\\(\\displaystyle \\cos(x^2)e^{\\sin(x^2)}\\)",
+        "\\(\\displaystyle 2x\\sin(x^2)e^{\\sin(x^2)}\\)",
+        "\\(\\displaystyle 2x e^{x^2}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "FTC gives \\(e^{\\sin(x^2)}\\), and the Chain Rule gives \\(\\frac{d}{dx}\\sin(x^2)=2x\\cos(x^2)\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\frac{d}{dx}\\left[\\int\\limits_2^{e^{x^2}} \\frac{1}{1+t^2}\\,dt\\right]\\)",
+
+      choices: [
+        "\\(\\displaystyle \\frac{2xe^{x^2}}{1+e^{2x^2}}\\)",
+        "\\(\\displaystyle \\frac{e^{x^2}}{1+e^{2x^2}}\\)",
+        "\\(\\displaystyle \\frac{2x}{1+e^{2x^2}}\\)",
+        "\\(\\displaystyle \\frac{2xe^{2x^2}}{1+e^{2x^2}}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Evaluate the integrand at \\(t=e^{x^2}\\), then multiply by \\(\\frac{d}{dx}e^{x^2}=2xe^{x^2}\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\frac{d}{dx}\\left[\\int\\limits_1^{\\ln(x^2+1)} \\cos t\\,dt\\right]\\)",
+
+      choices: [
+        "\\(\\displaystyle \\frac{2x}{x^2+1}\\cos\\!\\bigl(\\ln(x^2+1)\\bigr)\\)",
+        "\\(\\displaystyle \\cos\\!\\bigl(\\ln(x^2+1)\\bigr)\\)",
+        "\\(\\displaystyle -\\frac{2x}{x^2+1}\\sin\\!\\bigl(\\ln(x^2+1)\\bigr)\\)",
+        "\\(\\displaystyle \\frac{1}{x^2+1}\\cos\\!\\bigl(\\ln(x^2+1)\\bigr)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "FTC gives \\(\\cos(\\ln(x^2+1))\\), and the Chain Rule gives \\(\\frac{d}{dx}\\ln(x^2+1)=\\frac{2x}{x^2+1}\\)."
+    }
+
+  ]
+},
+{
+  course: "calculus-2",
+  section: "Fundamental Theorem of Calculus",
+  id: "area-function-and-derivative",
+  type: "randomized-multiple-choice",
+
+  question:
+    "Let the following integral define an area function. Find the ordered pair \\(\\bigl(A(c),A'(c)\\bigr)\\).",
+
+  pool: [
+
+    /* =====================================
+       QUESTION 1
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x t\\,dt, \\qquad c=2\\)",
+
+      choices: [
+        "\\(\\left(2,2\\right)\\)",
+        "\\(\\left(4,2\\right)\\)",
+        "\\(\\left(2,1\\right)\\)",
+        "\\(\\left(4,1\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The value \\(A(2)\\) is the area of the triangle under \\(y=t\\) from \\(0\\) to \\(2\\), so \\(A(2)=\\frac12(2)(2)=2\\). By FTC I, \\(A'(2)=2\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 2
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x 3\\,dt, \\qquad c=4\\)",
+
+      choices: [
+        "\\(\\left(12,3\\right)\\)",
+        "\\(\\left(3,12\\right)\\)",
+        "\\(\\left(12,4\\right)\\)",
+        "\\(\\left(4,3\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The accumulated area is a rectangle of width \\(4\\) and height \\(3\\), so \\(A(4)=12\\). By FTC I, \\(A'(4)=3\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 3
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x (4-t)\\,dt, \\qquad c=4\\)",
+
+      choices: [
+        "\\(\\left(8,0\\right)\\)",
+        "\\(\\left(8,4\\right)\\)",
+        "\\(\\left(16,0\\right)\\)",
+        "\\(\\left(4,8\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "From \\(0\\) to \\(4\\), the graph of \\(4-t\\) forms a triangle with base \\(4\\) and height \\(4\\). Thus \\(A(4)=8\\). By FTC I, \\(A'(4)=4-4=0\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 4
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x (2t+1)\\,dt, \\qquad c=2\\)",
+
+      choices: [
+        "\\(\\left(6,5\\right)\\)",
+        "\\(\\left(5,6\\right)\\)",
+        "\\(\\left(10,5\\right)\\)",
+        "\\(\\left(6,4\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The graph is a line increasing from height \\(1\\) to height \\(5\\). The accumulated area is the area of a trapezoid: \\(A(2)=\\frac12(1+5)(2)=6\\). By FTC I, \\(A'(2)=2(2)+1=5\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 5
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x (3-t)\\,dt, \\qquad c=2\\)",
+
+      choices: [
+        "\\(\\left(4,1\\right)\\)",
+        "\\(\\left(2,1\\right)\\)",
+        "\\(\\left(4,3\\right)\\)",
+        "\\(\\left(1,4\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "From \\(0\\) to \\(2\\), the graph decreases from height \\(3\\) to height \\(1\\). The trapezoid has area \\(A(2)=\\frac12(3+1)(2)=4\\). By FTC I, \\(A'(2)=3-2=1\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 6
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x (t-1)\\,dt, \\qquad c=2\\)",
+
+      choices: [
+        "\\(\\left(0,1\\right)\\)",
+        "\\(\\left(1,0\\right)\\)",
+        "\\(\\left(2,1\\right)\\)",
+        "\\(\\left(0,2\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "From \\(0\\) to \\(1\\), the graph is below the axis and contributes area \\(-\\frac12\\). From \\(1\\) to \\(2\\), it contributes \\(+\\frac12\\). These cancel, so \\(A(2)=0\\). By FTC I, \\(A'(2)=2-1=1\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 7
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_{-2}^x (t+2)\\,dt, \\qquad c=2\\)",
+
+      choices: [
+        "\\(\\left(8,4\\right)\\)",
+        "\\(\\left(4,8\\right)\\)",
+        "\\(\\left(8,2\\right)\\)",
+        "\\(\\left(16,4\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "From \\(-2\\) to \\(2\\), the graph forms a triangle with base \\(4\\) and height \\(4\\), so \\(A(2)=8\\). By FTC I, \\(A'(2)=2+2=4\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 8
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle A(x)=\\int\\limits_0^x (2-t)\\,dt, \\qquad c=3\\)",
+
+      choices: [
+        "\\(\\left(\\frac32,-1\\right)\\)",
+        "\\(\\left(\\frac52,-1\\right)\\)",
+        "\\(\\left(\\frac32,1\\right)\\)",
+        "\\(\\left(-\\frac32,-1\\right)\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "From \\(0\\) to \\(2\\), the positive triangular area is \\(2\\). From \\(2\\) to \\(3\\), the graph lies below the axis and contributes \\(-\\frac12\\). Therefore \\(A(3)=2-\\frac12=\\frac32\\). By FTC I, \\(A'(3)=2-3=-1\\)."
+    }
+
+  ]
 }
 ];
