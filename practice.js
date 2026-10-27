@@ -3650,6 +3650,554 @@ if (question.type === "flashcard") {
 
   return;
 }
+      /* =========================================
+   MATCHING
+========================================= */
+
+if (question.type === "matching") {
+
+  const card = document.createElement("article");
+  card.className = "question-card matching-question";
+  card.id = question.id;
+
+  let currentItems = [];
+  let placements = {};
+
+
+  function chooseMatchingSet() {
+
+    const shuffledPool = shuffleArray(question.pool);
+
+    const chosen = [];
+    const usedAnswers = new Set();
+
+    for (const item of shuffledPool) {
+
+      if (!usedAnswers.has(item.right)) {
+
+        chosen.push(item);
+        usedAnswers.add(item.right);
+      }
+
+      if (
+        chosen.length ===
+        (question.numberToDraw || 4)
+      ) {
+        break;
+      }
+    }
+
+    currentItems = chosen;
+  }
+
+
+  function renderMatchingQuestion() {
+
+    chooseMatchingSet();
+
+    placements = {};
+
+
+    const shuffledFunctions =
+      shuffleArray(currentItems);
+
+    const shuffledDomains =
+      shuffleArray(currentItems);
+
+
+    card.innerHTML = `
+
+      <p class="question-number">
+        Question ${index + 1}
+      </p>
+
+      <h3>
+        ${question.question}
+      </h3>
+
+      ${
+        question.instructions
+          ? `
+            <p class="matching-instructions">
+              ${question.instructions}
+            </p>
+          `
+          : ""
+      }
+
+
+      <div class="matching-layout">
+
+
+        <!-- LEFT COLUMN -->
+
+        <div class="matching-column">
+
+          <h4>
+            Functions
+          </h4>
+
+          <div
+            class="matching-bank"
+            data-matching-bank
+          >
+
+            ${shuffledFunctions
+              .map(
+                item => `
+                  <div
+                    class="matching-item"
+                    draggable="true"
+                    data-id="${item.id}"
+                  >
+
+                    <span class="matching-item-content">
+                      ${item.left}
+                    </span>
+
+                  </div>
+                `
+              )
+              .join("")}
+
+          </div>
+
+        </div>
+
+
+        <!-- RIGHT COLUMN -->
+
+        <div class="matching-column">
+
+          <h4>
+            Domains
+          </h4>
+
+          <div class="matching-target-list">
+
+            ${shuffledDomains
+              .map(
+                item => `
+                  <div
+                    class="matching-target"
+                    data-answer="${item.right}"
+                  >
+
+                    <div class="matching-target-label">
+                      ${item.right}
+                    </div>
+
+                    <div
+                      class="matching-dropzone"
+                      data-dropzone
+                    >
+                    </div>
+
+                  </div>
+                `
+              )
+              .join("")}
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="matching-actions">
+
+        <button
+          type="button"
+          class="check-answer matching-check"
+        >
+          Check Answers
+        </button>
+
+        <button
+          type="button"
+          class="try-another-button matching-try-another"
+        >
+          Try Another Set
+        </button>
+
+        <button
+          type="button"
+          class="matching-reset"
+        >
+          Reset Cards
+        </button>
+
+      </div>
+
+
+      <div
+        class="question-feedback matching-feedback"
+        aria-live="polite"
+      ></div>
+    `;
+
+
+    const bank =
+      card.querySelector(
+        "[data-matching-bank]"
+      );
+
+    const items =
+      card.querySelectorAll(
+        ".matching-item"
+      );
+
+    const dropzones =
+      card.querySelectorAll(
+        "[data-dropzone]"
+      );
+
+    const feedback =
+      card.querySelector(
+        ".matching-feedback"
+      );
+
+
+    let draggedItem = null;
+
+
+    /* =====================================
+       DRAG START
+    ===================================== */
+
+    items.forEach(item => {
+
+      item.addEventListener(
+        "dragstart",
+        event => {
+
+          draggedItem = item;
+
+          item.classList.add(
+            "matching-dragging"
+          );
+
+          event.dataTransfer.effectAllowed =
+            "move";
+
+        }
+      );
+
+
+      item.addEventListener(
+        "dragend",
+        () => {
+
+          item.classList.remove(
+            "matching-dragging"
+          );
+
+          draggedItem = null;
+
+        }
+      );
+
+    });
+
+
+    /* =====================================
+       DROP ZONES
+    ===================================== */
+
+    dropzones.forEach(dropzone => {
+
+      dropzone.addEventListener(
+        "dragover",
+        event => {
+
+          event.preventDefault();
+
+          dropzone.classList.add(
+            "matching-drop-active"
+          );
+
+        }
+      );
+
+
+      dropzone.addEventListener(
+        "dragleave",
+        () => {
+
+          dropzone.classList.remove(
+            "matching-drop-active"
+          );
+
+        }
+      );
+
+
+      dropzone.addEventListener(
+        "drop",
+        event => {
+
+          event.preventDefault();
+
+          dropzone.classList.remove(
+            "matching-drop-active"
+          );
+
+
+          if (!draggedItem) {
+            return;
+          }
+
+
+          /*
+            If this target already contains
+            a card, move that card back
+            to the function bank.
+          */
+
+          const existing =
+            dropzone.querySelector(
+              ".matching-item"
+            );
+
+          if (
+            existing &&
+            existing !== draggedItem
+          ) {
+
+            bank.appendChild(existing);
+
+            delete placements[
+              existing.dataset.id
+            ];
+          }
+
+
+          dropzone.appendChild(
+            draggedItem
+          );
+
+
+          const target =
+            dropzone.closest(
+              ".matching-target"
+            );
+
+
+          placements[
+            draggedItem.dataset.id
+          ] =
+            target.dataset.answer;
+
+
+          feedback.innerHTML = "";
+
+        }
+      );
+
+    });
+
+
+    /* =====================================
+       ALLOW CARDS TO RETURN TO BANK
+    ===================================== */
+
+    bank.addEventListener(
+      "dragover",
+      event => {
+
+        event.preventDefault();
+
+      }
+    );
+
+
+    bank.addEventListener(
+      "drop",
+      event => {
+
+        event.preventDefault();
+
+
+        if (!draggedItem) {
+          return;
+        }
+
+
+        bank.appendChild(
+          draggedItem
+        );
+
+
+        delete placements[
+          draggedItem.dataset.id
+        ];
+
+
+        feedback.innerHTML = "";
+
+      }
+    );
+
+
+    /* =====================================
+       CHECK ANSWERS
+    ===================================== */
+
+    const checkButton =
+      card.querySelector(
+        ".matching-check"
+      );
+
+
+    checkButton.addEventListener(
+      "click",
+      () => {
+
+        let correctCount = 0;
+
+
+        currentItems.forEach(item => {
+
+          const placedAnswer =
+            placements[item.id];
+
+
+          const itemElement =
+            card.querySelector(
+              `.matching-item[data-id="${item.id}"]`
+            );
+
+
+          itemElement.classList.remove(
+            "matching-correct",
+            "matching-incorrect"
+          );
+
+
+          if (
+            placedAnswer === item.right
+          ) {
+
+            correctCount++;
+
+            itemElement.classList.add(
+              "matching-correct"
+            );
+
+          } else {
+
+            itemElement.classList.add(
+              "matching-incorrect"
+            );
+
+          }
+
+        });
+
+
+        if (
+          correctCount ===
+          currentItems.length
+        ) {
+
+          feedback.className =
+            "question-feedback feedback-correct matching-feedback";
+
+          feedback.innerHTML = `
+            <strong>Correct!</strong>
+            All functions are matched with their domains.
+          `;
+
+        } else {
+
+          feedback.className =
+            "question-feedback feedback-incorrect matching-feedback";
+
+          feedback.innerHTML = `
+            <strong>${correctCount} of ${currentItems.length} correct.</strong>
+            Recheck the domain restrictions for the highlighted cards.
+          `;
+
+        }
+
+      }
+    );
+
+
+    /* =====================================
+       RESET
+    ===================================== */
+
+    const resetButton =
+      card.querySelector(
+        ".matching-reset"
+      );
+
+
+    resetButton.addEventListener(
+      "click",
+      () => {
+
+        placements = {};
+
+
+        card
+          .querySelectorAll(
+            ".matching-item"
+          )
+          .forEach(item => {
+
+            item.classList.remove(
+              "matching-correct",
+              "matching-incorrect"
+            );
+
+            bank.appendChild(item);
+
+          });
+
+
+        feedback.className =
+          "question-feedback matching-feedback";
+
+        feedback.innerHTML = "";
+
+      }
+    );
+
+
+    /* =====================================
+       TRY ANOTHER SET
+    ===================================== */
+
+    const tryAnotherButton =
+      card.querySelector(
+        ".matching-try-another"
+      );
+
+
+    tryAnotherButton.addEventListener(
+      "click",
+      () => {
+
+        renderMatchingQuestion();
+
+      }
+    );
+
+
+    renderMath(card);
+  }
+
+
+  renderMatchingQuestion();
+
+  section.appendChild(card);
+
+  return;
+}
       
       /* =========================================
          RANDOMIZED MULTIPLE CHOICE
