@@ -1543,21 +1543,24 @@ footer p {
 .integral-lower {
   position: absolute;
 
-  width: 82px;
+  width: 68px;
+
+  padding: 0.3rem 0.35rem;
+
+  font-size: 0.9rem;
 
   text-align: center;
 }
 
 
 .integral-upper {
-  top: 0;
-  left: 70px;
+  top: 2px;
+  left: 62px;
 }
 
-
 .integral-lower {
-  bottom: 0;
-  left: 70px;
+  bottom: 2px;
+  left: 62px;
 }
 
 
