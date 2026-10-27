@@ -2602,7 +2602,7 @@ if (
 
               feedback.innerHTML = `
                 <strong>Correct!</strong>
-                ${currentSet.explanation}
+                ${question.explanation}
               `;
 
             }
@@ -2614,7 +2614,7 @@ if (
 
               feedback.innerHTML = `
                 <strong>Not quite.</strong>
-                ${currentSet.explanation}
+                ${question.explanation}
               `;
 
             }
