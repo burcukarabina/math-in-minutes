@@ -2256,24 +2256,24 @@ if (
   }
 
 
-  function makeOptions(slot) {
+  function makeOptions(slot, placeholder = "Select") {
 
-    return `
-      <option value="">
-        Select
-      </option>
+  return `
+    <option value="">
+      ${placeholder}
+    </option>
 
-      ${slot.choices
-        .map(
-          choice => `
-            <option value="${choice.value}">
-              ${choice.label}
-            </option>
-          `
-        )
-        .join("")}
-    `;
-  }
+    ${slot.choices
+      .map(
+        choice => `
+          <option value="${choice.value}">
+            ${choice.label}
+          </option>
+        `
+      )
+      .join("")}
+  `;
+}
 
 
   function renderIntegralBuilder() {
@@ -2317,7 +2317,7 @@ if (
             data-slot="upper"
             aria-label="Upper bound"
           >
-            ${makeOptions(currentSet.builder.upper)}
+            ${makeOptions(currentSet.builder.upper, "—")}
           </select>
 
           <span class="integral-symbol">
@@ -2329,7 +2329,7 @@ if (
             data-slot="lower"
             aria-label="Lower bound"
           >
-            ${makeOptions(currentSet.builder.lower)}
+            ${makeOptions(currentSet.builder.lower, "—")}
           </select>
 
         </span>
