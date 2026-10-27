@@ -1,6 +1,936 @@
 const questions = [
  {
   course: "calculus-1",
+  section: "Function Limits",
+  id: "formal-limit-definition-builder",
+  type: "statement-builder",
+
+  question:
+    "Build the formal mathematical statement corresponding to the given limit.",
+
+  instructions:
+    "Click the statements in the correct order. Not every available statement is needed.",
+
+  pool: [
+
+    /* =====================================
+       1. FINITE TWO-SIDED LIMIT
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to a}f(x)=L\\)",
+
+      pieces: [
+        {
+          id: "forall-epsilon",
+          content:
+            "\\(\\forall\\varepsilon>0,\\)"
+        },
+        {
+          id: "exists-delta",
+          content:
+            "\\(\\exists\\delta>0\\)"
+        },
+        {
+          id: "two-sided-delta",
+          content:
+            "\\(0\\lt |x-a|\\lt\\delta\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "epsilon-output",
+          content:
+            "\\(|f(x)-L|\\lt\\varepsilon\\)"
+        },
+
+        /* distractors */
+
+        {
+          id: "x-greater-n",
+          content:
+            "\\(x>N\\)"
+        },
+        {
+          id: "right-delta",
+          content:
+            "\\(a\\lt x\\lt a+\\delta\\)"
+        },
+        {
+          id: "f-greater-m",
+          content:
+            "\\(f(x)>m\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-epsilon",
+        "exists-delta",
+        "two-sided-delta",
+        "implies",
+        "epsilon-output"
+      ],
+
+      explanation:
+        "For a finite two-sided limit, every epsilon-neighbourhood of L must contain the function values whenever x is sufficiently close to, but not equal to, a."
+    },
+
+
+    /* =====================================
+       2. FINITE RIGHT-SIDED LIMIT
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to a^+}f(x)=L\\)",
+
+      pieces: [
+        {
+          id: "forall-epsilon",
+          content:
+            "\\(\\forall\\varepsilon>0,\\)"
+        },
+        {
+          id: "exists-delta",
+          content:
+            "\\(\\exists\\delta>0\\)"
+        },
+        {
+          id: "right-condition",
+          content:
+            "\\(|x-a|\\lt\\delta\\text{ and }x>a\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "epsilon-output",
+          content:
+            "\\(|f(x)-L|\\lt\\varepsilon\\)"
+        },
+
+        {
+          id: "left-condition",
+          content:
+            "\\(|x-a|\\lt\\delta\\text{ and }x<a\\)"
+        },
+        {
+          id: "two-sided-delta",
+          content:
+            "\\(0\\lt |x-a|\\lt\\delta\\)"
+        },
+        {
+          id: "f-greater-m",
+          content:
+            "\\(f(x)>m\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-epsilon",
+        "exists-delta",
+        "right-condition",
+        "implies",
+        "epsilon-output"
+      ],
+
+      explanation:
+        "For a right-sided limit, x must approach a through values greater than a."
+    },
+
+
+    /* =====================================
+       3. FINITE LEFT-SIDED LIMIT
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to a^-}f(x)=L\\)",
+
+      pieces: [
+        {
+          id: "forall-epsilon",
+          content:
+            "\\(\\forall\\varepsilon>0,\\)"
+        },
+        {
+          id: "exists-delta",
+          content:
+            "\\(\\exists\\delta>0\\)"
+        },
+        {
+          id: "left-condition",
+          content:
+            "\\(|x-a|\\lt\\delta\\text{ and }x<a\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "epsilon-output",
+          content:
+            "\\(|f(x)-L|\\lt\\varepsilon\\)"
+        },
+
+        {
+          id: "right-condition",
+          content:
+            "\\(|x-a|\\lt\\delta\\text{ and }x>a\\)"
+        },
+        {
+          id: "x-less-n",
+          content:
+            "\\(x<N\\)"
+        },
+        {
+          id: "f-less-m",
+          content:
+            "\\(f(x)<-m\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-epsilon",
+        "exists-delta",
+        "left-condition",
+        "implies",
+        "epsilon-output"
+      ],
+
+      explanation:
+        "For a left-sided limit, x must approach a through values less than a."
+    },
+
+
+    /* =====================================
+       4. FINITE LIMIT AS x -> +INFINITY
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to\\infty}f(x)=L\\)",
+
+      pieces: [
+        {
+          id: "forall-epsilon",
+          content:
+            "\\(\\forall\\varepsilon>0,\\)"
+        },
+        {
+          id: "exists-N",
+          content:
+            "\\(\\exists N\\in\\mathbb{R}\\)"
+        },
+        {
+          id: "x-greater-N",
+          content:
+            "\\(x>N\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "epsilon-output",
+          content:
+            "\\(|f(x)-L|\\lt\\varepsilon\\)"
+        },
+
+        {
+          id: "x-less-N",
+          content:
+            "\\(x<N\\)"
+        },
+        {
+          id: "exists-delta",
+          content:
+            "\\(\\exists\\delta>0\\)"
+        },
+        {
+          id: "f-greater-M",
+          content:
+            "\\(f(x)>M\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-epsilon",
+        "exists-N",
+        "x-greater-N",
+        "implies",
+        "epsilon-output"
+      ],
+
+      explanation:
+        "As x approaches positive infinity, sufficiently large x-values must make f(x) arbitrarily close to L."
+    },
+
+
+    /* =====================================
+       5. FINITE LIMIT AS x -> -INFINITY
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to-\\infty}f(x)=L\\)",
+
+      pieces: [
+        {
+          id: "forall-epsilon",
+          content:
+            "\\(\\forall\\varepsilon>0,\\)"
+        },
+        {
+          id: "exists-N",
+          content:
+            "\\(\\exists N\\in\\mathbb{R}\\)"
+        },
+        {
+          id: "x-less-N",
+          content:
+            "\\(x<N\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "epsilon-output",
+          content:
+            "\\(|f(x)-L|\\lt\\varepsilon\\)"
+        },
+
+        {
+          id: "x-greater-N",
+          content:
+            "\\(x>N\\)"
+        },
+        {
+          id: "exists-delta",
+          content:
+            "\\(\\exists\\delta>0\\)"
+        },
+        {
+          id: "f-less-M",
+          content:
+            "\\(f(x)<-M\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-epsilon",
+        "exists-N",
+        "x-less-N",
+        "implies",
+        "epsilon-output"
+      ],
+
+      explanation:
+        "As x approaches negative infinity, sufficiently negative x-values must make f(x) arbitrarily close to L."
+    },
+
+
+    /* =====================================
+       6. x -> +INFINITY, f(x) -> +INFINITY
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to\\infty}f(x)=\\infty\\)",
+
+      pieces: [
+        {
+          id: "forall-M",
+          content:
+            "\\(\\forall M>0,\\)"
+        },
+        {
+          id: "exists-N",
+          content:
+            "\\(\\exists N\\in\\mathbb{R}\\)"
+        },
+        {
+          id: "x-greater-N",
+          content:
+            "\\(x>N\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "f-greater-M",
+          content:
+            "\\(f(x)>M\\)"
+        },
+
+        {
+          id: "x-less-N",
+          content:
+            "\\(x<N\\)"
+        },
+        {
+          id: "f-less-minus-M",
+          content:
+            "\\(f(x)<-M\\)"
+        },
+        {
+          id: "forall-epsilon",
+          content:
+            "\\(\\forall\\varepsilon>0,\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-M",
+        "exists-N",
+        "x-greater-N",
+        "implies",
+        "f-greater-M"
+      ],
+
+      explanation:
+        "For every positive threshold M, f(x) eventually lies above M when x is sufficiently large."
+    },
+
+
+    /* =====================================
+       7. x -> +INFINITY, f(x) -> -INFINITY
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to\\infty}f(x)=-\\infty\\)",
+
+      pieces: [
+        {
+          id: "forall-M",
+          content:
+            "\\(\\forall M>0,\\)"
+        },
+        {
+          id: "exists-N",
+          content:
+            "\\(\\exists N\\in\\mathbb{R}\\)"
+        },
+        {
+          id: "x-greater-N",
+          content:
+            "\\(x>N\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "f-less-minus-M",
+          content:
+            "\\(f(x)<-M\\)"
+        },
+
+        {
+          id: "x-less-N",
+          content:
+            "\\(x<N\\)"
+        },
+        {
+          id: "f-greater-M",
+          content:
+            "\\(f(x)>M\\)"
+        },
+        {
+          id: "exists-delta",
+          content:
+            "\\(\\exists\\delta>0\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-M",
+        "exists-N",
+        "x-greater-N",
+        "implies",
+        "f-less-minus-M"
+      ],
+
+      explanation:
+        "For every positive threshold M, f(x) eventually lies below -M when x is sufficiently large."
+    },
+
+
+    /* =====================================
+       8. x -> -INFINITY, f(x) -> +INFINITY
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to-\\infty}f(x)=\\infty\\)",
+
+      pieces: [
+        {
+          id: "forall-M",
+          content:
+            "\\(\\forall M>0,\\)"
+        },
+        {
+          id: "exists-N",
+          content:
+            "\\(\\exists N\\in\\mathbb{R}\\)"
+        },
+        {
+          id: "x-less-N",
+          content:
+            "\\(x<N\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "f-greater-M",
+          content:
+            "\\(f(x)>M\\)"
+        },
+
+        {
+          id: "x-greater-N",
+          content:
+            "\\(x>N\\)"
+        },
+        {
+          id: "f-less-minus-M",
+          content:
+            "\\(f(x)<-M\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-M",
+        "exists-N",
+        "x-less-N",
+        "implies",
+        "f-greater-M"
+      ],
+
+      explanation:
+        "For sufficiently negative x-values, f(x) eventually exceeds every positive threshold."
+    },
+
+
+    /* =====================================
+       9. x -> -INFINITY, f(x) -> -INFINITY
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to-\\infty}f(x)=-\\infty\\)",
+
+      pieces: [
+        {
+          id: "forall-M",
+          content:
+            "\\(\\forall M>0,\\)"
+        },
+        {
+          id: "exists-N",
+          content:
+            "\\(\\exists N\\in\\mathbb{R}\\)"
+        },
+        {
+          id: "x-less-N",
+          content:
+            "\\(x<N\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "f-less-minus-M",
+          content:
+            "\\(f(x)<-M\\)"
+        },
+
+        {
+          id: "x-greater-N",
+          content:
+            "\\(x>N\\)"
+        },
+        {
+          id: "f-greater-M",
+          content:
+            "\\(f(x)>M\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-M",
+        "exists-N",
+        "x-less-N",
+        "implies",
+        "f-less-minus-M"
+      ],
+
+      explanation:
+        "For sufficiently negative x-values, f(x) eventually lies below every negative threshold -M."
+    },
+
+
+    /* =====================================
+       10. RIGHT-SIDED +INFINITY
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to a^+}f(x)=\\infty\\)",
+
+      pieces: [
+        {
+          id: "forall-m",
+          content:
+            "\\(\\forall m>0,\\)"
+        },
+        {
+          id: "exists-delta",
+          content:
+            "\\(\\exists\\delta>0\\)"
+        },
+        {
+          id: "right-interval",
+          content:
+            "\\(a\\lt x\\lt a+\\delta\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "f-greater-m",
+          content:
+            "\\(f(x)>m\\)"
+        },
+
+        {
+          id: "left-interval",
+          content:
+            "\\(a-\\delta\\lt x\\lt a\\)"
+        },
+        {
+          id: "f-less-minus-m",
+          content:
+            "\\(f(x)<-m\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-m",
+        "exists-delta",
+        "right-interval",
+        "implies",
+        "f-greater-m"
+      ],
+
+      explanation:
+        "Approaching a from the right, f(x) must eventually exceed every positive number."
+    },
+
+
+    /* =====================================
+       11. RIGHT-SIDED -INFINITY
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to a^+}f(x)=-\\infty\\)",
+
+      pieces: [
+        {
+          id: "forall-m",
+          content:
+            "\\(\\forall m>0,\\)"
+        },
+        {
+          id: "exists-delta",
+          content:
+            "\\(\\exists\\delta>0\\)"
+        },
+        {
+          id: "right-interval",
+          content:
+            "\\(a\\lt x\\lt a+\\delta\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "f-less-minus-m",
+          content:
+            "\\(f(x)<-m\\)"
+        },
+
+        {
+          id: "left-interval",
+          content:
+            "\\(a-\\delta\\lt x\\lt a\\)"
+        },
+        {
+          id: "f-greater-m",
+          content:
+            "\\(f(x)>m\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-m",
+        "exists-delta",
+        "right-interval",
+        "implies",
+        "f-less-minus-m"
+      ],
+
+      explanation:
+        "Approaching a from the right, f(x) must eventually lie below -m for every positive m."
+    },
+
+
+    /* =====================================
+       12. LEFT-SIDED +INFINITY
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to a^-}f(x)=\\infty\\)",
+
+      pieces: [
+        {
+          id: "forall-m",
+          content:
+            "\\(\\forall m>0,\\)"
+        },
+        {
+          id: "exists-delta",
+          content:
+            "\\(\\exists\\delta>0\\)"
+        },
+        {
+          id: "left-interval",
+          content:
+            "\\(a-\\delta\\lt x\\lt a\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "f-greater-m",
+          content:
+            "\\(f(x)>m\\)"
+        },
+
+        {
+          id: "right-interval",
+          content:
+            "\\(a\\lt x\\lt a+\\delta\\)"
+        },
+        {
+          id: "f-less-minus-m",
+          content:
+            "\\(f(x)<-m\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-m",
+        "exists-delta",
+        "left-interval",
+        "implies",
+        "f-greater-m"
+      ],
+
+      explanation:
+        "Approaching a from the left, f(x) must eventually exceed every positive number."
+    },
+
+
+    /* =====================================
+       13. LEFT-SIDED -INFINITY
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to a^-}f(x)=-\\infty\\)",
+
+      pieces: [
+        {
+          id: "forall-m",
+          content:
+            "\\(\\forall m>0,\\)"
+        },
+        {
+          id: "exists-delta",
+          content:
+            "\\(\\exists\\delta>0\\)"
+        },
+        {
+          id: "left-interval",
+          content:
+            "\\(a-\\delta\\lt x\\lt a\\)"
+        },
+        {
+          id: "implies",
+          content:
+            "\\(\\Longrightarrow\\)"
+        },
+        {
+          id: "f-less-minus-m",
+          content:
+            "\\(f(x)<-m\\)"
+        },
+
+        {
+          id: "right-interval",
+          content:
+            "\\(a\\lt x\\lt a+\\delta\\)"
+        },
+        {
+          id: "f-greater-m",
+          content:
+            "\\(f(x)>m\\)"
+        }
+      ],
+
+      correctOrder: [
+        "forall-m",
+        "exists-delta",
+        "left-interval",
+        "implies",
+        "f-less-minus-m"
+      ],
+
+      explanation:
+        "Approaching a from the left, f(x) must eventually lie below -m for every positive m."
+    },
+
+
+    /* =====================================
+       14. TWO-SIDED +INFINITY
+       Notes characterize this by the two
+       one-sided limits.
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to a}f(x)=\\infty\\)",
+
+      pieces: [
+        {
+          id: "right-positive-infinity",
+          content:
+            "\\(\\displaystyle\\lim_{x\\to a^+}f(x)=\\infty\\)"
+        },
+        {
+          id: "and",
+          content:
+            "\\(\\text{and}\\)"
+        },
+        {
+          id: "left-positive-infinity",
+          content:
+            "\\(\\displaystyle\\lim_{x\\to a^-}f(x)=\\infty\\)"
+        },
+
+        {
+          id: "right-negative-infinity",
+          content:
+            "\\(\\displaystyle\\lim_{x\\to a^+}f(x)=-\\infty\\)"
+        },
+        {
+          id: "left-negative-infinity",
+          content:
+            "\\(\\displaystyle\\lim_{x\\to a^-}f(x)=-\\infty\\)"
+        }
+      ],
+
+      correctOrder: [
+        "right-positive-infinity",
+        "and",
+        "left-positive-infinity"
+      ],
+
+      explanation:
+        "The two-sided limit is positive infinity precisely when both one-sided limits are positive infinity."
+    },
+
+
+    /* =====================================
+       15. TWO-SIDED -INFINITY
+    ===================================== */
+
+    {
+      prompt:
+        "\\(\\displaystyle \\lim_{x\\to a}f(x)=-\\infty\\)",
+
+      pieces: [
+        {
+          id: "right-negative-infinity",
+          content:
+            "\\(\\displaystyle\\lim_{x\\to a^+}f(x)=-\\infty\\)"
+        },
+        {
+          id: "and",
+          content:
+            "\\(\\text{and}\\)"
+        },
+        {
+          id: "left-negative-infinity",
+          content:
+            "\\(\\displaystyle\\lim_{x\\to a^-}f(x)=-\\infty\\)"
+        },
+
+        {
+          id: "right-positive-infinity",
+          content:
+            "\\(\\displaystyle\\lim_{x\\to a^+}f(x)=\\infty\\)"
+        },
+        {
+          id: "left-positive-infinity",
+          content:
+            "\\(\\displaystyle\\lim_{x\\to a^-}f(x)=\\infty\\)"
+        }
+      ],
+
+      correctOrder: [
+        "right-negative-infinity",
+        "and",
+        "left-negative-infinity"
+      ],
+
+      explanation:
+        "The two-sided limit is negative infinity precisely when both one-sided limits are negative infinity."
+    }
+
+  ]
+},
+ {
+  course: "calculus-1",
   section: "Sequence Limits",
   id: "proof-order-sequence-limits",
   type: "logical-order",
