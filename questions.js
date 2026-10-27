@@ -1981,5 +1981,191 @@ const questions = [
     }
 
   ]
+},
+  {
+  course: "calculus-2",
+  section: "Numerical Series",
+  id: "proof-order-series",
+  type: "logical-order",
+
+  question:
+    "Arrange the following statements in a logical order to complete the proof.",
+
+  pool: [
+
+    /* =====================================
+       PROOF 1
+       TAIL CONVERGENCE THEOREM — PART (i)
+    ===================================== */
+
+    {
+      prompt:
+        "If \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges, show that \\(\\displaystyle\\sum_{n=j}^{\\infty}a_n\\) converges for each positive integer \\(j\\).",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "Let \\(m\\ge j\\), and let \\(S_m=\\displaystyle\\sum_{n=1}^{m}a_n\\) and \\(T_m=\\displaystyle\\sum_{n=j}^{m}a_n\\).",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "We have \\(S_m=(a_1+a_2+\\cdots+a_{j-1})+T_m\\).",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "Suppose \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges, so \\(\\lim_{m\\to\\infty}S_m=S\\) for some \\(S\\in\\mathbb{R}\\).",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "Therefore \\(T_m=S_m-(a_1+a_2+\\cdots+a_{j-1})\\).",
+          rank: 4
+        },
+
+        {
+          id: "E",
+          content:
+            "Hence \\(\\lim_{m\\to\\infty}T_m=S-(a_1+a_2+\\cdots+a_{j-1})\\).",
+          rank: 5
+        },
+
+        {
+          id: "F",
+          content:
+            "Therefore \\(\\displaystyle\\sum_{n=j}^{\\infty}a_n\\) converges.",
+          rank: 6
+        }
+      ],
+
+      explanation:
+        "The proof relates the partial sums of the tail to the partial sums of the original series by subtracting a fixed finite sum."
+    },
+
+
+    /* =====================================
+       PROOF 2
+       TAIL CONVERGENCE THEOREM — PART (ii)
+    ===================================== */
+
+    {
+      prompt:
+        "If \\(\\displaystyle\\sum_{n=j}^{\\infty}a_n\\) converges for some positive integer \\(j\\), show that \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges.",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "Let \\(S_m=\\displaystyle\\sum_{n=1}^{m}a_n\\) and \\(T_m=\\displaystyle\\sum_{n=j}^{m}a_n\\), where \\(m\\ge j\\).",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "We have \\(S_m=(a_1+a_2+\\cdots+a_{j-1})+T_m\\).",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "Suppose \\(\\displaystyle\\sum_{n=j}^{\\infty}a_n\\) converges, so \\(\\lim_{m\\to\\infty}T_m=T\\) for some \\(T\\in\\mathbb{R}\\).",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "Since \\(a_1+a_2+\\cdots+a_{j-1}\\) is a finite sum of real numbers, it is a finite real number.",
+          rank: 4
+        },
+
+        {
+          id: "E",
+          content:
+            "Therefore \\(\\lim_{m\\to\\infty}S_m=(a_1+a_2+\\cdots+a_{j-1})+T\\).",
+          rank: 5
+        },
+
+        {
+          id: "F",
+          content:
+            "Hence \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges.",
+          rank: 6
+        }
+      ],
+
+      explanation:
+        "Adding finitely many terms to a convergent tail does not change convergence."
+    },
+
+
+    /* =====================================
+       PROOF 3
+       NECESSARY CONDITION FOR CONVERGENCE
+    ===================================== */
+
+    {
+      prompt:
+        "Show that if \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges, then \\(\\displaystyle\\lim_{n\\to\\infty}a_n=0\\).",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "Let \\(S_m=\\displaystyle\\sum_{n=1}^{m}a_n\\) denote the \\(m\\)-th partial sum.",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "Suppose \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges, so \\(\\lim_{m\\to\\infty}S_m=S\\) for some \\(S\\in\\mathbb{R}\\).",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "For \\(m\\ge2\\), we have \\(S_m-S_{m-1}=a_m\\).",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "Also, \\(\\lim_{m\\to\\infty}S_{m-1}=S\\).",
+          rank: 4
+        },
+
+        {
+          id: "E",
+          content:
+            "Therefore \\(\\lim_{m\\to\\infty}a_m=\\lim_{m\\to\\infty}(S_m-S_{m-1})=S-S=0\\).",
+          rank: 5
+        },
+
+        {
+          id: "F",
+          content:
+            "Hence \\(\\displaystyle\\lim_{n\\to\\infty}a_n=0\\).",
+          rank: 6
+        }
+      ],
+
+      explanation:
+        "A term of the series is the difference of two consecutive partial sums. If both partial sums approach the same limit, their difference approaches zero."
+    }
+
+  ]
 }
 ];
