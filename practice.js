@@ -3861,7 +3861,376 @@ if (question.type === "matching") {
 
 
     let draggedItem = null;
+/* =========================================
+   CHAIN RULE BUILDER — STAGE 1
+========================================= */
 
+if (question.type === "chain-rule-builder") {
+
+  const card = document.createElement("article");
+  card.className = "question-card chain-rule-builder-question";
+  card.id = question.id;
+
+  const selectedPaths = new Set();
+
+  card.innerHTML = `
+
+    <p class="question-number">
+      Question ${index + 1}
+    </p>
+
+    <h3>
+      ${question.question}
+    </h3>
+
+    <div class="chain-rule-target">
+      Find ${question.target}
+    </div>
+
+
+    <!-- DEPENDENCY TREE -->
+
+    <div class="dependency-tree">
+
+      <div class="dependency-level dependency-top">
+
+        <div class="dependency-node">
+          z
+        </div>
+
+      </div>
+
+
+      <div class="dependency-connectors dependency-connectors-top">
+
+        <span class="dependency-line dependency-line-left"></span>
+
+        <span class="dependency-line dependency-line-right"></span>
+
+      </div>
+
+
+      <div class="dependency-level dependency-middle">
+
+        <div class="dependency-node">
+          x
+        </div>
+
+        <div class="dependency-node">
+          y
+        </div>
+
+      </div>
+
+
+      <div class="dependency-lower-layout">
+
+        <div class="dependency-x-branch">
+
+          <div class="dependency-connectors dependency-connectors-lower">
+
+            <span class="dependency-line dependency-line-left"></span>
+
+            <span class="dependency-line dependency-line-right"></span>
+
+          </div>
+
+          <div class="dependency-level dependency-bottom">
+
+            <div class="dependency-node">
+              u
+            </div>
+
+            <div class="dependency-node">
+              v
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="dependency-y-branch">
+
+          <div class="dependency-vertical-line"></div>
+
+          <div class="dependency-node">
+            x
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- STAGE 1 -->
+
+    <div class="chain-rule-stage">
+
+      <h4>
+        Stage 1
+      </h4>
+
+      <p class="chain-rule-stage-prompt">
+        ${question.stage1.prompt}
+      </p>
+
+
+      <div class="chain-rule-path-options">
+
+        ${question.stage1.choices
+          .map(
+            choice => `
+              <button
+                type="button"
+                class="chain-rule-path"
+                data-path-id="${choice.id}"
+              >
+                ${choice.content}
+              </button>
+            `
+          )
+          .join("")}
+
+      </div>
+
+
+      <div class="chain-rule-actions">
+
+        <button
+          type="button"
+          class="check-answer chain-rule-check-paths"
+        >
+          Check Paths
+        </button>
+
+        <button
+          type="button"
+          class="chain-rule-reset-paths"
+        >
+          Reset
+        </button>
+
+      </div>
+
+
+      <div
+        class="question-feedback chain-rule-feedback"
+        aria-live="polite"
+      ></div>
+
+    </div>
+  `;
+
+
+  const pathButtons =
+    card.querySelectorAll(
+      ".chain-rule-path"
+    );
+
+  const feedback =
+    card.querySelector(
+      ".chain-rule-feedback"
+    );
+
+
+  /* =====================================
+     SELECT / DESELECT PATHS
+  ===================================== */
+
+  pathButtons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const id =
+          button.dataset.pathId;
+
+
+        if (selectedPaths.has(id)) {
+
+          selectedPaths.delete(id);
+
+          button.classList.remove(
+            "chain-rule-path-selected"
+          );
+
+        } else {
+
+          selectedPaths.add(id);
+
+          button.classList.add(
+            "chain-rule-path-selected"
+          );
+
+        }
+
+
+        feedback.innerHTML = "";
+
+      }
+    );
+
+  });
+
+
+  /* =====================================
+     CHECK PATHS
+  ===================================== */
+
+  const checkButton =
+    card.querySelector(
+      ".chain-rule-check-paths"
+    );
+
+
+  checkButton.addEventListener(
+    "click",
+    () => {
+
+      const correctIds =
+        question.stage1.choices
+          .filter(choice => choice.correct)
+          .map(choice => choice.id);
+
+
+      const selectedIds =
+        [...selectedPaths];
+
+
+      const allCorrectSelected =
+        correctIds.every(
+          id => selectedPaths.has(id)
+        );
+
+
+      const noIncorrectSelected =
+        selectedIds.every(
+          id => correctIds.includes(id)
+        );
+
+
+      pathButtons.forEach(button => {
+
+        const id =
+          button.dataset.pathId;
+
+        const choice =
+          question.stage1.choices.find(
+            item => item.id === id
+          );
+
+
+        button.classList.remove(
+          "chain-rule-path-correct",
+          "chain-rule-path-incorrect"
+        );
+
+
+        if (
+          selectedPaths.has(id) &&
+          choice.correct
+        ) {
+
+          button.classList.add(
+            "chain-rule-path-correct"
+          );
+
+        }
+
+
+        if (
+          selectedPaths.has(id) &&
+          !choice.correct
+        ) {
+
+          button.classList.add(
+            "chain-rule-path-incorrect"
+          );
+
+        }
+
+      });
+
+
+      if (
+        allCorrectSelected &&
+        noIncorrectSelected
+      ) {
+
+        feedback.className =
+          "question-feedback feedback-correct chain-rule-feedback";
+
+        feedback.innerHTML = `
+          <strong>Correct!</strong>
+          There are two dependency paths from
+          \\(z\\) to \\(u\\).
+        `;
+
+      } else {
+
+        feedback.className =
+          "question-feedback feedback-incorrect chain-rule-feedback";
+
+        feedback.innerHTML = `
+          <strong>Not quite.</strong>
+          Trace every route from \\(z\\) down to \\(u\\).
+        `;
+
+      }
+
+
+      renderMath(feedback);
+    }
+  );
+
+
+  /* =====================================
+     RESET
+  ===================================== */
+
+  const resetButton =
+    card.querySelector(
+      ".chain-rule-reset-paths"
+    );
+
+
+  resetButton.addEventListener(
+    "click",
+    () => {
+
+      selectedPaths.clear();
+
+
+      pathButtons.forEach(button => {
+
+        button.classList.remove(
+          "chain-rule-path-selected",
+          "chain-rule-path-correct",
+          "chain-rule-path-incorrect"
+        );
+
+      });
+
+
+      feedback.className =
+        "question-feedback chain-rule-feedback";
+
+      feedback.innerHTML = "";
+
+    }
+  );
+
+
+  renderMath(card);
+
+  section.appendChild(card);
+
+  return;
+}
 
     /* =====================================
        DRAG START
