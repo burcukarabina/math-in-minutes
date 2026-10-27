@@ -4812,5 +4812,57 @@ const questions = [
     }
 
   ]
+},
+  {
+  course: "calculus-3",
+  section: "Chain Rule",
+  id: "chain-rule-builder-sample",
+  type: "chain-rule-builder",
+
+  question:
+    "Use the dependency tree to build the Chain Rule formula.",
+
+  target:
+    "\\(\\displaystyle \\frac{\\partial z}{\\partial u}\\)",
+
+  stage1: {
+
+    prompt:
+      "Select all dependency paths from \\(z\\) to \\(u\\).",
+
+    choices: [
+
+      {
+        id: "p1",
+        content:
+          "\\(z\\to x\\to u\\)",
+        correct: true
+      },
+
+      {
+        id: "p2",
+        content:
+          "\\(z\\to y\\to x\\to u\\)",
+        correct: true
+      },
+
+      {
+        id: "p3",
+        content:
+          "\\(z\\to y\\to u\\)",
+        correct: false
+      },
+
+      {
+        id: "p4",
+        content:
+          "\\(z\\to x\\to v\\)",
+        correct: false
+      }
+
+    ]
+
+  }
+
 }
 ];
