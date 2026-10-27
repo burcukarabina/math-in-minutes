@@ -1316,3 +1316,98 @@ footer p {
     min-height: 90px;
   }
 }
+/* =========================================
+   LOGICAL ORDER
+========================================= */
+
+.logical-order-question {
+  padding: 2rem;
+}
+
+.logical-order-prompt {
+  margin: 1rem 0 1.5rem;
+  padding: 1rem 1.25rem;
+
+  background: var(--drag-bank-bg);
+  border: 2px solid var(--drag-border);
+  border-radius: 10px;
+
+  font-weight: 600;
+}
+
+.logical-order-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.8rem;
+
+  margin: 1.5rem 0;
+}
+
+.logical-order-item {
+  position: relative;
+
+  padding: 1rem 1.25rem;
+
+  background: var(--drag-card-bg);
+
+  border: 2px solid var(--drag-border);
+  border-radius: 10px;
+
+  cursor: grab;
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.08);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.logical-order-item:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.12);
+
+  border-color: var(--uw-gold);
+}
+
+.logical-order-item.dragging {
+  opacity: 0.55;
+  cursor: grabbing;
+}
+
+.logical-order-content {
+  display: block;
+
+  line-height: 1.6;
+}
+
+.logical-order-item.logical-order-correct {
+  border-color: #2e7d32;
+  background: #e8f5e9;
+}
+
+.logical-order-item.logical-order-incorrect {
+  border-color: #ef6c00;
+  background: #fff3e0;
+}
+
+.logical-order-feedback {
+  margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+
+  .logical-order-question {
+    padding: 1.25rem;
+  }
+
+  .logical-order-item {
+    padding: 0.9rem 1rem;
+  }
+
+}
