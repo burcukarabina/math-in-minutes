@@ -113,6 +113,208 @@ const questions = [
 },
   {
   course: "calculus-1",
+  section: "Functions",
+  id: "match-function-domain",
+  type: "matching",
+
+  question:
+    "Match each function to its domain.",
+
+  instructions:
+    "Drag each function card to the correct domain.",
+
+  numberToDraw: 4,
+
+  pool: [
+
+    /* =========================
+       RATIONAL FUNCTIONS
+    ========================= */
+
+    {
+      id: "r1",
+      left:
+        "\\(\\displaystyle f(x)=\\frac{3}{x+5}\\)",
+      right:
+        "\\((-\\infty,-5)\\cup(-5,\\infty)\\)"
+    },
+
+    {
+      id: "r2",
+      left:
+        "\\(\\displaystyle f(x)=\\frac{2x}{x^2-4}\\)",
+      right:
+        "\\((-\\infty,-2)\\cup(-2,2)\\cup(2,\\infty)\\)"
+    },
+
+    {
+      id: "r3",
+      left:
+        "\\(\\displaystyle f(x)=\\frac{x-4}{(x+2)(x-1)}\\)",
+      right:
+        "\\((-\\infty,-2)\\cup(-2,1)\\cup(1,\\infty)\\)"
+    },
+
+    {
+      id: "r4",
+      left:
+        "\\(\\displaystyle f(x)=\\frac{x^2-1}{x-1}\\)",
+      right:
+        "\\((-\\infty,1)\\cup(1,\\infty)\\)"
+    },
+
+
+    /* =========================
+       SQUARE ROOT FUNCTIONS
+    ========================= */
+
+    {
+      id: "s1",
+      left:
+        "\\(\\displaystyle f(x)=\\sqrt{x-3}\\)",
+      right:
+        "\\([3,\\infty)\\)"
+    },
+
+    {
+      id: "s2",
+      left:
+        "\\(\\displaystyle f(x)=\\sqrt{5-x}\\)",
+      right:
+        "\\((-\\infty,5]\\)"
+    },
+
+    {
+      id: "s3",
+      left:
+        "\\(\\displaystyle f(x)=\\sqrt{x^2-4}\\)",
+      right:
+        "\\((-\\infty,-2]\\cup[2,\\infty)\\)"
+    },
+
+    {
+      id: "s4",
+      left:
+        "\\(\\displaystyle f(x)=\\sqrt{4-x^2}\\)",
+      right:
+        "\\([-2,2]\\)"
+    },
+
+
+    /* =========================
+       NATURAL LOGARITHMS
+    ========================= */
+
+    {
+      id: "l1",
+      left:
+        "\\(\\displaystyle f(x)=\\ln(x-2)\\)",
+      right:
+        "\\((2,\\infty)\\)"
+    },
+
+    {
+      id: "l2",
+      left:
+        "\\(\\displaystyle f(x)=\\ln(5-x)\\)",
+      right:
+        "\\((-\\infty,5)\\)"
+    },
+
+    {
+      id: "l3",
+      left:
+        "\\(\\displaystyle f(x)=\\ln(x^2-4)\\)",
+      right:
+        "\\((-\\infty,-2)\\cup(2,\\infty)\\)"
+    },
+
+    {
+      id: "l4",
+      left:
+        "\\(\\displaystyle f(x)=\\ln(4-x^2)\\)",
+      right:
+        "\\((-2,2)\\)"
+    },
+
+
+    /* =========================
+       EXPONENTIAL FUNCTIONS
+    ========================= */
+
+    {
+      id: "e1",
+      left:
+        "\\(\\displaystyle f(x)=e^x\\)",
+      right:
+        "\\((-\\infty,\\infty)\\)"
+    },
+
+    {
+      id: "e2",
+      left:
+        "\\(\\displaystyle f(x)=e^{x^2-4}\\)",
+      right:
+        "\\((-\\infty,\\infty)\\)"
+    },
+
+    {
+      id: "e3",
+      left:
+        "\\(\\displaystyle f(x)=2^{x-3}\\)",
+      right:
+        "\\((-\\infty,\\infty)\\)"
+    },
+
+    {
+      id: "e4",
+      left:
+        "\\(\\displaystyle f(x)=e^{-x^2}\\)",
+      right:
+        "\\((-\\infty,\\infty)\\)"
+    },
+
+
+    /* =========================
+       MIXED FUNCTIONS
+    ========================= */
+
+    {
+      id: "m1",
+      left:
+        "\\(\\displaystyle f(x)=\\frac{\\sqrt{x-1}}{x-3}\\)",
+      right:
+        "\\([1,3)\\cup(3,\\infty)\\)"
+    },
+
+    {
+      id: "m2",
+      left:
+        "\\(\\displaystyle f(x)=\\frac{1}{\\sqrt{x-2}}\\)",
+      right:
+        "\\((2,\\infty)\\)"
+    },
+
+    {
+      id: "m3",
+      left:
+        "\\(\\displaystyle f(x)=\\ln\\!\\left(\\frac{x-1}{x+2}\\right)\\)",
+      right:
+        "\\((-\\infty,-2)\\cup(1,\\infty)\\)"
+    },
+
+    {
+      id: "m4",
+      left:
+        "\\(\\displaystyle f(x)=\\sqrt{\\ln x}\\)",
+      right:
+        "\\([1,\\infty)\\)"
+    }
+
+  ]
+},
+  {
+  course: "calculus-1",
   section: "Function Limits",
   id: "formal-limit-definition-builder",
   type: "statement-builder",
