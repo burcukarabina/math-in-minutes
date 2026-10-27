@@ -1757,7 +1757,7 @@ let currentSet = null;
 
   return;
 }
-      /* =========================================
+/* =========================================
    LOGICAL-ORDER QUESTION
 ========================================= */
 
@@ -1776,7 +1776,55 @@ if (
 
 
   let displayedItems = [];
-let currentSet = null;renderLogicalOrderQuestion
+  let currentSet = null;
+
+
+  /* -----------------------------------------
+     CHOOSE A SET FROM THE POOL
+  ----------------------------------------- */
+
+  function chooseLogicalSet() {
+
+    let newSet;
+
+    if (
+      question.pool.length === 1
+    ) {
+
+      newSet =
+        question.pool[0];
+
+    }
+
+    else {
+
+      do {
+
+        newSet =
+          question.pool[
+            Math.floor(
+              Math.random() *
+              question.pool.length
+            )
+          ];
+
+      } while (
+        newSet === currentSet
+      );
+
+    }
+
+
+    currentSet =
+      newSet;
+
+
+    displayedItems =
+      shuffleArray(
+        currentSet.items
+      );
+
+  }
 
 
   /* -----------------------------------------
@@ -1786,24 +1834,26 @@ let currentSet = null;renderLogicalOrderQuestion
   function buildLogicalItemsHTML() {
 
     return displayedItems
-      .map((item, itemIndex) => `
+      .map(
+        (item, itemIndex) => `
 
-        <div
-          class="logical-order-item"
-          draggable="true"
-          tabindex="0"
-          data-id="${item.id}"
-          data-rank="${item.rank}"
-          data-index="${itemIndex}"
-        >
+          <div
+            class="logical-order-item"
+            draggable="true"
+            tabindex="0"
+            data-id="${item.id}"
+            data-rank="${item.rank}"
+            data-index="${itemIndex}"
+          >
 
-          <span class="logical-order-content">
-            ${item.content}
-          </span>
+            <span class="logical-order-content">
+              ${item.content}
+            </span>
 
-        </div>
+          </div>
 
-      `)
+        `
+      )
       .join("");
 
   }
@@ -1815,36 +1865,7 @@ let currentSet = null;renderLogicalOrderQuestion
 
   function renderLogicalOrderQuestion() {
 
-   let newSet;
-
-if (question.pool.length === 1) {
-
-  newSet = question.pool[0];
-
-} else {
-
-  do {
-
-    newSet =
-      question.pool[
-        Math.floor(
-          Math.random() *
-          question.pool.length
-        )
-      ];
-
-  } while (
-    newSet === currentSet
-  );
-
-}
-
-currentSet = newSet;
-
-displayedItems =
-  shuffleArray(
-    currentSet.items
-  );
+    chooseLogicalSet();
 
 
     card.innerHTML = `
@@ -1858,21 +1879,24 @@ displayedItems =
       </h3>
 
       ${
-  currentSet.prompt
-    ? `
-      <div class="logical-order-prompt">
-        ${currentSet.prompt}
-      </div>
-    `
-    : ""
-}
+        currentSet.prompt
+          ? `
+            <div class="logical-order-prompt">
+              ${currentSet.prompt}
+            </div>
+          `
+          : ""
+      }
 
       <div
         class="logical-order-list"
         aria-label="Arrange statements in logical order"
       >
+
         ${buildLogicalItemsHTML()}
+
       </div>
+
 
       <div class="random-question-actions">
 
@@ -1887,10 +1911,11 @@ displayedItems =
           type="button"
           class="try-another-button logical-order-try-another-button"
         >
-          Shuffle Again
+          Try Another
         </button>
 
       </div>
+
 
       <div
         class="question-feedback logical-order-feedback"
@@ -1912,7 +1937,8 @@ displayedItems =
       );
 
 
-    let draggedItem = null;
+    let draggedItem =
+      null;
 
 
     /* -----------------------------------------
@@ -1933,7 +1959,8 @@ displayedItems =
           "dragstart",
           event => {
 
-            draggedItem = item;
+            draggedItem =
+              item;
 
             item.classList.add(
               "dragging"
@@ -1954,7 +1981,8 @@ displayedItems =
               "dragging"
             );
 
-            draggedItem = null;
+            draggedItem =
+              null;
 
           }
         );
@@ -1966,11 +1994,14 @@ displayedItems =
 
             event.preventDefault();
 
+
             if (
               !draggedItem ||
               draggedItem === item
             ) {
+
               return;
+
             }
 
 
@@ -2037,7 +2068,8 @@ displayedItems =
           ];
 
 
-        let correctCount = 0;
+        let correctCount =
+          0;
 
 
         orderedItems.forEach(
@@ -2080,6 +2112,10 @@ displayedItems =
         );
 
 
+        /* -----------------------------------------
+           ALL CORRECT
+        ----------------------------------------- */
+
         if (
           correctCount ===
           orderedItems.length
@@ -2087,6 +2123,7 @@ displayedItems =
 
           feedback.className =
             "question-feedback feedback-correct logical-order-feedback";
+
 
           feedback.innerHTML = `
             <strong>Correct!</strong>
@@ -2105,6 +2142,11 @@ displayedItems =
 
         }
 
+
+        /* -----------------------------------------
+           SOME INCORRECT
+        ----------------------------------------- */
+
         else {
 
           const wrongPositions =
@@ -2117,10 +2159,12 @@ displayedItems =
                       item.dataset.rank
                     );
 
-                  return rank ===
-                    position + 1
-                    ? null
-                    : position + 1;
+
+                  return (
+                    rank === position + 1
+                      ? null
+                      : position + 1
+                  );
 
                 }
               )
@@ -2145,14 +2189,16 @@ displayedItems =
         }
 
 
-        renderMath(feedback);
+        renderMath(
+          feedback
+        );
 
       }
     );
 
 
     /* -----------------------------------------
-       SHUFFLE AGAIN
+       TRY ANOTHER
     ----------------------------------------- */
 
     const tryAnotherButton =
@@ -2171,18 +2217,21 @@ displayedItems =
     );
 
 
-    renderMath(card);
+    renderMath(
+      card
+    );
 
   }
 
 
   renderLogicalOrderQuestion();
 
-  section.appendChild(card);
+  section.appendChild(
+    card
+  );
 
   return;
 }
-
       /* =========================================
          RANDOMIZED MULTIPLE CHOICE
       ========================================= */
