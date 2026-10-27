@@ -2399,7 +2399,258 @@ const questions = [
     }
 
   ]
-},{
+},
+ {
+  course: "calculus-2",
+  section: "Applications of Integration",
+  id: "area-between-curves-builder",
+  type: "integral-builder",
+
+  question:
+    "Set up, but do not evaluate, an integral that calculates the area of the region.",
+
+  instructions:
+    "Choose the correct lower bound, upper bound, and integrand.",
+
+  pool: [
+
+    /* =====================================
+       SET 1
+    ===================================== */
+
+    {
+      prompt:
+        "Let \\(R\\) be the region bounded by \\(y=x\\) and \\(y=x^2\\).",
+
+      builder: {
+        lower: {
+          correct: "0",
+          choices: [
+            { value: "0", label: "0" },
+            { value: "1", label: "1" },
+            { value: "-1", label: "−1" },
+            { value: "2", label: "2" }
+          ]
+        },
+
+        upper: {
+          correct: "1",
+          choices: [
+            { value: "0", label: "0" },
+            { value: "1", label: "1" },
+            { value: "2", label: "2" },
+            { value: "-1", label: "−1" }
+          ]
+        },
+
+        integrand: {
+          correct: "x-x2",
+          choices: [
+            { value: "x-x2", label: "x − x²" },
+            { value: "x2-x", label: "x² − x" },
+            { value: "x+x2", label: "x + x²" },
+            { value: "1-x2", label: "1 − x²" }
+          ]
+        },
+
+        differential: "dx"
+      },
+
+      explanation:
+        "On \\([0,1]\\), the line \\(y=x\\) lies above the parabola \\(y=x^2\\), so the area is \\(\\displaystyle\\int\\limits_0^1(x-x^2)\\,dx\\)."
+    },
+
+
+    /* =====================================
+       SET 2
+    ===================================== */
+
+    {
+      prompt:
+        "Let \\(R\\) be the region bounded by \\(y=2x\\) and \\(y=x^2\\).",
+
+      builder: {
+        lower: {
+          correct: "0",
+          choices: [
+            { value: "0", label: "0" },
+            { value: "1", label: "1" },
+            { value: "2", label: "2" },
+            { value: "-2", label: "−2" }
+          ]
+        },
+
+        upper: {
+          correct: "2",
+          choices: [
+            { value: "1", label: "1" },
+            { value: "2", label: "2" },
+            { value: "4", label: "4" },
+            { value: "0", label: "0" }
+          ]
+        },
+
+        integrand: {
+          correct: "2x-x2",
+          choices: [
+            { value: "2x-x2", label: "2x − x²" },
+            { value: "x2-2x", label: "x² − 2x" },
+            { value: "2x+x2", label: "2x + x²" },
+            { value: "x-x2", label: "x − x²" }
+          ]
+        },
+
+        differential: "dx"
+      },
+
+      explanation:
+        "The curves intersect at \\(x=0\\) and \\(x=2\\). On this interval, \\(2x\\) is above \\(x^2\\), so the area is \\(\\displaystyle\\int\\limits_0^2(2x-x^2)\\,dx\\)."
+    },
+
+
+    /* =====================================
+       SET 3
+    ===================================== */
+
+    {
+      prompt:
+        "Let \\(R\\) be the region bounded by \\(y=1\\) and \\(y=x^2\\).",
+
+      builder: {
+        lower: {
+          correct: "-1",
+          choices: [
+            { value: "-1", label: "−1" },
+            { value: "0", label: "0" },
+            { value: "1", label: "1" },
+            { value: "-2", label: "−2" }
+          ]
+        },
+
+        upper: {
+          correct: "1",
+          choices: [
+            { value: "0", label: "0" },
+            { value: "1", label: "1" },
+            { value: "2", label: "2" },
+            { value: "-1", label: "−1" }
+          ]
+        },
+
+        integrand: {
+          correct: "1-x2",
+          choices: [
+            { value: "1-x2", label: "1 − x²" },
+            { value: "x2-1", label: "x² − 1" },
+            { value: "1+x2", label: "1 + x²" },
+            { value: "x-x2", label: "x − x²" }
+          ]
+        },
+
+        differential: "dx"
+      },
+
+      explanation:
+        "The curves meet at \\(x=-1\\) and \\(x=1\\). The horizontal line \\(y=1\\) lies above \\(y=x^2\\), so the area is \\(\\displaystyle\\int\\limits_{-1}^1(1-x^2)\\,dx\\)."
+    },
+
+
+    /* =====================================
+       SET 4
+    ===================================== */
+
+    {
+      prompt:
+        "Let \\(R\\) be the region bounded by \\(y=\\sqrt{x}\\) and \\(y=x\\).",
+
+      builder: {
+        lower: {
+          correct: "0",
+          choices: [
+            { value: "0", label: "0" },
+            { value: "1", label: "1" },
+            { value: "-1", label: "−1" },
+            { value: "2", label: "2" }
+          ]
+        },
+
+        upper: {
+          correct: "1",
+          choices: [
+            { value: "0", label: "0" },
+            { value: "1", label: "1" },
+            { value: "2", label: "2" },
+            { value: "4", label: "4" }
+          ]
+        },
+
+        integrand: {
+          correct: "sqrtx-x",
+          choices: [
+            { value: "sqrtx-x", label: "√x − x" },
+            { value: "x-sqrtx", label: "x − √x" },
+            { value: "sqrtx+x", label: "√x + x" },
+            { value: "1-x", label: "1 − x" }
+          ]
+        },
+
+        differential: "dx"
+      },
+
+      explanation:
+        "The curves intersect at \\(x=0\\) and \\(x=1\\). On this interval, \\(\\sqrt{x}\\) lies above \\(x\\), so the area is \\(\\displaystyle\\int\\limits_0^1(\\sqrt{x}-x)\\,dx\\)."
+    },
+
+
+    /* =====================================
+       SET 5
+    ===================================== */
+
+    {
+      prompt:
+        "Let \\(R\\) be the region bounded by \\(y=4-x^2\\) and \\(y=x^2\\).",
+
+      builder: {
+        lower: {
+          correct: "-sqrt2",
+          choices: [
+            { value: "-sqrt2", label: "−√2" },
+            { value: "-2", label: "−2" },
+            { value: "0", label: "0" },
+            { value: "-1", label: "−1" }
+          ]
+        },
+
+        upper: {
+          correct: "sqrt2",
+          choices: [
+            { value: "sqrt2", label: "√2" },
+            { value: "2", label: "2" },
+            { value: "1", label: "1" },
+            { value: "4", label: "4" }
+          ]
+        },
+
+        integrand: {
+          correct: "4-2x2",
+          choices: [
+            { value: "4-2x2", label: "4 − 2x²" },
+            { value: "2x2-4", label: "2x² − 4" },
+            { value: "4-x2", label: "4 − x²" },
+            { value: "4+x2", label: "4 + x²" }
+          ]
+        },
+
+        differential: "dx"
+      },
+
+      explanation:
+        "Solving \\(4-x^2=x^2\\) gives \\(x=\\pm\\sqrt2\\). The upper curve is \\(4-x^2\\) and the lower curve is \\(x^2\\), giving \\(4-2x^2\\)."
+    }
+
+  ]
+},
+ {
   course: "calculus-3",
   section: "Multivariable Limits",
   id: "direct-substitution-multivariable-limits",
