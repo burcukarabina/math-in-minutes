@@ -1951,10 +1951,45 @@ footer p {
 }
 
 
+/* Outer card area */
 .practice-flashcard {
   min-height: 230px;
 
   margin: 1.75rem 0;
+
+  perspective: 1200px;
+
+  cursor: pointer;
+}
+
+
+/* The element that actually rotates */
+.practice-flashcard-inner {
+  position: relative;
+
+  width: 100%;
+  min-height: 230px;
+
+  transform-style: preserve-3d;
+
+  transition: transform 0.65s ease;
+}
+
+
+/* Flip state */
+.practice-flashcard.flipped
+.practice-flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+
+/* Shared front/back styling */
+.practice-flashcard-face {
+  position: absolute;
+
+  inset: 0;
+
+  min-height: 230px;
 
   padding: 2rem;
 
@@ -1971,18 +2006,32 @@ footer p {
   border: 4px solid var(--uw-charcoal);
   border-radius: 14px;
 
-  cursor: pointer;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 
   transition:
-    transform 0.15s ease,
     border-color 0.15s ease,
     box-shadow 0.15s ease;
 }
 
 
-.practice-flashcard:hover {
-  transform: translateY(-2px);
+/* Question side */
+.practice-flashcard-front {
+  transform: rotateY(0deg);
+}
 
+
+/* Answer side */
+.practice-flashcard-back {
+  transform: rotateY(180deg);
+
+  background: var(--uw-light-gold);
+}
+
+
+/* Hover effect */
+.practice-flashcard:hover
+.practice-flashcard-face {
   border-color: var(--uw-gold);
 
   box-shadow:
@@ -1990,6 +2039,7 @@ footer p {
 }
 
 
+/* QUESTION / ANSWER label */
 .practice-flashcard-label {
   margin-bottom: 1.25rem;
 
@@ -2002,6 +2052,7 @@ footer p {
 }
 
 
+/* Main flashcard content */
 .practice-flashcard-content {
   max-width: 700px;
 
@@ -2011,6 +2062,7 @@ footer p {
 }
 
 
+/* Buttons below flashcard */
 .flashcard-actions {
   display: flex;
   flex-wrap: wrap;
@@ -2021,16 +2073,38 @@ footer p {
 }
 
 
+/* Keyboard focus */
+.practice-flashcard:focus-visible {
+  outline: 3px solid var(--uw-gold);
+  outline-offset: 5px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 700px) {
 
   .flashcard-question {
     padding: 1.25rem;
   }
 
-  .practice-flashcard {
-    min-height: 190px;
 
+  .practice-flashcard,
+  .practice-flashcard-inner,
+  .practice-flashcard-face {
+    min-height: 190px;
+  }
+
+
+  .practice-flashcard-face {
     padding: 1.5rem;
+  }
+
+
+  .practice-flashcard-content {
+    font-size: 1.1rem;
   }
 
 }
