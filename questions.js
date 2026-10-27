@@ -1,5 +1,57 @@
 const questions = [
 {
+  course: "calculus-1",
+  section: "Sequence Limits",
+  id: "proof-order-squeeze-theorem",
+  type: "logical-order",
+
+  question:
+    "Arrange the following statements in a logical order to complete the proof of the Squeeze Theorem for Sequences.",
+
+  prompt:
+    "Assume \\(a_n\\le b_n\\le c_n\\) for all sufficiently large \\(n\\), and \\(\\lim_{n\\to\\infty}a_n=L=\\lim_{n\\to\\infty}c_n\\).",
+
+  items: [
+    {
+      id: "A",
+      content:
+        "Let \\(\\varepsilon>0\\) be given.",
+      rank: 1
+    },
+
+    {
+      id: "B",
+      content:
+        "Since \\(a_n\\to L\\) and \\(c_n\\to L\\), choose \\(N>M\\) such that for \\(n>N\\), both \\(a_n\\) and \\(c_n\\) lie in \\((L-\\varepsilon,L+\\varepsilon)\\).",
+      rank: 2
+    },
+
+    {
+      id: "C",
+      content:
+        "For \\(n>N\\), we have \\(L-\\varepsilon<a_n\\le b_n\\le c_n<L+\\varepsilon\\).",
+      rank: 3
+    },
+
+    {
+      id: "D",
+      content:
+        "Therefore \\(b_n\\in(L-\\varepsilon,L+\\varepsilon)\\) whenever \\(n>N\\).",
+      rank: 4
+    },
+
+    {
+      id: "E",
+      content:
+        "Hence \\(\\lim_{n\\to\\infty}b_n=L\\).",
+      rank: 5
+    }
+  ],
+
+  explanation:
+    "This follows the epsilon-based proof of the Squeeze Theorem given in the MATH 137 notes."
+},
+  {
   course: "calculus-2",
   section: "Riemann Sums",
   id: "definite-integral-to-riemann-sum",
