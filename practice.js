@@ -3650,8 +3650,7 @@ if (question.type === "flashcard") {
 
   return;
 }
-
-      /* =========================================
+/* =========================================
    MATCHING
 ========================================= */
 
@@ -3667,7 +3666,8 @@ if (question.type === "matching") {
 
   function chooseMatchingSet() {
 
-    const shuffledPool = shuffleArray(question.pool);
+    const shuffledPool =
+      shuffleArray(question.pool);
 
     const chosen = [];
     const usedAnswers = new Set();
@@ -3730,8 +3730,6 @@ if (question.type === "matching") {
       <div class="matching-layout">
 
 
-        <!-- LEFT COLUMN -->
-
         <div class="matching-column">
 
           <h4>
@@ -3751,11 +3749,9 @@ if (question.type === "matching") {
                     draggable="true"
                     data-id="${item.id}"
                   >
-
                     <span class="matching-item-content">
                       ${item.left}
                     </span>
-
                   </div>
                 `
               )
@@ -3765,8 +3761,6 @@ if (question.type === "matching") {
 
         </div>
 
-
-        <!-- RIGHT COLUMN -->
 
         <div class="matching-column">
 
@@ -3860,13 +3854,8 @@ if (question.type === "matching") {
         ".matching-feedback"
       );
 
-
     let draggedItem = null;
 
-
-    /* =====================================
-       DRAG START
-    ===================================== */
 
     items.forEach(item => {
 
@@ -3882,7 +3871,6 @@ if (question.type === "matching") {
 
           event.dataTransfer.effectAllowed =
             "move";
-
         }
       );
 
@@ -3896,16 +3884,11 @@ if (question.type === "matching") {
           );
 
           draggedItem = null;
-
         }
       );
 
     });
 
-
-    /* =====================================
-       DROP ZONES
-    ===================================== */
 
     dropzones.forEach(dropzone => {
 
@@ -3918,7 +3901,6 @@ if (question.type === "matching") {
           dropzone.classList.add(
             "matching-drop-active"
           );
-
         }
       );
 
@@ -3930,7 +3912,6 @@ if (question.type === "matching") {
           dropzone.classList.remove(
             "matching-drop-active"
           );
-
         }
       );
 
@@ -3988,23 +3969,16 @@ if (question.type === "matching") {
 
 
           feedback.innerHTML = "";
-
         }
       );
 
     });
 
 
-    /* =====================================
-       RETURN CARDS TO BANK
-    ===================================== */
-
     bank.addEventListener(
       "dragover",
       event => {
-
         event.preventDefault();
-
       }
     );
 
@@ -4015,31 +3989,22 @@ if (question.type === "matching") {
 
         event.preventDefault();
 
-
         if (!draggedItem) {
           return;
         }
-
 
         bank.appendChild(
           draggedItem
         );
 
-
         delete placements[
           draggedItem.dataset.id
         ];
 
-
         feedback.innerHTML = "";
-
       }
     );
 
-
-    /* =====================================
-       CHECK ANSWERS
-    ===================================== */
 
     const checkButton =
       card.querySelector(
@@ -4058,7 +4023,6 @@ if (question.type === "matching") {
 
           const placedAnswer =
             placements[item.id];
-
 
           const itemElement =
             card.querySelector(
@@ -4087,7 +4051,6 @@ if (question.type === "matching") {
             itemElement.classList.add(
               "matching-incorrect"
             );
-
           }
 
         });
@@ -4115,16 +4078,11 @@ if (question.type === "matching") {
             <strong>${correctCount} of ${currentItems.length} correct.</strong>
             Recheck the domain restrictions for the highlighted cards.
           `;
-
         }
 
       }
     );
 
-
-    /* =====================================
-       RESET
-    ===================================== */
 
     const resetButton =
       card.querySelector(
@@ -4151,7 +4109,6 @@ if (question.type === "matching") {
             );
 
             bank.appendChild(item);
-
           });
 
 
@@ -4159,14 +4116,9 @@ if (question.type === "matching") {
           "question-feedback matching-feedback";
 
         feedback.innerHTML = "";
-
       }
     );
 
-
-    /* =====================================
-       TRY ANOTHER SET
-    ===================================== */
 
     const tryAnotherButton =
       card.querySelector(
@@ -4179,7 +4131,6 @@ if (question.type === "matching") {
       () => {
 
         renderMatchingQuestion();
-
       }
     );
 
@@ -4194,17 +4145,26 @@ if (question.type === "matching") {
 
   return;
 }
+
+
 /* =========================================
    CHAIN RULE BUILDER — STAGE 1
 ========================================= */
 
 if (question.type === "chain-rule-builder") {
 
-  const card = document.createElement("article");
-  card.className = "question-card chain-rule-builder-question";
-  card.id = question.id;
+  const card =
+    document.createElement("article");
 
-  const selectedPaths = new Set();
+  card.className =
+    "question-card chain-rule-builder-question";
+
+  card.id =
+    question.id;
+
+  const selectedPaths =
+    new Set();
+
 
   card.innerHTML = `
 
@@ -4220,8 +4180,6 @@ if (question.type === "chain-rule-builder") {
       Find ${question.target}
     </div>
 
-
-    <!-- DEPENDENCY TREE -->
 
     <div class="dependency-tree">
 
@@ -4268,6 +4226,7 @@ if (question.type === "chain-rule-builder") {
 
           </div>
 
+
           <div class="dependency-level dependency-bottom">
 
             <div class="dependency-node">
@@ -4297,8 +4256,6 @@ if (question.type === "chain-rule-builder") {
 
     </div>
 
-
-    <!-- STAGE 1 -->
 
     <div class="chain-rule-stage">
 
@@ -4363,15 +4320,12 @@ if (question.type === "chain-rule-builder") {
       ".chain-rule-path"
     );
 
+
   const feedback =
     card.querySelector(
       ".chain-rule-feedback"
     );
 
-
-  /* =====================================
-     SELECT / DESELECT PATHS
-  ===================================== */
 
   pathButtons.forEach(button => {
 
@@ -4383,7 +4337,9 @@ if (question.type === "chain-rule-builder") {
           button.dataset.pathId;
 
 
-        if (selectedPaths.has(id)) {
+        if (
+          selectedPaths.has(id)
+        ) {
 
           selectedPaths.delete(id);
 
@@ -4398,21 +4354,24 @@ if (question.type === "chain-rule-builder") {
           button.classList.add(
             "chain-rule-path-selected"
           );
-
         }
 
 
-        feedback.innerHTML = "";
+        button.classList.remove(
+          "chain-rule-path-correct",
+          "chain-rule-path-incorrect"
+        );
 
+
+        feedback.className =
+          "question-feedback chain-rule-feedback";
+
+        feedback.innerHTML = "";
       }
     );
 
   });
 
-
-  /* =====================================
-     CHECK PATHS
-  ===================================== */
 
   const checkButton =
     card.querySelector(
@@ -4426,8 +4385,12 @@ if (question.type === "chain-rule-builder") {
 
       const correctIds =
         question.stage1.choices
-          .filter(choice => choice.correct)
-          .map(choice => choice.id);
+          .filter(
+            choice => choice.correct
+          )
+          .map(
+            choice => choice.id
+          );
 
 
       const selectedIds =
@@ -4451,6 +4414,7 @@ if (question.type === "chain-rule-builder") {
         const id =
           button.dataset.pathId;
 
+
         const choice =
           question.stage1.choices.find(
             item => item.id === id
@@ -4471,7 +4435,6 @@ if (question.type === "chain-rule-builder") {
           button.classList.add(
             "chain-rule-path-correct"
           );
-
         }
 
 
@@ -4483,7 +4446,6 @@ if (question.type === "chain-rule-builder") {
           button.classList.add(
             "chain-rule-path-incorrect"
           );
-
         }
 
       });
@@ -4512,7 +4474,6 @@ if (question.type === "chain-rule-builder") {
           <strong>Not quite.</strong>
           Trace every route from \\(z\\) down to \\(u\\).
         `;
-
       }
 
 
@@ -4520,10 +4481,6 @@ if (question.type === "chain-rule-builder") {
     }
   );
 
-
-  /* =====================================
-     RESET
-  ===================================== */
 
   const resetButton =
     card.querySelector(
@@ -4545,7 +4502,6 @@ if (question.type === "chain-rule-builder") {
           "chain-rule-path-correct",
           "chain-rule-path-incorrect"
         );
-
       });
 
 
@@ -4553,348 +4509,11 @@ if (question.type === "chain-rule-builder") {
         "question-feedback chain-rule-feedback";
 
       feedback.innerHTML = "";
-
     }
   );
 
 
   renderMath(card);
-
-  section.appendChild(card);
-
-  return;
-}
-
-    /* =====================================
-       DRAG START
-    ===================================== */
-
-    items.forEach(item => {
-
-      item.addEventListener(
-        "dragstart",
-        event => {
-
-          draggedItem = item;
-
-          item.classList.add(
-            "matching-dragging"
-          );
-
-          event.dataTransfer.effectAllowed =
-            "move";
-
-        }
-      );
-
-
-      item.addEventListener(
-        "dragend",
-        () => {
-
-          item.classList.remove(
-            "matching-dragging"
-          );
-
-          draggedItem = null;
-
-        }
-      );
-
-    });
-
-
-    /* =====================================
-       DROP ZONES
-    ===================================== */
-
-    dropzones.forEach(dropzone => {
-
-      dropzone.addEventListener(
-        "dragover",
-        event => {
-
-          event.preventDefault();
-
-          dropzone.classList.add(
-            "matching-drop-active"
-          );
-
-        }
-      );
-
-
-      dropzone.addEventListener(
-        "dragleave",
-        () => {
-
-          dropzone.classList.remove(
-            "matching-drop-active"
-          );
-
-        }
-      );
-
-
-      dropzone.addEventListener(
-        "drop",
-        event => {
-
-          event.preventDefault();
-
-          dropzone.classList.remove(
-            "matching-drop-active"
-          );
-
-
-          if (!draggedItem) {
-            return;
-          }
-
-
-          /*
-            If this target already contains
-            a card, move that card back
-            to the function bank.
-          */
-
-          const existing =
-            dropzone.querySelector(
-              ".matching-item"
-            );
-
-          if (
-            existing &&
-            existing !== draggedItem
-          ) {
-
-            bank.appendChild(existing);
-
-            delete placements[
-              existing.dataset.id
-            ];
-          }
-
-
-          dropzone.appendChild(
-            draggedItem
-          );
-
-
-          const target =
-            dropzone.closest(
-              ".matching-target"
-            );
-
-
-          placements[
-            draggedItem.dataset.id
-          ] =
-            target.dataset.answer;
-
-
-          feedback.innerHTML = "";
-
-        }
-      );
-
-    });
-
-
-    /* =====================================
-       ALLOW CARDS TO RETURN TO BANK
-    ===================================== */
-
-    bank.addEventListener(
-      "dragover",
-      event => {
-
-        event.preventDefault();
-
-      }
-    );
-
-
-    bank.addEventListener(
-      "drop",
-      event => {
-
-        event.preventDefault();
-
-
-        if (!draggedItem) {
-          return;
-        }
-
-
-        bank.appendChild(
-          draggedItem
-        );
-
-
-        delete placements[
-          draggedItem.dataset.id
-        ];
-
-
-        feedback.innerHTML = "";
-
-      }
-    );
-
-
-    /* =====================================
-       CHECK ANSWERS
-    ===================================== */
-
-    const checkButton =
-      card.querySelector(
-        ".matching-check"
-      );
-
-
-    checkButton.addEventListener(
-      "click",
-      () => {
-
-        let correctCount = 0;
-
-
-        currentItems.forEach(item => {
-
-          const placedAnswer =
-            placements[item.id];
-
-
-          const itemElement =
-            card.querySelector(
-              `.matching-item[data-id="${item.id}"]`
-            );
-
-
-          itemElement.classList.remove(
-            "matching-correct",
-            "matching-incorrect"
-          );
-
-
-          if (
-            placedAnswer === item.right
-          ) {
-
-            correctCount++;
-
-            itemElement.classList.add(
-              "matching-correct"
-            );
-
-          } else {
-
-            itemElement.classList.add(
-              "matching-incorrect"
-            );
-
-          }
-
-        });
-
-
-        if (
-          correctCount ===
-          currentItems.length
-        ) {
-
-          feedback.className =
-            "question-feedback feedback-correct matching-feedback";
-
-          feedback.innerHTML = `
-            <strong>Correct!</strong>
-            All functions are matched with their domains.
-          `;
-
-        } else {
-
-          feedback.className =
-            "question-feedback feedback-incorrect matching-feedback";
-
-          feedback.innerHTML = `
-            <strong>${correctCount} of ${currentItems.length} correct.</strong>
-            Recheck the domain restrictions for the highlighted cards.
-          `;
-
-        }
-
-      }
-    );
-
-
-    /* =====================================
-       RESET
-    ===================================== */
-
-    const resetButton =
-      card.querySelector(
-        ".matching-reset"
-      );
-
-
-    resetButton.addEventListener(
-      "click",
-      () => {
-
-        placements = {};
-
-
-        card
-          .querySelectorAll(
-            ".matching-item"
-          )
-          .forEach(item => {
-
-            item.classList.remove(
-              "matching-correct",
-              "matching-incorrect"
-            );
-
-            bank.appendChild(item);
-
-          });
-
-
-        feedback.className =
-          "question-feedback matching-feedback";
-
-        feedback.innerHTML = "";
-
-      }
-    );
-
-
-    /* =====================================
-       TRY ANOTHER SET
-    ===================================== */
-
-    const tryAnotherButton =
-      card.querySelector(
-        ".matching-try-another"
-      );
-
-
-    tryAnotherButton.addEventListener(
-      "click",
-      () => {
-
-        renderMatchingQuestion();
-
-      }
-    );
-
-
-    renderMath(card);
-  }
-
-
-  renderMatchingQuestion();
 
   section.appendChild(card);
 
