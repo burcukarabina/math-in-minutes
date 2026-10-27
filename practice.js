@@ -1757,6 +1757,403 @@ let currentSet = null;
 
   return;
 }
+      /* =========================================
+   LOGICAL-ORDER QUESTION
+========================================= */
+
+if (
+  question.type === "logical-order"
+) {
+
+  const card =
+    document.createElement("article");
+
+  card.className =
+    "question-card logical-order-question";
+
+  card.id =
+    question.id;
+
+
+  let displayedItems =
+    shuffleArray(question.items);
+
+
+  /* -----------------------------------------
+     BUILD ITEMS
+  ----------------------------------------- */
+
+  function buildLogicalItemsHTML() {
+
+    return displayedItems
+      .map((item, itemIndex) => `
+
+        <div
+          class="logical-order-item"
+          draggable="true"
+          tabindex="0"
+          data-id="${item.id}"
+          data-rank="${item.rank}"
+          data-index="${itemIndex}"
+        >
+
+          <span class="logical-order-content">
+            ${item.content}
+          </span>
+
+        </div>
+
+      `)
+      .join("");
+
+  }
+
+
+  /* -----------------------------------------
+     RENDER QUESTION
+  ----------------------------------------- */
+
+  function renderLogicalOrderQuestion() {
+
+    displayedItems =
+      shuffleArray(question.items);
+
+
+    card.innerHTML = `
+
+      <p class="question-number">
+        Question ${index + 1}
+      </p>
+
+      <h3>
+        ${question.question}
+      </h3>
+
+      ${
+        question.prompt
+          ? `
+            <div class="logical-order-prompt">
+              ${question.prompt}
+            </div>
+          `
+          : ""
+      }
+
+      <div
+        class="logical-order-list"
+        aria-label="Arrange statements in logical order"
+      >
+        ${buildLogicalItemsHTML()}
+      </div>
+
+      <div class="random-question-actions">
+
+        <button
+          type="button"
+          class="check-answer logical-order-check-button"
+        >
+          Check Order
+        </button>
+
+        <button
+          type="button"
+          class="try-another-button logical-order-try-another-button"
+        >
+          Shuffle Again
+        </button>
+
+      </div>
+
+      <div
+        class="question-feedback logical-order-feedback"
+        aria-live="polite"
+      ></div>
+
+    `;
+
+
+    const list =
+      card.querySelector(
+        ".logical-order-list"
+      );
+
+
+    const feedback =
+      card.querySelector(
+        ".logical-order-feedback"
+      );
+
+
+    let draggedItem = null;
+
+
+    /* -----------------------------------------
+       DRAG EVENTS
+    ----------------------------------------- */
+
+    function attachLogicalDragEvents() {
+
+      const items =
+        card.querySelectorAll(
+          ".logical-order-item"
+        );
+
+
+      items.forEach(item => {
+
+        item.addEventListener(
+          "dragstart",
+          event => {
+
+            draggedItem = item;
+
+            item.classList.add(
+              "dragging"
+            );
+
+            event.dataTransfer.effectAllowed =
+              "move";
+
+          }
+        );
+
+
+        item.addEventListener(
+          "dragend",
+          () => {
+
+            item.classList.remove(
+              "dragging"
+            );
+
+            draggedItem = null;
+
+          }
+        );
+
+
+        item.addEventListener(
+          "dragover",
+          event => {
+
+            event.preventDefault();
+
+            if (
+              !draggedItem ||
+              draggedItem === item
+            ) {
+              return;
+            }
+
+
+            const rectangle =
+              item.getBoundingClientRect();
+
+
+            const midpoint =
+              rectangle.top +
+              rectangle.height / 2;
+
+
+            if (
+              event.clientY <
+              midpoint
+            ) {
+
+              list.insertBefore(
+                draggedItem,
+                item
+              );
+
+            }
+
+            else {
+
+              list.insertBefore(
+                draggedItem,
+                item.nextSibling
+              );
+
+            }
+
+          }
+        );
+
+      });
+
+    }
+
+
+    attachLogicalDragEvents();
+
+
+    /* -----------------------------------------
+       CHECK ORDER
+    ----------------------------------------- */
+
+    const checkButton =
+      card.querySelector(
+        ".logical-order-check-button"
+      );
+
+
+    checkButton.addEventListener(
+      "click",
+      () => {
+
+        const orderedItems =
+          [
+            ...card.querySelectorAll(
+              ".logical-order-item"
+            )
+          ];
+
+
+        let correctCount = 0;
+
+
+        orderedItems.forEach(
+          (item, position) => {
+
+            item.classList.remove(
+              "logical-order-correct",
+              "logical-order-incorrect"
+            );
+
+
+            const rank =
+              Number(
+                item.dataset.rank
+              );
+
+
+            if (
+              rank ===
+              position + 1
+            ) {
+
+              correctCount++;
+
+              item.classList.add(
+                "logical-order-correct"
+              );
+
+            }
+
+            else {
+
+              item.classList.add(
+                "logical-order-incorrect"
+              );
+
+            }
+
+          }
+        );
+
+
+        if (
+          correctCount ===
+          orderedItems.length
+        ) {
+
+          feedback.className =
+            "question-feedback feedback-correct logical-order-feedback";
+
+          feedback.innerHTML = `
+            <strong>Correct!</strong>
+            <span class="logical-order-explanation"></span>
+          `;
+
+
+          const explanationSpan =
+            feedback.querySelector(
+              ".logical-order-explanation"
+            );
+
+
+          explanationSpan.textContent =
+            question.explanation || "";
+
+        }
+
+        else {
+
+          const wrongPositions =
+            orderedItems
+              .map(
+                (item, position) => {
+
+                  const rank =
+                    Number(
+                      item.dataset.rank
+                    );
+
+                  return rank ===
+                    position + 1
+                    ? null
+                    : position + 1;
+
+                }
+              )
+              .filter(
+                position =>
+                  position !== null
+              );
+
+
+          feedback.className =
+            "question-feedback feedback-incorrect logical-order-feedback";
+
+
+          feedback.innerHTML = `
+            <strong>Not quite.</strong>
+            ${correctCount} out of ${orderedItems.length}
+            statements are in the correct position.
+            Reconsider position${wrongPositions.length > 1 ? "s" : ""}
+            ${wrongPositions.join(", ")}.
+          `;
+
+        }
+
+
+        renderMath(feedback);
+
+      }
+    );
+
+
+    /* -----------------------------------------
+       SHUFFLE AGAIN
+    ----------------------------------------- */
+
+    const tryAnotherButton =
+      card.querySelector(
+        ".logical-order-try-another-button"
+      );
+
+
+    tryAnotherButton.addEventListener(
+      "click",
+      () => {
+
+        renderLogicalOrderQuestion();
+
+      }
+    );
+
+
+    renderMath(card);
+
+  }
+
+
+  renderLogicalOrderQuestion();
+
+  section.appendChild(card);
+
+  return;
+}
 
       /* =========================================
          RANDOMIZED MULTIPLE CHOICE
