@@ -2,29 +2,168 @@ const questions = [
 {
   course: "calculus-1",
   section: "Sequence Limits",
-  id: "proof-order-squeeze-theorem",
+  id: "proof-order-sequence-limits",
   type: "logical-order",
 
   question:
-    "Arrange the following statements in a logical order to complete the proof of the Squeeze Theorem for Sequences.",
+    "Arrange the following statements in a logical order to complete the argument.",
 
-  prompt:
-    "Assume \\(a_n\\le b_n\\le c_n\\) for all sufficiently large \\(n\\), and \\(\\lim_{n\\to\\infty}a_n=L=\\lim_{n\\to\\infty}c_n\\).",
+  pool: [
 
-  items: [
-    {
-      id: "A",
-      content:
-        "Let \\(\\varepsilon>0\\) be given.",
-      rank: 1
-    },
+    /* =====================================
+       PROOF 1
+       SQUEEZE THEOREM
+    ===================================== */
 
     {
-      id: "B",
-      content:
-        "Since \\(a_n\\to L\\) and \\(c_n\\to L\\), choose \\(N>M\\) such that for \\(n>N\\), both \\(a_n\\) and \\(c_n\\) lie in \\((L-\\varepsilon,L+\\varepsilon)\\).",
-      rank: 2
+      prompt:
+        "Assume \\(a_n\\le b_n\\le c_n\\) for \\(n>M\\), and \\(\\lim_{n\\to\\infty}a_n=L=\\lim_{n\\to\\infty}c_n\\). Prove that \\(\\lim_{n\\to\\infty}b_n=L\\).",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "Let \\(\\varepsilon>0\\) be given.",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "Since \\(a_n\\to L\\) and \\(c_n\\to L\\), choose \\(N>M\\) such that if \\(n>N\\), then \\(a_n,c_n\\in(L-\\varepsilon,L+\\varepsilon)\\).",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "For \\(n>N\\), we have \\(L-\\varepsilon<a_n\\le b_n\\le c_n<L+\\varepsilon\\).",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "Therefore \\(b_n\\in(L-\\varepsilon,L+\\varepsilon)\\) whenever \\(n>N\\).",
+          rank: 4
+        },
+
+        {
+          id: "E",
+          content:
+            "Hence \\(\\displaystyle\\lim_{n\\to\\infty}b_n=L\\).",
+          rank: 5
+        }
+      ],
+
+      explanation:
+        "The proof places the tail of \\(b_n\\) inside the same epsilon-neighbourhood of \\(L\\) as the two bounding sequences."
     },
+
+
+    /* =====================================
+       ARGUMENT 2
+       sin(n)/n
+    ===================================== */
+
+    {
+      prompt:
+        "Use the Squeeze Theorem to show that \\(\\displaystyle\\lim_{n\\to\\infty}\\frac{\\sin n}{n}=0\\).",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "For every \\(n\\in\\mathbb{N}\\), \\(-1\\le\\sin n\\le1\\).",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "Since \\(n>0\\), divide through by \\(n\\) to obtain \\(-\\frac1n\\le\\frac{\\sin n}{n}\\le\\frac1n\\).",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "We have \\(\\displaystyle\\lim_{n\\to\\infty}-\\frac1n=0\\) and \\(\\displaystyle\\lim_{n\\to\\infty}\\frac1n=0\\).",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "By the Squeeze Theorem, \\(\\displaystyle\\lim_{n\\to\\infty}\\frac{\\sin n}{n}=0\\).",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "The sequence is squeezed between two sequences that both converge to zero."
+    },
+
+
+    /* =====================================
+       PROOF 3
+       MONOTONE CONVERGENCE THEOREM
+    ===================================== */
+
+    {
+      prompt:
+        "Suppose \\(\\{a_n\\}\\) is increasing and bounded above. Show that \\(a_n\\to L\\), where \\(L=\\operatorname{lub}(\\{a_n\\})\\).",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "Let \\(L=\\operatorname{lub}(\\{a_n\\})\\) and let \\(\\varepsilon>0\\) be given.",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "Since \\(L-\\varepsilon<L\\), the number \\(L-\\varepsilon\\) is not an upper bound for \\(\\{a_n\\}\\).",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "Therefore there exists \\(M\\in\\mathbb{N}\\) such that \\(L-\\varepsilon<a_M\\).",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "Since \\(\\{a_n\\}\\) is increasing and \\(L\\) is an upper bound, for \\(n>M\\) we have \\(L-\\varepsilon<a_M\\le a_n\\le L\\).",
+          rank: 4
+        },
+
+        {
+          id: "E",
+          content:
+            "Thus \\(L-\\varepsilon<a_n<L+\\varepsilon\\) whenever \\(n>M\\).",
+          rank: 5
+        },
+
+        {
+          id: "F",
+          content:
+            "Hence \\(\\displaystyle\\lim_{n\\to\\infty}a_n=L\\).",
+          rank: 6
+        }
+      ],
+
+      explanation:
+        "The least-upper-bound property provides one term above \\(L-\\varepsilon\\), and monotonicity keeps every later term between \\(L-\\varepsilon\\) and \\(L\\)."
+    }
+
+  ]
+},
 
     {
       id: "C",
@@ -1870,65 +2009,194 @@ const questions = [
     }
 
   ]
-},{
+},
+  {
   course: "calculus-2",
   section: "Numerical Series",
-  id: "proof-order-tail-convergence",
+  id: "proof-order-series",
   type: "logical-order",
 
   question:
-    "Arrange the following statements in a logical order to prove part (i) of the Tail Convergence Theorem.",
+    "Arrange the following statements in a logical order to complete the proof.",
 
-  prompt:
-    "If \\(\\displaystyle\\sum_{n=1}^{\\infty} a_n\\) converges, show that \\(\\displaystyle\\sum_{n=j}^{\\infty} a_n\\) converges for each positive integer \\(j\\).",
+  pool: [
 
-  items: [
+    /* =====================================
+       PROOF 1
+       TAIL CONVERGENCE THEOREM — PART (i)
+    ===================================== */
+
     {
-      id: "A",
-      content:
-        "Let \\(m\\ge j\\), and let \\(S_m=\\displaystyle\\sum_{n=1}^{m}a_n\\) and \\(T_m=\\displaystyle\\sum_{n=j}^{m}a_n\\).",
-      rank: 1
+      prompt:
+        "If \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges, show that \\(\\displaystyle\\sum_{n=j}^{\\infty}a_n\\) converges for each positive integer \\(j\\).",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "Let \\(m\\ge j\\), and let \\(S_m=\\displaystyle\\sum_{n=1}^{m}a_n\\) and \\(T_m=\\displaystyle\\sum_{n=j}^{m}a_n\\).",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "We have \\(S_m=(a_1+a_2+\\cdots+a_{j-1})+T_m\\).",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "Suppose \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges, so \\(\\lim_{m\\to\\infty}S_m=S\\) for some \\(S\\in\\mathbb{R}\\).",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "Therefore \\(T_m=S_m-(a_1+a_2+\\cdots+a_{j-1})\\).",
+          rank: 4
+        },
+
+        {
+          id: "E",
+          content:
+            "Hence \\(\\lim_{m\\to\\infty}T_m=S-(a_1+a_2+\\cdots+a_{j-1})\\).",
+          rank: 5
+        },
+
+        {
+          id: "F",
+          content:
+            "Therefore \\(\\displaystyle\\sum_{n=j}^{\\infty}a_n\\) converges.",
+          rank: 6
+        }
+      ],
+
+      explanation:
+        "The proof relates the partial sums of the tail to the partial sums of the original series by subtracting a fixed finite sum."
     },
 
-    {
-      id: "B",
-      content:
-        "We have \\(S_m=(a_1+a_2+\\cdots+a_{j-1})+T_m\\).",
-      rank: 2
-    },
+
+    /* =====================================
+       PROOF 2
+       TAIL CONVERGENCE THEOREM — PART (ii)
+    ===================================== */
 
     {
-      id: "C",
-      content:
-        "Suppose \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges, so \\(\\lim_{m\\to\\infty}S_m=S\\) for some \\(S\\in\\mathbb{R}\\).",
-      rank: 3
+      prompt:
+        "If \\(\\displaystyle\\sum_{n=j}^{\\infty}a_n\\) converges for some positive integer \\(j\\), show that \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges.",
+
+      items: [
+        {
+          id: "A",
+          content:
+            "Let \\(S_m=\\displaystyle\\sum_{n=1}^{m}a_n\\) and \\(T_m=\\displaystyle\\sum_{n=j}^{m}a_n\\), where \\(m\\ge j\\).",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "We have \\(S_m=(a_1+a_2+\\cdots+a_{j-1})+T_m\\).",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "Suppose \\(\\displaystyle\\sum_{n=j}^{\\infty}a_n\\) converges, so \\(\\lim_{m\\to\\infty}T_m=T\\) for some \\(T\\in\\mathbb{R}\\).",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "Since \\(a_1+a_2+\\cdots+a_{j-1}\\) is a finite sum of real numbers, it is a finite real number.",
+          rank: 4
+        },
+
+        {
+          id: "E",
+          content:
+            "Therefore \\(\\lim_{m\\to\\infty}S_m=(a_1+a_2+\\cdots+a_{j-1})+T\\).",
+          rank: 5
+        },
+
+        {
+          id: "F",
+          content:
+            "Hence \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges.",
+          rank: 6
+        }
+      ],
+
+      explanation:
+        "Adding finitely many terms to a convergent tail does not change convergence."
     },
 
-    {
-      id: "D",
-      content:
-        "Therefore \\(T_m=S_m-(a_1+a_2+\\cdots+a_{j-1})\\).",
-      rank: 4
-    },
+
+    /* =====================================
+       PROOF 3
+       NECESSARY CONDITION FOR CONVERGENCE
+    ===================================== */
 
     {
-      id: "E",
-      content:
-        "Hence \\(\\lim_{m\\to\\infty}T_m=S-(a_1+a_2+\\cdots+a_{j-1})\\), which is finite.",
-      rank: 5
-    },
+      prompt:
+        "Show that if \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges, then \\(\\displaystyle\\lim_{n\\to\\infty}a_n=0\\).",
 
-    {
-      id: "F",
-      content:
-        "Therefore \\(\\displaystyle\\sum_{n=j}^{\\infty}a_n\\) converges.",
-      rank: 6
+      items: [
+        {
+          id: "A",
+          content:
+            "Let \\(S_m=\\displaystyle\\sum_{n=1}^{m}a_n\\) denote the \\(m\\)-th partial sum.",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "Suppose \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges, so \\(\\lim_{m\\to\\infty}S_m=S\\) for some \\(S\\in\\mathbb{R}\\).",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "For \\(m\\ge2\\), we have \\(S_m-S_{m-1}=a_m\\).",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "Also, \\(\\lim_{m\\to\\infty}S_{m-1}=S\\).",
+          rank: 4
+        },
+
+        {
+          id: "E",
+          content:
+            "Therefore \\(\\lim_{m\\to\\infty}a_m=\\lim_{m\\to\\infty}(S_m-S_{m-1})=S-S=0\\).",
+          rank: 5
+        },
+
+        {
+          id: "F",
+          content:
+            "Hence \\(\\displaystyle\\lim_{n\\to\\infty}a_n=0\\).",
+          rank: 6
+        }
+      ],
+
+      explanation:
+        "A term of the series is the difference of two consecutive partial sums. If both partial sums approach the same limit, their difference approaches zero."
     }
-  ],
 
-  explanation:
-    "The proof follows the course notes by relating the partial sums of the original series to the partial sums of the tail."
+  ]
 },
+  
   {
   course: "calculus-3",
   section: "Functions of Several Variables",
