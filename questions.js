@@ -1211,42 +1211,344 @@ const questions = [
 
   ]
 },
-  {
+ {
   course: "calculus-1",
   section: "Curve Sketching",
-  id: "click-local-extrema-sample",
+  id: "click-curve-features",
   type: "graph-click",
 
-  question:
-    "Click on all local extrema of the function.",
+  pool: [
 
-  formula:
-    "\\(\\displaystyle f(x)=x^3-3x\\)",
+    /* =====================================
+       SET 1 — ALL LOCAL EXTREMA
+    ===================================== */
 
-  graph: {
-    xMin: -3,
-    xMax: 3,
-    yMin: -5,
-    yMax: 5,
-
-    evaluate: x => x ** 3 - 3 * x
-  },
-
-  targets: [
     {
-      x: -1,
-      y: 2,
-      type: "local maximum"
+      task:
+        "Click on all local extrema of the function.",
+
+      formula:
+        "\\(\\displaystyle f(x)=x^3-3x\\)",
+
+      graph: {
+        xMin: -3,
+        xMax: 3,
+        yMin: -5,
+        yMax: 5,
+
+        evaluate: x =>
+          x ** 3 - 3 * x
+      },
+
+      targets: [
+        {
+          x: -1,
+          y: 2,
+          type: "local maximum"
+        },
+        {
+          x: 1,
+          y: -2,
+          type: "local minimum"
+        }
+      ],
+
+      tolerance: 0.25,
+
+      explanation:
+        "The function has a local maximum at \\((-1,2)\\) and a local minimum at \\((1,-2)\\)."
     },
-    {
-      x: 1,
-      y: -2,
-      type: "local minimum"
-    }
-  ],
 
-  explanation:
-    "The function has a local maximum at \\((-1,2)\\) and a local minimum at \\((1,-2)\\)."
+
+    /* =====================================
+       SET 2 — ALL LOCAL MINIMA
+    ===================================== */
+
+    {
+      task:
+        "Click on all local minima of the function.",
+
+      formula:
+        "\\(\\displaystyle f(x)=x^4-4x^2\\)",
+
+      graph: {
+        xMin: -2.5,
+        xMax: 2.5,
+        yMin: -5,
+        yMax: 7,
+
+        evaluate: x =>
+          x ** 4 - 4 * x ** 2
+      },
+
+      targets: [
+        {
+          x: -Math.sqrt(2),
+          y: -4,
+          type: "local minimum"
+        },
+        {
+          x: Math.sqrt(2),
+          y: -4,
+          type: "local minimum"
+        }
+      ],
+
+      tolerance: 0.25,
+
+      explanation:
+        "The local minima occur at \\(x=\\pm\\sqrt{2}\\), where \\(f(x)=-4\\)."
+    },
+
+
+    /* =====================================
+       SET 3 — ALL LOCAL MAXIMA
+    ===================================== */
+
+    {
+      task:
+        "Click on all local maxima of the function.",
+
+      formula:
+        "\\(\\displaystyle f(x)=-x^4+4x^2\\)",
+
+      graph: {
+        xMin: -2.5,
+        xMax: 2.5,
+        yMin: -5,
+        yMax: 5,
+
+        evaluate: x =>
+          -(x ** 4) + 4 * x ** 2
+      },
+
+      targets: [
+        {
+          x: -Math.sqrt(2),
+          y: 4,
+          type: "local maximum"
+        },
+        {
+          x: Math.sqrt(2),
+          y: 4,
+          type: "local maximum"
+        }
+      ],
+
+      tolerance: 0.25,
+
+      explanation:
+        "The local maxima occur at \\(x=\\pm\\sqrt{2}\\), where \\(f(x)=4\\)."
+    },
+
+
+    /* =====================================
+       SET 4 — INFLECTION POINT
+    ===================================== */
+
+    {
+      task:
+        "Click on all inflection points of the function.",
+
+      formula:
+        "\\(\\displaystyle f(x)=x^3-3x^2\\)",
+
+      graph: {
+        xMin: -1.5,
+        xMax: 3.5,
+        yMin: -6,
+        yMax: 6,
+
+        evaluate: x =>
+          x ** 3 - 3 * x ** 2
+      },
+
+      targets: [
+        {
+          x: 1,
+          y: -2,
+          type: "inflection point"
+        }
+      ],
+
+      tolerance: 0.25,
+
+      explanation:
+        "The concavity changes at \\(x=1\\), giving the inflection point \\((1,-2)\\)."
+    },
+
+
+    /* =====================================
+       SET 5 — ALL LOCAL EXTREMA
+    ===================================== */
+
+    {
+      task:
+        "Click on all local extrema of the function.",
+
+      formula:
+        "\\(\\displaystyle f(x)=x^3-6x^2+9x\\)",
+
+      graph: {
+        xMin: -1,
+        xMax: 4.5,
+        yMin: -3,
+        yMax: 6,
+
+        evaluate: x =>
+          x ** 3 -
+          6 * x ** 2 +
+          9 * x
+      },
+
+      targets: [
+        {
+          x: 1,
+          y: 4,
+          type: "local maximum"
+        },
+        {
+          x: 3,
+          y: 0,
+          type: "local minimum"
+        }
+      ],
+
+      tolerance: 0.25,
+
+      explanation:
+        "The function has a local maximum at \\((1,4)\\) and a local minimum at \\((3,0)\\)."
+    },
+
+
+    /* =====================================
+       SET 6 — THREE LOCAL EXTREMA
+    ===================================== */
+
+    {
+      task:
+        "Click on all local extrema of the function.",
+
+      formula:
+        "\\(\\displaystyle f(x)=x^4-2x^2\\)",
+
+      graph: {
+        xMin: -2,
+        xMax: 2,
+        yMin: -2,
+        yMax: 5,
+
+        evaluate: x =>
+          x ** 4 - 2 * x ** 2
+      },
+
+      targets: [
+        {
+          x: -1,
+          y: -1,
+          type: "local minimum"
+        },
+        {
+          x: 0,
+          y: 0,
+          type: "local maximum"
+        },
+        {
+          x: 1,
+          y: -1,
+          type: "local minimum"
+        }
+      ],
+
+      tolerance: 0.22,
+
+      explanation:
+        "There are local minima at \\((-1,-1)\\) and \\((1,-1)\\), and a local maximum at \\((0,0)\\)."
+    },
+
+
+    /* =====================================
+       SET 7 — ALL LOCAL EXTREMA
+    ===================================== */
+
+    {
+      task:
+        "Click on all local extrema of the function.",
+
+      formula:
+        "\\(\\displaystyle f(x)=x^3-12x\\)",
+
+      graph: {
+        xMin: -3.5,
+        xMax: 3.5,
+        yMin: -18,
+        yMax: 18,
+
+        evaluate: x =>
+          x ** 3 - 12 * x
+      },
+
+      targets: [
+        {
+          x: -2,
+          y: 16,
+          type: "local maximum"
+        },
+        {
+          x: 2,
+          y: -16,
+          type: "local minimum"
+        }
+      ],
+
+      tolerance: 0.25,
+
+      explanation:
+        "The function has a local maximum at \\((-2,16)\\) and a local minimum at \\((2,-16)\\)."
+    },
+
+
+    /* =====================================
+       SET 8 — TWO INFLECTION POINTS
+    ===================================== */
+
+    {
+      task:
+        "Click on all inflection points of the function.",
+
+      formula:
+        "\\(\\displaystyle f(x)=x^4-6x^2\\)",
+
+      graph: {
+        xMin: -2.5,
+        xMax: 2.5,
+        yMin: -10,
+        yMax: 8,
+
+        evaluate: x =>
+          x ** 4 - 6 * x ** 2
+      },
+
+      targets: [
+        {
+          x: -1,
+          y: -5,
+          type: "inflection point"
+        },
+        {
+          x: 1,
+          y: -5,
+          type: "inflection point"
+        }
+      ],
+
+      tolerance: 0.25,
+
+      explanation:
+        "The concavity changes at \\(x=-1\\) and \\(x=1\\), giving inflection points \\((-1,-5)\\) and \\((1,-5)\\)."
+    }
+
+  ]
 },
  {
   course: "calculus-2",
