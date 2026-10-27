@@ -4820,10 +4820,30 @@ const questions = [
   type: "chain-rule-builder",
 
   question:
-    "Use the dependency tree to build the Chain Rule formula.",
+    "Use the dependency graph to build the Chain Rule formula.",
 
   target:
     "\\(\\displaystyle \\frac{\\partial z}{\\partial u}\\)",
+
+  graph: {
+
+    nodes: [
+      { id: "z", x: 350, y: 50 },
+      { id: "y", x: 500, y: 145 },
+      { id: "x", x: 300, y: 190 },
+      { id: "u", x: 220, y: 300 },
+      { id: "v", x: 380, y: 300 }
+    ],
+
+    edges: [
+      ["z", "x"],
+      ["z", "y"],
+      ["y", "x"],
+      ["x", "u"],
+      ["x", "v"]
+    ]
+
+  },
 
   stage1: {
 
