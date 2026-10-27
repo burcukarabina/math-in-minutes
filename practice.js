@@ -1396,10 +1396,6 @@ let currentSet = null;
           data-index="${itemIndex}"
         >
 
-          <span class="drag-order-grip">
-            ↕
-          </span>
-
           <span class="drag-order-content">
             ${item.content}
           </span>
