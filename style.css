@@ -1471,3 +1471,166 @@ footer p {
   }
 
 }
+/* =========================================
+   INTEGRAL BUILDER
+========================================= */
+
+.integral-builder-question {
+  padding: 2rem;
+}
+
+.integral-builder-prompt {
+  margin: 1.25rem 0 2rem;
+
+  padding: 1rem 1.25rem;
+
+  background: var(--sorting-bank-bg);
+
+  border: 2px solid var(--uw-charcoal);
+  border-radius: 10px;
+
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+
+.integral-builder-expression {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 0.55rem;
+
+  margin: 2rem 0 2.5rem;
+
+  font-size: 1.4rem;
+}
+
+
+.integral-builder-prefix {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+
+.integral-builder-integral {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 110px;
+  height: 125px;
+
+  margin: 0 0.5rem;
+}
+
+
+.integral-symbol {
+  font-family: serif;
+
+  font-size: 5.3rem;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+.integral-upper,
+.integral-lower {
+  position: absolute;
+
+  width: 78px;
+
+  text-align: center;
+}
+
+
+.integral-upper {
+  top: 0;
+  left: 58px;
+}
+
+
+.integral-lower {
+  bottom: 0;
+  left: 58px;
+}
+
+
+.integral-builder-select {
+  padding: 0.45rem 0.55rem;
+
+  background: white;
+
+  border: 2px solid var(--uw-charcoal);
+  border-radius: 7px;
+
+  font-size: 1rem;
+
+  cursor: pointer;
+}
+
+
+.integral-integrand {
+  min-width: 145px;
+
+  font-size: 1.1rem;
+}
+
+
+.integral-builder-parenthesis {
+  font-family: serif;
+
+  font-size: 2.25rem;
+}
+
+
+.integral-builder-differential {
+  font-family: serif;
+
+  font-style: italic;
+
+  font-size: 1.35rem;
+}
+
+
+.integral-builder-select.builder-correct {
+  border-color: #2e7d32;
+
+  background: #e8f5e9;
+}
+
+
+.integral-builder-select.builder-incorrect {
+  border-color: #c46a00;
+
+  background: #fff3e0;
+}
+
+
+.integral-builder-question .random-question-actions {
+  margin-top: 1.5rem;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .integral-builder-question {
+    padding: 1.25rem;
+  }
+
+  .integral-builder-expression {
+    justify-content: flex-start;
+
+    gap: 0.4rem;
+  }
+
+  .integral-integrand {
+    min-width: 125px;
+  }
+}
