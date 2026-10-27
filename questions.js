@@ -37,34 +37,34 @@ const questions = [
 
     {
       prompt:
-        "Assume \\(a_n\\le b_n\\le c_n\\) for \\(n>M\\), and \\(\\displaystyle\\lim_{n\\to\\infty}a_n=L=\\displaystyle\\lim_{n\\to\\infty}c_n\\). Prove that \\(\\displaystyle\\lim_{n\\to\\infty}b_n=L\\).",
+        "Assume \\(a_n\\le b_n\\le c_n\\) for \\(n \gt M\\), and \\(\\displaystyle\\lim_{n\\to\\infty}a_n=L=\\displaystyle\\lim_{n\\to\\infty}c_n\\). Prove that \\(\\displaystyle\\lim_{n\\to\\infty}b_n=L\\).",
 
       items: [
         {
           id: "A",
           content:
-            "Let \\(\\varepsilon>0\\) be given.",
+            "Let \\(\\varepsilon \gt 0\\) be given.",
           rank: 1
         },
 
         {
           id: "B",
           content:
-            "Since \\(a_n\\to L\\) and \\(c_n\\to L\\), choose \\(N>M\\) such that if \\(n>N\\), then \\(a_n,c_n\\in(L-\\varepsilon,L+\\varepsilon)\\).",
+            "Since \\(a_n\\to L\\) and \\(c_n\\to L\\), choose \\(N \gt M\\) such that if \\(n \gt N\\), then \\(a_n,c_n\\in(L-\\varepsilon,L+\\varepsilon)\\).",
           rank: 2
         },
 
         {
           id: "C",
           content:
-            "For \\(n>N\\), we have \\(L-\\varepsilon \lt a_n\\le b_n\\le c_n \lt L+\\varepsilon\\).",
+            "For \\(n \gt N\\), we have \\(L-\\varepsilon \lt a_n\\le b_n\\le c_n \lt L+\\varepsilon\\).",
           rank: 3
         },
 
         {
           id: "D",
           content:
-            "Therefore \\(b_n\\in(L-\\varepsilon,L+\\varepsilon)\\) whenever \\(n>N\\).",
+            "Therefore \\(b_n\\in(L-\\varepsilon,L+\\varepsilon)\\) whenever \\(n\gtN\\).",
           rank: 4
         },
 
@@ -101,7 +101,7 @@ const questions = [
         {
           id: "B",
           content:
-            "Since \\(n>0\\), divide through by \\(n\\) to obtain \\(-\\frac1n\\le\\frac{\\sin n}{n}\\le\\frac1n\\).",
+            "Since \\(n\gt0\\), divide through by \\(n\\) to obtain \\(-\\frac1n\\le\\frac{\\sin n}{n}\\le\\frac1n\\).",
           rank: 2
         },
 
@@ -138,35 +138,35 @@ const questions = [
         {
           id: "A",
           content:
-            "Let \\(L=\\operatorname{lub}(\\{a_n\\})\\) and let \\(\\varepsilon>0\\) be given.",
+            "Let \\(L=\\operatorname{lub}(\\{a_n\\})\\) and let \\(\\varepsilon\gt0\\) be given.",
           rank: 1
         },
 
         {
           id: "B",
           content:
-            "Since \\(L-\\varepsilon<L\\), the number \\(L-\\varepsilon\\) is not an upper bound for \\(\\{a_n\\}\\).",
+            "Since \\(L-\\varepsilon\ltL\\), the number \\(L-\\varepsilon\\) is not an upper bound for \\(\\{a_n\\}\\).",
           rank: 2
         },
 
         {
           id: "C",
           content:
-            "Therefore there exists \\(M\\in\\mathbb{N}\\) such that \\(L-\\varepsilon<a_M\\).",
+            "Therefore there exists \\(M\\in\\mathbb{N}\\) such that \\(L-\\varepsilon\lta_M\\).",
           rank: 3
         },
 
         {
           id: "D",
           content:
-            "Since \\(\\{a_n\\}\\) is increasing and \\(L\\) is an upper bound, for \\(n>M\\) we have \\(L-\\varepsilon<a_M\\le a_n\\le L\\).",
+            "Since \\(\\{a_n\\}\\) is increasing and \\(L\\) is an upper bound, for \\(n\gtM\\) we have \\(L-\\varepsilon\lta_M\\le a_n\\le L\\).",
           rank: 4
         },
 
         {
           id: "E",
           content:
-            "Thus \\(L-\\varepsilon<a_n<L+\\varepsilon\\) whenever \\(n>M\\).",
+            "Thus \\(L-\\varepsilon\lta_n\ltL+\\varepsilon\\) whenever \\(n\gtM\\).",
           rank: 5
         },
 
