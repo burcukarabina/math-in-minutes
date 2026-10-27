@@ -163,5 +163,420 @@ const questions = [
     }
 
   ]
+},
+ {
+  course: "calculus-2",
+  section: "Riemann Sums",
+  id: "definite-integral-to-riemann-sum",
+  type: "randomized-multiple-choice",
+
+  question:
+    "Express the following definite integral as a limit of a Riemann sum using right-hand endpoints.",
+
+  pool: [
+
+    /* =====================================
+       QUESTION 1
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^2 x^2\\,dx\\)",
+
+      choices: [
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(\\frac{2i}{n}\\right)^2\\frac{2}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(\\frac{i}{n}\\right)^2\\frac{2}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(\\frac{2i}{n}\\right)^2\\frac{1}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(2+\\frac{2i}{n}\\right)^2\\frac{2}{n}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Here \\(a=0\\), \\(b=2\\), so \\(\\Delta x=\\frac{2}{n}\\). Using right-hand endpoints, \\(x_i=0+i\\Delta x=\\frac{2i}{n}\\). Therefore the Riemann sum is \\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(\\frac{2i}{n}\\right)^2\\frac{2}{n}\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 2
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^4 x^3\\,dx\\)",
+
+      choices: [
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(1+\\frac{3i}{n}\\right)^3\\frac{3}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(1+\\frac{4i}{n}\\right)^3\\frac{4}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(\\frac{3i}{n}\\right)^3\\frac{3}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(1+\\frac{3(i-1)}{n}\\right)^3\\frac{3}{n}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The interval length is \\(4-1=3\\), so \\(\\Delta x=\\frac{3}{n}\\). For right-hand endpoints, \\(x_i=1+\\frac{3i}{n}\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 3
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_{-1}^3 x^2\\,dx\\)",
+
+      choices: [
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(-1+\\frac{4i}{n}\\right)^2\\frac{4}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(-1+\\frac{3i}{n}\\right)^2\\frac{3}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(\\frac{4i}{n}\\right)^2\\frac{4}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(-1+\\frac{4(i-1)}{n}\\right)^2\\frac{4}{n}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Here \\(\\Delta x=\\frac{3-(-1)}{n}=\\frac{4}{n}\\). The right endpoint of the \\(i\\)-th subinterval is \\(x_i=-1+\\frac{4i}{n}\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 4
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_2^5 \\sqrt{x}\\,dx\\)",
+
+      choices: [
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\sqrt{2+\\frac{3i}{n}}\\,\\frac{3}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\sqrt{\\frac{3i}{n}}\\,\\frac{3}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\sqrt{2+\\frac{5i}{n}}\\,\\frac{5}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\sqrt{2+\\frac{3(i-1)}{n}}\\,\\frac{3}{n}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The interval length is \\(5-2=3\\), so \\(\\Delta x=\\frac3n\\). Using right-hand endpoints gives \\(x_i=2+\\frac{3i}{n}\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 5
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_0^3 e^x\\,dx\\)",
+
+      choices: [
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}e^{3i/n}\\frac{3}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}e^{i/n}\\frac{1}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}e^{3i/n}\\frac{1}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}e^{3(i-1)/n}\\frac{3}{n}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Since \\(\\Delta x=\\frac3n\\), the right endpoints are \\(x_i=\\frac{3i}{n}\\). Thus \\(f(x_i)=e^{3i/n}\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 6
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^3 \\frac{1}{x}\\,dx\\)",
+
+      choices: [
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{1}{1+2i/n}\\frac{2}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{1}{2i/n}\\frac{2}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{1}{1+3i/n}\\frac{3}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{1}{1+2(i-1)/n}\\frac{2}{n}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Here \\(\\Delta x=\\frac{3-1}{n}=\\frac2n\\), and the right endpoints are \\(x_i=1+\\frac{2i}{n}\\). Therefore \\(f(x_i)=\\frac{1}{1+2i/n}\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 7
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_{-2}^2 \\cos x\\,dx\\)",
+
+      choices: [
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\cos\\left(-2+\\frac{4i}{n}\\right)\\frac{4}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\cos\\left(\\frac{4i}{n}\\right)\\frac{4}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\cos\\left(-2+\\frac{2i}{n}\\right)\\frac{2}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\cos\\left(-2+\\frac{4(i-1)}{n}\\right)\\frac{4}{n}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The interval has length \\(4\\), so \\(\\Delta x=\\frac4n\\). The right endpoints are \\(x_i=-2+\\frac{4i}{n}\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 8
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_2^6 \\frac{1}{1+x^2}\\,dx\\)",
+
+      choices: [
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{1}{1+\\left(2+\\frac{4i}{n}\\right)^2}\\frac{4}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{1}{1+\\left(\\frac{4i}{n}\\right)^2}\\frac{4}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{1}{1+\\left(2+\\frac{6i}{n}\\right)^2}\\frac{6}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{1}{1+\\left(2+\\frac{4(i-1)}{n}\\right)^2}\\frac{4}{n}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Since \\(6-2=4\\), we have \\(\\Delta x=\\frac4n\\). Right-hand endpoints are \\(x_i=2+\\frac{4i}{n}\\), which are substituted into \\(f(x)=\\frac{1}{1+x^2}\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 9
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_1^5 \\ln x\\,dx\\)",
+
+      choices: [
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\ln\\left(1+\\frac{4i}{n}\\right)\\frac{4}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\ln\\left(\\frac{4i}{n}\\right)\\frac{4}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\ln\\left(1+\\frac{5i}{n}\\right)\\frac{5}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\ln\\left(1+\\frac{4(i-1)}{n}\\right)\\frac{4}{n}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The interval length is \\(4\\), so \\(\\Delta x=\\frac4n\\). Right-hand endpoints are \\(x_i=1+\\frac{4i}{n}\\)."
+    },
+
+
+    /* =====================================
+       QUESTION 10
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle \\int\\limits_{-1}^1 (x^2+2)\\,dx\\)",
+
+      choices: [
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left[\\left(-1+\\frac{2i}{n}\\right)^2+2\\right]\\frac{2}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left[\\left(\\frac{2i}{n}\\right)^2+2\\right]\\frac{2}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left[\\left(-1+\\frac{i}{n}\\right)^2+2\\right]\\frac{1}{n}\\)",
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left[\\left(-1+\\frac{2(i-1)}{n}\\right)^2+2\\right]\\frac{2}{n}\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Here \\(\\Delta x=\\frac{1-(-1)}{n}=\\frac2n\\), and the right endpoints are \\(x_i=-1+\\frac{2i}{n}\\). Substitute these into \\(f(x)=x^2+2\\)."
+    }
+
+  ]
+},
+{
+  course: "calculus-2",
+  section: "Riemann Sums",
+  id: "riemann-sum-to-definite-integral",
+  type: "randomized-multiple-choice",
+
+  question:
+    "Express the following limit of a Riemann sum as a definite integral.",
+
+  pool: [
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(1+\\frac{2i}{n}\\right)^2\\frac{2}{n}\\)",
+
+      choices: [
+        "\\(\\displaystyle \\int\\limits_1^3 x^2\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_0^2 x^2\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_1^2 x^2\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_1^3 2x^2\\,dx\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Here \\(\\Delta x=\\frac{2}{n}\\), so the interval has length \\(2\\). Since \\(x_i=1+\\frac{2i}{n}\\), the interval is \\([1,3]\\). Therefore the limit is \\(\\displaystyle \\int\\limits_1^3 x^2\\,dx\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\sqrt{2+\\frac{3i}{n}}\\,\\frac{3}{n}\\)",
+
+      choices: [
+        "\\(\\displaystyle \\int\\limits_0^3 \\sqrt{x}\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_2^5 \\sqrt{x}\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_2^3 \\sqrt{x}\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_2^5 3\\sqrt{x}\\,dx\\)"
+      ],
+
+      correct: 1,
+
+      explanation:
+        "Since \\(\\Delta x=\\frac{3}{n}\\) and \\(x_i=2+\\frac{3i}{n}\\), the interval begins at \\(2\\) and has length \\(3\\). Thus the interval is \\([2,5]\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}e^{i/n}\\frac{1}{n}\\)",
+
+      choices: [
+        "\\(\\displaystyle \\int\\limits_0^1 e^x\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_1^2 e^x\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_0^1 xe^x\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_0^n e^x\\,dx\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Here \\(\\Delta x=\\frac1n\\) and \\(x_i=\\frac{i}{n}\\), which corresponds to the interval \\([0,1]\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{1}{1+\\left(2+\\frac{4i}{n}\\right)^2}\\frac{4}{n}\\)",
+
+      choices: [
+        "\\(\\displaystyle \\int\\limits_0^4 \\frac{1}{1+x^2}\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_2^4 \\frac{1}{1+x^2}\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_2^6 \\frac{1}{1+x^2}\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_2^6 \\frac{4}{1+x^2}\\,dx\\)"
+      ],
+
+      correct: 2,
+
+      explanation:
+        "The width is \\(\\Delta x=\\frac4n\\). Since the sample point is \\(x_i=2+\\frac{4i}{n}\\), the interval begins at \\(2\\) and has length \\(4\\), giving \\([2,6]\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\cos\\left(-2+\\frac{5i}{n}\\right)\\frac{5}{n}\\)",
+
+      choices: [
+        "\\(\\displaystyle \\int\\limits_{-2}^{3}\\cos x\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_0^5\\cos x\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_{-2}^{5}\\cos x\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_{-2}^{3}5\\cos x\\,dx\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Here \\(\\Delta x=\\frac5n\\), and \\(x_i=-2+\\frac{5i}{n}\\). Starting at \\(-2\\) and adding an interval length of \\(5\\) gives the interval \\([-2,3]\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\ln\\left(1+\\frac{2i}{n}\\right)\\frac{2}{n}\\)",
+
+      choices: [
+        "\\(\\displaystyle \\int\\limits_0^2\\ln x\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_1^3\\ln x\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_1^2\\ln x\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_1^3 2\\ln x\\,dx\\)"
+      ],
+
+      correct: 1,
+
+      explanation:
+        "The factor \\(\\frac2n\\) is \\(\\Delta x\\), and \\(x_i=1+\\frac{2i}{n}\\). Therefore \\(a=1\\) and \\(b-a=2\\), so \\(b=3\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(4+\\frac{3i}{n}\\right)^3\\frac{3}{n}\\)",
+
+      choices: [
+        "\\(\\displaystyle \\int\\limits_3^7x^3\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_4^7x^3\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_4^3x^3\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_4^7 3x^3\\,dx\\)"
+      ],
+
+      correct: 1,
+
+      explanation:
+        "Since \\(\\Delta x=\\frac3n\\) and \\(x_i=4+\\frac{3i}{n}\\), the interval begins at \\(4\\) and has length \\(3\\), so it is \\([4,7]\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{1}{2+i/n}\\frac{1}{n}\\)",
+
+      choices: [
+        "\\(\\displaystyle \\int\\limits_0^1\\frac{1}{x}\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_1^2\\frac{1}{x}\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_2^3\\frac{1}{x}\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_2^3\\frac{1}{2+x}\\,dx\\)"
+      ],
+
+      correct: 2,
+
+      explanation:
+        "Here \\(\\Delta x=\\frac1n\\) and \\(x_i=2+\\frac{i}{n}\\), so the interval is \\([2,3]\\) and the function is \\(f(x)=\\frac1x\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\sin\\left(\\frac{6i}{n}\\right)\\frac{6}{n}\\)",
+
+      choices: [
+        "\\(\\displaystyle \\int\\limits_0^6\\sin x\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_1^6\\sin x\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_0^1\\sin(6x)\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_0^6 6\\sin x\\,dx\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "Since \\(\\Delta x=\\frac6n\\) and \\(x_i=\\frac{6i}{n}\\), the Riemann sum represents \\(\\displaystyle \\int\\limits_0^6\\sin x\\,dx\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\left(-1+\\frac{4i}{n}\\right)^2\\frac{4}{n}\\)",
+
+      choices: [
+        "\\(\\displaystyle \\int\\limits_{-1}^{3}x^2\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_0^4x^2\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_{-1}^{4}x^2\\,dx\\)",
+        "\\(\\displaystyle \\int\\limits_{-1}^{3}4x^2\\,dx\\)"
+      ],
+
+      correct: 0,
+
+      explanation:
+        "The interval starts at \\(-1\\), and \\(\\Delta x=\\frac4n\\) shows that its total length is \\(4\\). Hence the interval is \\([-1,3]\\)."
+    }
+
+  ]
 }
 ];
