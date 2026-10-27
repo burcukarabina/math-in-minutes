@@ -1,5 +1,5 @@
 const questions = [
- {
+{
   course: "calculus-1",
   section: "Function Limits",
   id: "formal-limit-definition-builder",
@@ -51,9 +51,9 @@ const questions = [
         /* distractors */
 
         {
-          id: "x-greater-n",
+          id: "x-greater-N",
           content:
-            "\\(x>N\\)"
+            "\\(x\\gt N\\)"
         },
         {
           id: "right-delta",
@@ -63,7 +63,7 @@ const questions = [
         {
           id: "f-greater-m",
           content:
-            "\\(f(x)>m\\)"
+            "\\(f(x)\\gt m\\)"
         }
       ],
 
@@ -102,7 +102,7 @@ const questions = [
         {
           id: "right-condition",
           content:
-            "\\(|x-a|\\lt\\delta\\text{ and }x>a\\)"
+            "\\(|x-a|\\lt\\delta\\text{ and }x\\gt a\\)"
         },
         {
           id: "implies",
@@ -118,7 +118,7 @@ const questions = [
         {
           id: "left-condition",
           content:
-            "\\(|x-a|\\lt\\delta\\text{ and }x<a\\)"
+            "\\(|x-a|\\lt\\delta\\text{ and }x\\lt a\\)"
         },
         {
           id: "two-sided-delta",
@@ -128,7 +128,7 @@ const questions = [
         {
           id: "f-greater-m",
           content:
-            "\\(f(x)>m\\)"
+            "\\(f(x)\\gt m\\)"
         }
       ],
 
@@ -167,7 +167,7 @@ const questions = [
         {
           id: "left-condition",
           content:
-            "\\(|x-a|\\lt\\delta\\text{ and }x<a\\)"
+            "\\(|x-a|\\lt\\delta\\text{ and }x\\lt a\\)"
         },
         {
           id: "implies",
@@ -183,17 +183,17 @@ const questions = [
         {
           id: "right-condition",
           content:
-            "\\(|x-a|\\lt\\delta\\text{ and }x>a\\)"
+            "\\(|x-a|\\lt\\delta\\text{ and }x\\gt a\\)"
         },
         {
-          id: "x-less-n",
+          id: "x-less-N",
           content:
-            "\\(x<N\\)"
+            "\\(x\\lt N\\)"
         },
         {
           id: "f-less-m",
           content:
-            "\\(f(x)<-m\\)"
+            "\\(f(x)\\lt -m\\)"
         }
       ],
 
@@ -232,7 +232,7 @@ const questions = [
         {
           id: "x-greater-N",
           content:
-            "\\(x>N\\)"
+            "\\(x\\gt N\\)"
         },
         {
           id: "implies",
@@ -248,7 +248,7 @@ const questions = [
         {
           id: "x-less-N",
           content:
-            "\\(x<N\\)"
+            "\\(x\\lt N\\)"
         },
         {
           id: "exists-delta",
@@ -258,7 +258,7 @@ const questions = [
         {
           id: "f-greater-M",
           content:
-            "\\(f(x)>M\\)"
+            "\\(f(x)\\gt M\\)"
         }
       ],
 
@@ -297,7 +297,7 @@ const questions = [
         {
           id: "x-less-N",
           content:
-            "\\(x<N\\)"
+            "\\(x\\lt N\\)"
         },
         {
           id: "implies",
@@ -313,7 +313,7 @@ const questions = [
         {
           id: "x-greater-N",
           content:
-            "\\(x>N\\)"
+            "\\(x\\gt N\\)"
         },
         {
           id: "exists-delta",
@@ -323,7 +323,7 @@ const questions = [
         {
           id: "f-less-M",
           content:
-            "\\(f(x)<-M\\)"
+            "\\(f(x)\\lt -M\\)"
         }
       ],
 
@@ -362,7 +362,7 @@ const questions = [
         {
           id: "x-greater-N",
           content:
-            "\\(x>N\\)"
+            "\\(x\\gt N\\)"
         },
         {
           id: "implies",
@@ -372,18 +372,18 @@ const questions = [
         {
           id: "f-greater-M",
           content:
-            "\\(f(x)>M\\)"
+            "\\(f(x)\\gt M\\)"
         },
 
         {
           id: "x-less-N",
           content:
-            "\\(x<N\\)"
+            "\\(x\\lt N\\)"
         },
         {
           id: "f-less-minus-M",
           content:
-            "\\(f(x)<-M\\)"
+            "\\(f(x)\\lt -M\\)"
         },
         {
           id: "forall-epsilon",
@@ -427,7 +427,7 @@ const questions = [
         {
           id: "x-greater-N",
           content:
-            "\\(x>N\\)"
+            "\\(x\\gt N\\)"
         },
         {
           id: "implies",
@@ -437,18 +437,18 @@ const questions = [
         {
           id: "f-less-minus-M",
           content:
-            "\\(f(x)<-M\\)"
+            "\\(f(x)\\lt -M\\)"
         },
 
         {
           id: "x-less-N",
           content:
-            "\\(x<N\\)"
+            "\\(x\\lt N\\)"
         },
         {
           id: "f-greater-M",
           content:
-            "\\(f(x)>M\\)"
+            "\\(f(x)\\gt M\\)"
         },
         {
           id: "exists-delta",
@@ -492,7 +492,7 @@ const questions = [
         {
           id: "x-less-N",
           content:
-            "\\(x<N\\)"
+            "\\(x\\lt N\\)"
         },
         {
           id: "implies",
@@ -502,18 +502,18 @@ const questions = [
         {
           id: "f-greater-M",
           content:
-            "\\(f(x)>M\\)"
+            "\\(f(x)\\gt M\\)"
         },
 
         {
           id: "x-greater-N",
           content:
-            "\\(x>N\\)"
+            "\\(x\\gt N\\)"
         },
         {
           id: "f-less-minus-M",
           content:
-            "\\(f(x)<-M\\)"
+            "\\(f(x)\\lt -M\\)"
         }
       ],
 
@@ -552,7 +552,7 @@ const questions = [
         {
           id: "x-less-N",
           content:
-            "\\(x<N\\)"
+            "\\(x\\lt N\\)"
         },
         {
           id: "implies",
@@ -562,18 +562,18 @@ const questions = [
         {
           id: "f-less-minus-M",
           content:
-            "\\(f(x)<-M\\)"
+            "\\(f(x)\\lt -M\\)"
         },
 
         {
           id: "x-greater-N",
           content:
-            "\\(x>N\\)"
+            "\\(x\\gt N\\)"
         },
         {
           id: "f-greater-M",
           content:
-            "\\(f(x)>M\\)"
+            "\\(f(x)\\gt M\\)"
         }
       ],
 
@@ -622,7 +622,7 @@ const questions = [
         {
           id: "f-greater-m",
           content:
-            "\\(f(x)>m\\)"
+            "\\(f(x)\\gt m\\)"
         },
 
         {
@@ -633,7 +633,7 @@ const questions = [
         {
           id: "f-less-minus-m",
           content:
-            "\\(f(x)<-m\\)"
+            "\\(f(x)\\lt -m\\)"
         }
       ],
 
@@ -682,7 +682,7 @@ const questions = [
         {
           id: "f-less-minus-m",
           content:
-            "\\(f(x)<-m\\)"
+            "\\(f(x)\\lt -m\\)"
         },
 
         {
@@ -693,7 +693,7 @@ const questions = [
         {
           id: "f-greater-m",
           content:
-            "\\(f(x)>m\\)"
+            "\\(f(x)\\gt m\\)"
         }
       ],
 
@@ -742,7 +742,7 @@ const questions = [
         {
           id: "f-greater-m",
           content:
-            "\\(f(x)>m\\)"
+            "\\(f(x)\\gt m\\)"
         },
 
         {
@@ -753,7 +753,7 @@ const questions = [
         {
           id: "f-less-minus-m",
           content:
-            "\\(f(x)<-m\\)"
+            "\\(f(x)\\lt -m\\)"
         }
       ],
 
@@ -802,7 +802,7 @@ const questions = [
         {
           id: "f-less-minus-m",
           content:
-            "\\(f(x)<-m\\)"
+            "\\(f(x)\\lt -m\\)"
         },
 
         {
@@ -813,7 +813,7 @@ const questions = [
         {
           id: "f-greater-m",
           content:
-            "\\(f(x)>m\\)"
+            "\\(f(x)\\gt m\\)"
         }
       ],
 
@@ -832,8 +832,6 @@ const questions = [
 
     /* =====================================
        14. TWO-SIDED +INFINITY
-       Notes characterize this by the two
-       one-sided limits.
     ===================================== */
 
     {
@@ -844,7 +842,7 @@ const questions = [
         {
           id: "right-positive-infinity",
           content:
-            "\\(\\displaystyle\\lim_{x\\to a^+}f(x)=\\infty\\)"
+            "\\(\\displaystyle \\lim_{x\\to a^+}f(x)=\\infty\\)"
         },
         {
           id: "and",
@@ -854,18 +852,18 @@ const questions = [
         {
           id: "left-positive-infinity",
           content:
-            "\\(\\displaystyle\\lim_{x\\to a^-}f(x)=\\infty\\)"
+            "\\(\\displaystyle \\lim_{x\\to a^-}f(x)=\\infty\\)"
         },
 
         {
           id: "right-negative-infinity",
           content:
-            "\\(\\displaystyle\\lim_{x\\to a^+}f(x)=-\\infty\\)"
+            "\\(\\displaystyle \\lim_{x\\to a^+}f(x)=-\\infty\\)"
         },
         {
           id: "left-negative-infinity",
           content:
-            "\\(\\displaystyle\\lim_{x\\to a^-}f(x)=-\\infty\\)"
+            "\\(\\displaystyle \\lim_{x\\to a^-}f(x)=-\\infty\\)"
         }
       ],
 
@@ -876,7 +874,7 @@ const questions = [
       ],
 
       explanation:
-        "The two-sided limit is positive infinity precisely when both one-sided limits are positive infinity."
+        "The two-sided limit is positive infinity when both one-sided limits are positive infinity."
     },
 
 
@@ -892,7 +890,7 @@ const questions = [
         {
           id: "right-negative-infinity",
           content:
-            "\\(\\displaystyle\\lim_{x\\to a^+}f(x)=-\\infty\\)"
+            "\\(\\displaystyle \\lim_{x\\to a^+}f(x)=-\\infty\\)"
         },
         {
           id: "and",
@@ -902,18 +900,18 @@ const questions = [
         {
           id: "left-negative-infinity",
           content:
-            "\\(\\displaystyle\\lim_{x\\to a^-}f(x)=-\\infty\\)"
+            "\\(\\displaystyle \\lim_{x\\to a^-}f(x)=-\\infty\\)"
         },
 
         {
           id: "right-positive-infinity",
           content:
-            "\\(\\displaystyle\\lim_{x\\to a^+}f(x)=\\infty\\)"
+            "\\(\\displaystyle \\lim_{x\\to a^+}f(x)=\\infty\\)"
         },
         {
           id: "left-positive-infinity",
           content:
-            "\\(\\displaystyle\\lim_{x\\to a^-}f(x)=\\infty\\)"
+            "\\(\\displaystyle \\lim_{x\\to a^-}f(x)=\\infty\\)"
         }
       ],
 
@@ -924,7 +922,7 @@ const questions = [
       ],
 
       explanation:
-        "The two-sided limit is negative infinity precisely when both one-sided limits are negative infinity."
+        "The two-sided limit is negative infinity when both one-sided limits are negative infinity."
     }
 
   ]
