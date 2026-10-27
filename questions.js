@@ -1,6 +1,118 @@
 const questions = [
 {
   course: "calculus-1",
+  section: "Flashcards",
+  id: "calculus-1-flashcards",
+  type: "flashcard",
+
+  question:
+    "Review the following Calculus I concepts.",
+
+  instructions:
+    "Think about the answer first, then reveal the back of the card.",
+
+  pool: [
+
+    {
+      front:
+        "What does \\(\\displaystyle\\lim_{x\\to a}f(x)=L\\) mean informally?",
+
+      back:
+        "The values of \\(f(x)\\) approach \\(L\\) as \\(x\\) approaches \\(a\\), with \\(x\\ne a\\)."
+    },
+
+    {
+      front:
+        "What is required for \\(\\displaystyle\\lim_{x\\to a}f(x)\\) to exist?",
+
+      back:
+        "The left-hand and right-hand limits must both exist and be equal."
+    },
+
+    {
+      front:
+        "What does \\(\\displaystyle\\lim_{x\\to a^+}f(x)\\) describe?",
+
+      back:
+        "The behaviour of \\(f(x)\\) as \\(x\\) approaches \\(a\\) from values greater than \\(a\\)."
+    },
+
+    {
+      front:
+        "What does \\(\\displaystyle\\lim_{x\\to a^-}f(x)\\) describe?",
+
+      back:
+        "The behaviour of \\(f(x)\\) as \\(x\\) approaches \\(a\\) from values less than \\(a\\)."
+    },
+
+    {
+      front:
+        "What does it mean for \\(y=L\\) to be a horizontal asymptote?",
+
+      back:
+        "At least one of \\(\\displaystyle\\lim_{x\\to\\infty}f(x)\\) or \\(\\displaystyle\\lim_{x\\to-\\infty}f(x)\\) equals \\(L\\)."
+    },
+
+    {
+      front:
+        "When is \\(x=a\\) a vertical asymptote?",
+
+      back:
+        "When at least one one-sided limit at \\(a\\) is \\(+\\infty\\) or \\(-\\infty\\)."
+    },
+
+    {
+      front:
+        "What is the derivative \\(f'(a)\\) measuring?",
+
+      back:
+        "The instantaneous rate of change of \\(f\\) at \\(x=a\\), or the slope of the tangent line."
+    },
+
+    {
+      front:
+        "What does \\(f'(c)=0\\) tell us about \\(c\\)?",
+
+      back:
+        "\\(c\\) is a critical number if \\(f\\) is defined there, but it need not be a local extremum."
+    },
+
+    {
+      front:
+        "What characterizes a local maximum?",
+
+      back:
+        "Nearby function values are less than or equal to the function value at that point."
+    },
+
+    {
+      front:
+        "What characterizes a local minimum?",
+
+      back:
+        "Nearby function values are greater than or equal to the function value at that point."
+    },
+
+    {
+      front:
+        "What happens to concavity at an inflection point?",
+
+      back:
+        "The graph changes concavity."
+    },
+
+    {
+      front:
+        "Does \\(f''(c)=0\\) guarantee an inflection point?",
+
+      back:
+        "No. The concavity must actually change at \\(c\\)."
+    }
+
+  ]
+},
+  {
+  course: "calculus-1",
   section: "Function Limits",
   id: "formal-limit-definition-builder",
   type: "statement-builder",
