@@ -1825,57 +1825,57 @@ const questions = [
   type: "logical-order",
 
   question:
-    "Arrange the following statements in a logical order to complete the argument.",
+    "Arrange the following statements in a logical order to prove part (i) of the Tail Convergence Theorem.",
 
   prompt:
-    "Show that removing finitely many terms from a convergent series does not affect convergence.",
+    "If \\(\\displaystyle\\sum_{n=1}^{\\infty} a_n\\) converges, show that \\(\\displaystyle\\sum_{n=j}^{\\infty} a_n\\) converges for each positive integer \\(j\\).",
 
   items: [
     {
       id: "A",
       content:
-        "Suppose \\(\\displaystyle \\sum_{n=1}^{\\infty} a_n\\) converges.",
+        "Let \\(m\\ge j\\), and let \\(S_m=\\displaystyle\\sum_{n=1}^{m}a_n\\) and \\(T_m=\\displaystyle\\sum_{n=j}^{m}a_n\\).",
       rank: 1
     },
 
     {
       id: "B",
       content:
-        "Then the sequence of partial sums \\(S_N=\\displaystyle\\sum_{n=1}^{N}a_n\\) converges to some finite number \\(S\\).",
+        "We have \\(S_m=(a_1+a_2+\\cdots+a_{j-1})+T_m\\).",
       rank: 2
     },
 
     {
       id: "C",
       content:
-        "Fix a positive integer \\(k\\) and consider the tail \\(\\displaystyle\\sum_{n=k}^{\\infty}a_n\\).",
+        "Suppose \\(\\displaystyle\\sum_{n=1}^{\\infty}a_n\\) converges, so \\(\\lim_{m\\to\\infty}S_m=S\\) for some \\(S\\in\\mathbb{R}\\).",
       rank: 3
     },
 
     {
       id: "D",
       content:
-        "The partial sums of this tail can be written as \\(S_N-S_{k-1}\\).",
+        "Therefore \\(T_m=S_m-(a_1+a_2+\\cdots+a_{j-1})\\).",
       rank: 4
     },
 
     {
       id: "E",
       content:
-        "As \\(N\\to\\infty\\), we have \\(S_N-S_{k-1}\\to S-S_{k-1}\\), which is finite.",
+        "Hence \\(\\lim_{m\\to\\infty}T_m=S-(a_1+a_2+\\cdots+a_{j-1})\\), which is finite.",
       rank: 5
     },
 
     {
       id: "F",
       content:
-        "Therefore, \\(\\displaystyle\\sum_{n=k}^{\\infty}a_n\\) converges.",
+        "Therefore \\(\\displaystyle\\sum_{n=j}^{\\infty}a_n\\) converges.",
       rank: 6
     }
   ],
 
   explanation:
-    "Removing finitely many terms subtracts a fixed quantity from the partial sums, so the convergence behavior does not change."
+    "The proof follows the course notes by relating the partial sums of the original series to the partial sums of the tail."
 },
   {
   course: "calculus-3",
