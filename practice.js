@@ -4270,70 +4270,7 @@ if (question.type === "chain-rule-builder") {
 </div>
 
 
-      <div class="dependency-connectors dependency-connectors-top">
-
-        <span class="dependency-line dependency-line-left"></span>
-
-        <span class="dependency-line dependency-line-right"></span>
-
-      </div>
-
-
-      <div class="dependency-level dependency-middle">
-
-        <div class="dependency-node">
-          x
-        </div>
-
-        <div class="dependency-node">
-          y
-        </div>
-
-      </div>
-
-
-      <div class="dependency-lower-layout">
-
-        <div class="dependency-x-branch">
-
-          <div class="dependency-connectors dependency-connectors-lower">
-
-            <span class="dependency-line dependency-line-left"></span>
-
-            <span class="dependency-line dependency-line-right"></span>
-
-          </div>
-
-
-          <div class="dependency-level dependency-bottom">
-
-            <div class="dependency-node">
-              u
-            </div>
-
-            <div class="dependency-node">
-              v
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="dependency-y-branch">
-
-          <div class="dependency-vertical-line"></div>
-
-          <div class="dependency-node">
-            x
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
+   
 
     <div class="chain-rule-stage">
 
