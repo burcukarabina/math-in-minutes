@@ -165,6 +165,125 @@ const questions = [
   ]
 },
  {
+  course: "calculus-1",
+  section: "Differentiation Techniques",
+  id: "implicit-vs-logarithmic-differentiation",
+  type: "sorting-bucket",
+
+  question:
+    "You are asked to find \\(\\displaystyle \\frac{dy}{dx}\\) for each relation.",
+
+  instructions:
+    "Drag each relation into the category corresponding to the most appropriate differentiation method.",
+
+  bankTitle:
+    "Relations to Classify",
+
+  buckets: [
+    "Implicit Differentiation",
+    "Logarithmic Differentiation"
+  ],
+
+  numberToDraw: 6,
+
+  pool: [
+
+    /* =====================================
+       IMPLICIT DIFFERENTIATION
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle y+\\frac{1}{y}=xy+x\\)",
+      correctBucket:
+        "Implicit Differentiation"
+    },
+
+    {
+      content:
+        "\\(\\displaystyle xy+y^3=\\arctan(x)-1\\)",
+      correctBucket:
+        "Implicit Differentiation"
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\arcsin(x^2y)+xy=1\\)",
+      correctBucket:
+        "Implicit Differentiation"
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\frac{1}{y}+\\frac{y^2}{x^2}=x\\)",
+      correctBucket:
+        "Implicit Differentiation"
+    },
+
+    {
+      content:
+        "\\(\\displaystyle x^2+y^2=4xy\\)",
+      correctBucket:
+        "Implicit Differentiation"
+    },
+
+    {
+      content:
+        "\\(\\displaystyle e^{xy}+x^2y=3\\)",
+      correctBucket:
+        "Implicit Differentiation"
+    },
+
+
+    /* =====================================
+       LOGARITHMIC DIFFERENTIATION
+    ===================================== */
+
+    {
+      content:
+        "\\(\\displaystyle y=x^{x^x}\\)",
+      correctBucket:
+        "Logarithmic Differentiation"
+    },
+
+    {
+      content:
+        "\\(\\displaystyle y=x^{\\sin x}\\)",
+      correctBucket:
+        "Logarithmic Differentiation"
+    },
+
+    {
+      content:
+        "\\(\\displaystyle y=(2x)^{\\sqrt[3]{x}}\\)",
+      correctBucket:
+        "Logarithmic Differentiation"
+    },
+
+    {
+      content:
+        "\\(\\displaystyle y=(2x)^{3x}\\)",
+      correctBucket:
+        "Logarithmic Differentiation"
+    },
+
+    {
+      content:
+        "\\(\\displaystyle y=(\\sin x)^{\\cos x}\\)",
+      correctBucket:
+        "Logarithmic Differentiation"
+    },
+
+    {
+      content:
+        "\\(\\displaystyle y=(x^2+1)^{\\tan x}\\)",
+      correctBucket:
+        "Logarithmic Differentiation"
+    }
+
+  ]
+},
+ {
   course: "calculus-2",
   section: "Riemann Sums",
   id: "definite-integral-to-riemann-sum",
