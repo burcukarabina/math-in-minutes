@@ -578,5 +578,375 @@ const questions = [
     }
 
   ]
+},{
+  course: "calculus-2",
+  section: "Definite Integrals",
+  id: "order-integrals-by-value",
+  type: "drag-order",
+
+  question:
+    "Drag the following definite integrals into increasing order. Try to compare the integrands rather than evaluating the integrals.",
+
+  pool: [
+
+    /* =====================================
+       SET 1
+    ===================================== */
+
+    {
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{x^2}{1+x^2}\\,dx\\)",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{x}{1+x}\\,dx\\)",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{1+x}\\,dx\\)",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{1+x^2}\\,dx\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "For \\(0<x<1\\), \\(\\frac{x^2}{1+x^2}<\\frac{x}{1+x}<\\frac{1}{1+x}<\\frac{1}{1+x^2}\\). Since all four integrals are over the same interval, the same ordering holds for their values."
+    },
+
+
+    /* =====================================
+       SET 2
+    ===================================== */
+
+    {
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{x^2}{2+x^2}\\,dx\\)",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{x}{2+x}\\,dx\\)",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{2+x}\\,dx\\)",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{1}{1+x^2}\\,dx\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "On \\(0<x<1\\), the four integrands satisfy \\(\\frac{x^2}{2+x^2}<\\frac{x}{2+x}<\\frac{1}{2+x}<\\frac{1}{1+x^2}\\). Therefore their integrals have the same increasing order."
+    },
+
+
+    /* =====================================
+       SET 3
+    ===================================== */
+
+    {
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\int\\limits_{-1}^1 x^4\\,dx\\)",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\int\\limits_{-1}^1 x^2\\,dx\\)",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\int\\limits_{-1}^1 |x|\\,dx\\)",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\int\\limits_{-1}^1 1\\,dx\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "For \\(-1<x<1\\), \\(x^4\\le x^2\\le |x|\\le1\\), with strict inequalities except at selected points. Integrating over the same interval preserves this ordering."
+    },
+
+
+    /* =====================================
+       SET 4
+    ===================================== */
+
+    {
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^{\\pi/4}\\sin^2x\\,dx\\)",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^{\\pi/4}\\sin x\\cos x\\,dx\\)",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^{\\pi/4}\\cos^2x\\,dx\\)",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^{\\pi/4}\\cos x\\,dx\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "On \\(0<x<\\frac{\\pi}{4}\\), we have \\(0<\\sin x<\\cos x<1\\). Therefore \\(\\sin^2x<\\sin x\\cos x<\\cos^2x<\\cos x\\), so the integrals follow the same order."
+    },
+
+
+    /* =====================================
+       SET 5
+    ===================================== */
+
+    {
+      items: [
+        {
+          id: "A",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\frac{x}{1+x}\\,dx\\)",
+          rank: 1
+        },
+
+        {
+          id: "B",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\ln(1+x)\\,dx\\)",
+          rank: 2
+        },
+
+        {
+          id: "C",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 x\\,dx\\)",
+          rank: 3
+        },
+
+        {
+          id: "D",
+          content:
+            "\\(\\displaystyle \\int\\limits_0^1 \\sqrt{x}\\,dx\\)",
+          rank: 4
+        }
+      ],
+
+      explanation:
+        "For \\(0<x<1\\), \\(\\frac{x}{1+x}<\\ln(1+x)<x<\\sqrt{x}\\). Since the interval is the same for all four integrals, this gives their increasing order."
+    }
+
+  ]
+},
+ {
+  course: "calculus-2",
+  section: "Integration Techniques",
+  id: "integration-method-1",
+  type: "randomized-multiple-choice",
+
+  question:
+    "Which integration technique is most appropriate for the following integral?",
+
+  choices: [
+    "u-Substitution",
+    "Integration by Parts",
+    "Trigonometric Substitution",
+    "Partial Fractions"
+  ],
+
+  pool: [
+
+    // u-SUBSTITUTION
+
+    {
+      content:
+        "\\(\\displaystyle \\int 2x\\cos(x^2)\\,dx\\)",
+      correct: 0,
+      explanation:
+        "u-Substitution is most efficient because the derivative of \\(x^2\\) appears as a factor in the integrand."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{x}{(x^2+4)^3}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "u-Substitution is most efficient with \\(u=x^2+4\\), since its derivative is proportional to \\(x\\,dx\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{e^x}{1+e^x}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "u-Substitution is most efficient with \\(u=1+e^x\\), since \\(du=e^x\\,dx\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{\\sec^2 x}{3+\\tan x}\\,dx\\)",
+      correct: 0,
+      explanation:
+        "u-Substitution is most efficient with \\(u=3+\\tan x\\), since \\(du=\\sec^2x\\,dx\\)."
+    },
+
+
+    // INTEGRATION BY PARTS
+
+    {
+      content:
+        "\\(\\displaystyle \\int xe^x\\,dx\\)",
+      correct: 1,
+      explanation:
+        "Integration by Parts is most efficient because the integrand is a product of an algebraic function and an exponential function."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int x\\cos x\\,dx\\)",
+      correct: 1,
+      explanation:
+        "Integration by Parts is most efficient because the integrand is a product of an algebraic and a trigonometric function."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\ln x\\,dx\\)",
+      correct: 1,
+      explanation:
+        "Integration by Parts is appropriate by viewing the integrand as \\(1\\cdot\\ln x\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int x^2\\ln x\\,dx\\)",
+      correct: 1,
+      explanation:
+        "Integration by Parts is most efficient because differentiating \\(\\ln x\\) simplifies it while \\(x^2\\) is easy to integrate."
+    },
+
+
+    // TRIGONOMETRIC SUBSTITUTION
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\sqrt{9-x^2}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "Trigonometric Substitution is appropriate because the integrand contains the form \\(\\sqrt{a^2-x^2}\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{1}{\\sqrt{x^2+4}}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "Trigonometric Substitution is appropriate because the radical contains the form \\(x^2+a^2\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{x^2}{\\sqrt{x^2+9}}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "Trigonometric Substitution is appropriate because the radical contains the form \\(x^2+a^2\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{\\sqrt{x^2-25}}{x}\\,dx\\)",
+      correct: 2,
+      explanation:
+        "Trigonometric Substitution is appropriate because the radical contains the form \\(x^2-a^2\\)."
+    },
+
+
+    // PARTIAL FRACTIONS
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{1}{x^2-1}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "Partial Fractions is most efficient because the integrand is a proper rational function whose denominator factors as \\((x-1)(x+1)\\)."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{1}{x(x+2)}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "Partial Fractions is most efficient because the integrand is a proper rational function with distinct linear factors."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{x+1}{x^2-4x+3}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "Partial Fractions is appropriate because the denominator factors into linear factors."
+    },
+
+    {
+      content:
+        "\\(\\displaystyle \\int \\frac{x^2+1}{x(x-1)(x+1)}\\,dx\\)",
+      correct: 3,
+      explanation:
+        "Partial Fractions is appropriate because this is a proper rational function whose denominator is already factored into linear factors."
+    }
+
+  ]
 }
 ];
