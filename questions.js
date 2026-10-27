@@ -159,14 +159,14 @@ const questions = [
         {
           id: "D",
           content:
-            "Since \\(\\{a_n\\}\\) is increasing and \\(L\\) is an upper bound, for \\(n\\gtM\\) we have \\(L-\\varepsilon < a_M\\le a_n\\le L\\).",
+            "Since \\(\\{a_n\\}\\) is increasing and \\(L\\) is an upper bound, for \\(n > M\\) we have \\(L-\\varepsilon < a_M\\le a_n\\le L\\).",
           rank: 4
         },
 
         {
           id: "E",
           content:
-            "Thus \\(L-\\varepsilon\\lta_n\\ltL+\\varepsilon\\) whenever \\(n\\gtM\\).",
+            "Thus \\(L-\\varepsilon \\lt a_n \\lt L+ \\varepsilon\\) whenever \\(n > M\\).",
           rank: 5
         },
 
