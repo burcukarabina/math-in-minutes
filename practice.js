@@ -2514,6 +2514,410 @@ if (
   return;
 }
 
+      /* =========================================
+   STATEMENT BUILDER
+========================================= */
+
+if (question.type === "statement-builder") {
+
+  const card = document.createElement("article");
+  card.className = "question-card statement-builder-question";
+  card.id = question.id;
+
+  let currentSet = null;
+  let answerIds = [];
+
+
+  function chooseStatementSet() {
+
+    let newSet;
+
+    if (question.pool.length === 1) {
+
+      newSet = question.pool[0];
+
+    } else {
+
+      do {
+
+        newSet =
+          question.pool[
+            Math.floor(
+              Math.random() *
+              question.pool.length
+            )
+          ];
+
+      } while (newSet === currentSet);
+
+    }
+
+    currentSet = newSet;
+  }
+
+
+  function getPieceById(id) {
+
+    return currentSet.pieces.find(
+      piece => piece.id === id
+    );
+  }
+
+
+  function renderAnswer() {
+
+    const answerArea =
+      card.querySelector(
+        ".statement-builder-answer"
+      );
+
+    if (answerIds.length === 0) {
+
+      answerArea.innerHTML = `
+        <span class="statement-builder-placeholder">
+          Build your statement here.
+        </span>
+      `;
+
+    } else {
+
+      answerArea.innerHTML =
+        answerIds
+          .map(id => {
+
+            const piece =
+              getPieceById(id);
+
+            return `
+              <span class="statement-answer-piece">
+                ${piece.content}
+              </span>
+            `;
+
+          })
+          .join("");
+    }
+
+    renderMath(answerArea);
+  }
+
+
+  function renderStatementBuilder() {
+
+    chooseStatementSet();
+
+    answerIds = [];
+
+    const shuffledPieces =
+      shuffleArray(currentSet.pieces);
+
+
+    card.innerHTML = `
+
+      <p class="question-number">
+        Question ${index + 1}
+      </p>
+
+
+      <h3>
+        ${question.question}
+      </h3>
+
+
+      ${
+        question.instructions
+          ? `
+            <p class="sorting-instructions">
+              ${question.instructions}
+            </p>
+          `
+          : ""
+      }
+
+
+      <div class="statement-builder-limit">
+
+        <strong>Limit:</strong>
+
+        <div class="statement-builder-limit-math">
+          ${currentSet.prompt}
+        </div>
+
+      </div>
+
+
+      <div class="statement-builder-answer-section">
+
+        <strong>Answer:</strong>
+
+        <div
+          class="statement-builder-answer"
+          aria-live="polite"
+        >
+        </div>
+
+      </div>
+
+
+      <div class="statement-builder-bank">
+
+        <h4>
+          Quantifiers and Expressions
+        </h4>
+
+        <div class="statement-builder-buttons">
+
+          ${shuffledPieces
+            .map(
+              piece => `
+                <button
+                  type="button"
+                  class="statement-piece-button"
+                  data-piece-id="${piece.id}"
+                >
+                  ${piece.content}
+                </button>
+              `
+            )
+            .join("")}
+
+        </div>
+
+      </div>
+
+
+      <div class="statement-builder-edit">
+
+        <button
+          type="button"
+          class="statement-delete-button"
+        >
+          Delete Last Entry
+        </button>
+
+        <button
+          type="button"
+          class="statement-reset-button"
+        >
+          Reset
+        </button>
+
+      </div>
+
+
+      <div class="random-question-actions">
+
+        <button
+          type="button"
+          class="check-answer statement-check-button"
+        >
+          Check Answer
+        </button>
+
+        <button
+          type="button"
+          class="try-another-button statement-try-another-button"
+        >
+          Try Another
+        </button>
+
+      </div>
+
+
+      <div
+        class="question-feedback statement-builder-feedback"
+        aria-live="polite"
+      ></div>
+    `;
+
+
+    const feedback =
+      card.querySelector(
+        ".statement-builder-feedback"
+      );
+
+
+    const pieceButtons =
+      card.querySelectorAll(
+        ".statement-piece-button"
+      );
+
+
+    pieceButtons.forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const id =
+            button.dataset.pieceId;
+
+          answerIds.push(id);
+
+          button.disabled = true;
+
+          button.classList.add(
+            "statement-piece-used"
+          );
+
+          feedback.innerHTML = "";
+
+          renderAnswer();
+        }
+      );
+    });
+
+
+    const deleteButton =
+      card.querySelector(
+        ".statement-delete-button"
+      );
+
+
+    deleteButton.addEventListener(
+      "click",
+      () => {
+
+        if (answerIds.length === 0) {
+          return;
+        }
+
+        const removedId =
+          answerIds.pop();
+
+        const restoredButton =
+          card.querySelector(
+            `[data-piece-id="${removedId}"]`
+          );
+
+        if (restoredButton) {
+
+          restoredButton.disabled = false;
+
+          restoredButton.classList.remove(
+            "statement-piece-used"
+          );
+        }
+
+        feedback.innerHTML = "";
+
+        renderAnswer();
+      }
+    );
+
+
+    const resetButton =
+      card.querySelector(
+        ".statement-reset-button"
+      );
+
+
+    resetButton.addEventListener(
+      "click",
+      () => {
+
+        answerIds = [];
+
+        pieceButtons.forEach(button => {
+
+          button.disabled = false;
+
+          button.classList.remove(
+            "statement-piece-used"
+          );
+        });
+
+        feedback.innerHTML = "";
+
+        renderAnswer();
+      }
+    );
+
+
+    const checkButton =
+      card.querySelector(
+        ".statement-check-button"
+      );
+
+
+    checkButton.addEventListener(
+      "click",
+      () => {
+
+        const correct =
+          answerIds.length ===
+            currentSet.correctOrder.length
+          &&
+          answerIds.every(
+            (id, position) =>
+              id ===
+              currentSet.correctOrder[position]
+          );
+
+
+        if (correct) {
+
+          feedback.className =
+            "question-feedback feedback-correct statement-builder-feedback";
+
+          feedback.innerHTML = `
+            <strong>Correct!</strong>
+            <span class="statement-builder-explanation"></span>
+          `;
+
+          const explanation =
+            feedback.querySelector(
+              ".statement-builder-explanation"
+            );
+
+          explanation.textContent =
+            currentSet.explanation;
+
+        } else {
+
+          feedback.className =
+            "question-feedback feedback-incorrect statement-builder-feedback";
+
+          feedback.innerHTML = `
+            <strong>Not quite.</strong>
+            Check the quantifiers, the direction of approach,
+            and the order of the statements.
+          `;
+        }
+
+        renderMath(feedback);
+      }
+    );
+
+
+    const tryAnotherButton =
+      card.querySelector(
+        ".statement-try-another-button"
+      );
+
+
+    tryAnotherButton.addEventListener(
+      "click",
+      () => {
+
+        renderStatementBuilder();
+
+      }
+    );
+
+
+    renderAnswer();
+
+    renderMath(card);
+  }
+
+
+  renderStatementBuilder();
+
+  section.appendChild(card);
+
+  return;
+}
       
       /* =========================================
          RANDOMIZED MULTIPLE CHOICE
