@@ -3513,22 +3513,43 @@ if (question.type === "flashcard") {
       }
 
 
-      <div
-        class="practice-flashcard"
-        tabindex="0"
-        role="button"
-        aria-label="Flashcard. Click to reveal the answer."
-      >
+     <div
+  class="practice-flashcard"
+  tabindex="0"
+  role="button"
+  aria-label="Flashcard. Click to reveal the answer."
+>
 
-        <div class="practice-flashcard-label">
-          QUESTION
-        </div>
+  <div class="practice-flashcard-inner">
 
-        <div class="practice-flashcard-content">
-          ${currentCard.front}
-        </div>
+    <div class="practice-flashcard-face practice-flashcard-front">
 
+      <div class="practice-flashcard-label">
+        QUESTION
       </div>
+
+      <div class="practice-flashcard-content">
+        ${currentCard.front}
+      </div>
+
+    </div>
+
+
+    <div class="practice-flashcard-face practice-flashcard-back">
+
+      <div class="practice-flashcard-label">
+        ANSWER
+      </div>
+
+      <div class="practice-flashcard-content">
+        ${currentCard.back}
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
 
       <div class="flashcard-actions">
@@ -3558,46 +3579,20 @@ if (question.type === "flashcard") {
       card.querySelector(".flashcard-reveal");
 
 
-    function toggleFlashcard() {
+  function toggleFlashcard() {
 
-      showingBack = !showingBack;
+  showingBack = !showingBack;
 
+  flashcard.classList.toggle(
+    "flipped",
+    showingBack
+  );
 
-      if (showingBack) {
-
-        flashcard.innerHTML = `
-
-          <div class="practice-flashcard-label">
-            ANSWER
-          </div>
-
-          <div class="practice-flashcard-content">
-            ${currentCard.back}
-          </div>
-        `;
-
-        revealButton.textContent =
-          "Show Question";
-
-      } else {
-
-        flashcard.innerHTML = `
-
-          <div class="practice-flashcard-label">
-            QUESTION
-          </div>
-
-          <div class="practice-flashcard-content">
-            ${currentCard.front}
-          </div>
-        `;
-
-        revealButton.textContent =
-          "Reveal Answer";
-      }
-
-      renderMath(flashcard);
-    }
+  revealButton.textContent =
+    showingBack
+      ? "Show Question"
+      : "Reveal Answer";
+}
 
 
     flashcard.addEventListener(
