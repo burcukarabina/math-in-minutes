@@ -3650,6 +3650,7 @@ if (question.type === "flashcard") {
 
   return;
 }
+
       /* =========================================
    MATCHING
 ========================================= */
@@ -3861,6 +3862,338 @@ if (question.type === "matching") {
 
 
     let draggedItem = null;
+
+
+    /* =====================================
+       DRAG START
+    ===================================== */
+
+    items.forEach(item => {
+
+      item.addEventListener(
+        "dragstart",
+        event => {
+
+          draggedItem = item;
+
+          item.classList.add(
+            "matching-dragging"
+          );
+
+          event.dataTransfer.effectAllowed =
+            "move";
+
+        }
+      );
+
+
+      item.addEventListener(
+        "dragend",
+        () => {
+
+          item.classList.remove(
+            "matching-dragging"
+          );
+
+          draggedItem = null;
+
+        }
+      );
+
+    });
+
+
+    /* =====================================
+       DROP ZONES
+    ===================================== */
+
+    dropzones.forEach(dropzone => {
+
+      dropzone.addEventListener(
+        "dragover",
+        event => {
+
+          event.preventDefault();
+
+          dropzone.classList.add(
+            "matching-drop-active"
+          );
+
+        }
+      );
+
+
+      dropzone.addEventListener(
+        "dragleave",
+        () => {
+
+          dropzone.classList.remove(
+            "matching-drop-active"
+          );
+
+        }
+      );
+
+
+      dropzone.addEventListener(
+        "drop",
+        event => {
+
+          event.preventDefault();
+
+          dropzone.classList.remove(
+            "matching-drop-active"
+          );
+
+
+          if (!draggedItem) {
+            return;
+          }
+
+
+          const existing =
+            dropzone.querySelector(
+              ".matching-item"
+            );
+
+
+          if (
+            existing &&
+            existing !== draggedItem
+          ) {
+
+            bank.appendChild(existing);
+
+            delete placements[
+              existing.dataset.id
+            ];
+          }
+
+
+          dropzone.appendChild(
+            draggedItem
+          );
+
+
+          const target =
+            dropzone.closest(
+              ".matching-target"
+            );
+
+
+          placements[
+            draggedItem.dataset.id
+          ] =
+            target.dataset.answer;
+
+
+          feedback.innerHTML = "";
+
+        }
+      );
+
+    });
+
+
+    /* =====================================
+       RETURN CARDS TO BANK
+    ===================================== */
+
+    bank.addEventListener(
+      "dragover",
+      event => {
+
+        event.preventDefault();
+
+      }
+    );
+
+
+    bank.addEventListener(
+      "drop",
+      event => {
+
+        event.preventDefault();
+
+
+        if (!draggedItem) {
+          return;
+        }
+
+
+        bank.appendChild(
+          draggedItem
+        );
+
+
+        delete placements[
+          draggedItem.dataset.id
+        ];
+
+
+        feedback.innerHTML = "";
+
+      }
+    );
+
+
+    /* =====================================
+       CHECK ANSWERS
+    ===================================== */
+
+    const checkButton =
+      card.querySelector(
+        ".matching-check"
+      );
+
+
+    checkButton.addEventListener(
+      "click",
+      () => {
+
+        let correctCount = 0;
+
+
+        currentItems.forEach(item => {
+
+          const placedAnswer =
+            placements[item.id];
+
+
+          const itemElement =
+            card.querySelector(
+              `.matching-item[data-id="${item.id}"]`
+            );
+
+
+          itemElement.classList.remove(
+            "matching-correct",
+            "matching-incorrect"
+          );
+
+
+          if (
+            placedAnswer === item.right
+          ) {
+
+            correctCount++;
+
+            itemElement.classList.add(
+              "matching-correct"
+            );
+
+          } else {
+
+            itemElement.classList.add(
+              "matching-incorrect"
+            );
+
+          }
+
+        });
+
+
+        if (
+          correctCount ===
+          currentItems.length
+        ) {
+
+          feedback.className =
+            "question-feedback feedback-correct matching-feedback";
+
+          feedback.innerHTML = `
+            <strong>Correct!</strong>
+            All functions are matched with their domains.
+          `;
+
+        } else {
+
+          feedback.className =
+            "question-feedback feedback-incorrect matching-feedback";
+
+          feedback.innerHTML = `
+            <strong>${correctCount} of ${currentItems.length} correct.</strong>
+            Recheck the domain restrictions for the highlighted cards.
+          `;
+
+        }
+
+      }
+    );
+
+
+    /* =====================================
+       RESET
+    ===================================== */
+
+    const resetButton =
+      card.querySelector(
+        ".matching-reset"
+      );
+
+
+    resetButton.addEventListener(
+      "click",
+      () => {
+
+        placements = {};
+
+
+        card
+          .querySelectorAll(
+            ".matching-item"
+          )
+          .forEach(item => {
+
+            item.classList.remove(
+              "matching-correct",
+              "matching-incorrect"
+            );
+
+            bank.appendChild(item);
+
+          });
+
+
+        feedback.className =
+          "question-feedback matching-feedback";
+
+        feedback.innerHTML = "";
+
+      }
+    );
+
+
+    /* =====================================
+       TRY ANOTHER SET
+    ===================================== */
+
+    const tryAnotherButton =
+      card.querySelector(
+        ".matching-try-another"
+      );
+
+
+    tryAnotherButton.addEventListener(
+      "click",
+      () => {
+
+        renderMatchingQuestion();
+
+      }
+    );
+
+
+    renderMath(card);
+  }
+
+
+  renderMatchingQuestion();
+
+  section.appendChild(card);
+
+  return;
+}
 /* =========================================
    CHAIN RULE BUILDER — STAGE 1
 ========================================= */
