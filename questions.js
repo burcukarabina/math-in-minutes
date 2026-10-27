@@ -37,7 +37,7 @@ const questions = [
 
     {
       prompt:
-        "Assume \\(a_n\\le b_n\\le c_n\\) for \\(n>M\\), and \\(\\lim_{n\\to\\infty}a_n=L=\\lim_{n\\to\\infty}c_n\\). Prove that \\(\\lim_{n\\to\\infty}b_n=L\\).",
+        "Assume \\(a_n\\le b_n\\le c_n\\) for \\(n>M\\), and \\(\\displaystyle\\lim_{n\\to\\infty}a_n=L=\\displaystyle\\lim_{n\\to\\infty}c_n\\). Prove that \\(\\displaystyle\\lim_{n\\to\\infty}b_n=L\\).",
 
       items: [
         {
@@ -57,7 +57,7 @@ const questions = [
         {
           id: "C",
           content:
-            "For \\(n>N\\), we have \\(L-\\varepsilon<a_n\\le b_n\\le c_n<L+\\varepsilon\\).",
+            "For \\(n>N\\), we have \\(L-\\varepsilon \lt a_n\\le b_n\\le c_n \lt L+\\varepsilon\\).",
           rank: 3
         },
 
