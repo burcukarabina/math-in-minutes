@@ -4935,73 +4935,75 @@ const questions = [
   {
   course: "calculus-3",
   section: "Chain Rule",
-  id: "chain-rule-builder-sample",
+  id: "chain-rule-builder",
   type: "chain-rule-builder",
 
   question:
     "Use the dependency graph to build the Chain Rule formula.",
 
-  target:
-    "\\(\\displaystyle \\frac{\\partial z}{\\partial u}\\)",
+  pool: [
 
-  graph: {
+    {
+      start: "z",
+      target: "u",
 
-    nodes: [
-      { id: "z", x: 350, y: 50 },
-      { id: "y", x: 500, y: 145 },
-      { id: "x", x: 300, y: 190 },
-      { id: "u", x: 220, y: 300 },
-      { id: "v", x: 380, y: 300 }
-    ],
+      graph: {
 
-    edges: [
-      ["z", "x"],
-      ["z", "y"],
-      ["y", "x"],
-      ["x", "u"],
-      ["x", "v"]
-    ]
+        nodes: [
+          { id: "z", x: 350, y: 50 },
+          { id: "y", x: 500, y: 145 },
+          { id: "x", x: 300, y: 190 },
+          { id: "u", x: 220, y: 300 },
+          { id: "v", x: 380, y: 300 }
+        ],
 
-  },
+        edges: [
+          ["z", "x"],
+          ["z", "y"],
+          ["y", "x"],
+          ["x", "u"],
+          ["x", "v"]
+        ]
 
-  stage1: {
-
-    prompt:
-      "Select all dependency paths from \\(z\\) to \\(u\\).",
-
-    choices: [
-
-      {
-        id: "p1",
-        content:
-          "\\(z\\to x\\to u\\)",
-        correct: true
       },
 
-      {
-        id: "p2",
-        content:
-          "\\(z\\to y\\to x\\to u\\)",
-        correct: true
+      correctPaths: [
+        ["z", "x", "u"],
+        ["z", "y", "x", "u"]
+      ]
+    },
+
+
+    {
+      start: "w",
+      target: "t",
+
+      graph: {
+
+        nodes: [
+          { id: "w", x: 350, y: 50 },
+          { id: "x", x: 220, y: 150 },
+          { id: "y", x: 480, y: 150 },
+          { id: "s", x: 220, y: 280 },
+          { id: "t", x: 480, y: 280 }
+        ],
+
+        edges: [
+          ["w", "x"],
+          ["w", "y"],
+          ["x", "s"],
+          ["x", "t"],
+          ["y", "t"]
+        ]
+
       },
 
-      {
-        id: "p3",
-        content:
-          "\\(z\\to y\\to u\\)",
-        correct: false
-      },
+      correctPaths: [
+        ["w", "x", "t"],
+        ["w", "y", "t"]
+      ]
+    }
 
-      {
-        id: "p4",
-        content:
-          "\\(z\\to x\\to v\\)",
-        correct: false
-      }
-
-    ]
-
-  }
-
+  ]
 }
 ];
