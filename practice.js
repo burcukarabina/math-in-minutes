@@ -2228,6 +2228,293 @@ if (
 
   return;
 }
+
+      if (question.type === "integral-builder") {
+
+  const card = document.createElement("article");
+  card.className = "question-card integral-builder-question";
+  card.id = question.id;
+
+  let currentSet = null;
+
+  function chooseBuilderSet() {
+
+    let newSet;
+
+    if (question.pool.length === 1) {
+      newSet = question.pool[0];
+    } else {
+      do {
+        newSet =
+          question.pool[
+            Math.floor(Math.random() * question.pool.length)
+          ];
+      } while (newSet === currentSet);
+    }
+
+    currentSet = newSet;
+  }
+
+
+  function makeOptions(slot) {
+
+    return `
+      <option value="">
+        Select
+      </option>
+
+      ${slot.choices
+        .map(
+          choice => `
+            <option value="${choice.value}">
+              ${choice.label}
+            </option>
+          `
+        )
+        .join("")}
+    `;
+  }
+
+
+  function renderIntegralBuilder() {
+
+    chooseBuilderSet();
+
+    card.innerHTML = `
+      <p class="question-number">
+        Question ${index + 1}
+      </p>
+
+      <h3>
+        ${question.question}
+      </h3>
+
+      ${
+        question.instructions
+          ? `
+            <p class="sorting-instructions">
+              ${question.instructions}
+            </p>
+          `
+          : ""
+      }
+
+      <div class="integral-builder-prompt">
+        ${currentSet.prompt}
+      </div>
+
+
+      <div class="integral-builder-expression">
+
+        <span class="integral-builder-prefix">
+          A =
+        </span>
+
+        <span class="integral-builder-integral">
+
+          <select
+            class="integral-builder-select integral-upper"
+            data-slot="upper"
+            aria-label="Upper bound"
+          >
+            ${makeOptions(currentSet.builder.upper)}
+          </select>
+
+          <span class="integral-symbol">
+            ∫
+          </span>
+
+          <select
+            class="integral-builder-select integral-lower"
+            data-slot="lower"
+            aria-label="Lower bound"
+          >
+            ${makeOptions(currentSet.builder.lower)}
+          </select>
+
+        </span>
+
+
+        <span class="integral-builder-parenthesis">
+          (
+        </span>
+
+        <select
+          class="integral-builder-select integral-integrand"
+          data-slot="integrand"
+          aria-label="Integrand"
+        >
+          ${makeOptions(currentSet.builder.integrand)}
+        </select>
+
+        <span class="integral-builder-parenthesis">
+          )
+        </span>
+
+        <span class="integral-builder-differential">
+          ${currentSet.builder.differential}
+        </span>
+
+      </div>
+
+
+      <div class="random-question-actions">
+
+        <button
+          type="button"
+          class="check-answer integral-builder-check"
+        >
+          Check Answer
+        </button>
+
+        <button
+          type="button"
+          class="try-another-button integral-builder-try-another"
+        >
+          Try Another
+        </button>
+
+      </div>
+
+
+      <div
+        class="question-feedback integral-builder-feedback"
+        aria-live="polite"
+      ></div>
+    `;
+
+
+    const feedback =
+      card.querySelector(".integral-builder-feedback");
+
+
+    const checkButton =
+      card.querySelector(".integral-builder-check");
+
+
+    checkButton.addEventListener("click", () => {
+
+      const lower =
+        card.querySelector('[data-slot="lower"]');
+
+      const upper =
+        card.querySelector('[data-slot="upper"]');
+
+      const integrand =
+        card.querySelector('[data-slot="integrand"]');
+
+
+      const checks = [
+
+        {
+          element: lower,
+          correct:
+            lower.value ===
+            currentSet.builder.lower.correct
+        },
+
+        {
+          element: upper,
+          correct:
+            upper.value ===
+            currentSet.builder.upper.correct
+        },
+
+        {
+          element: integrand,
+          correct:
+            integrand.value ===
+            currentSet.builder.integrand.correct
+        }
+
+      ];
+
+
+      checks.forEach(check => {
+
+        check.element.classList.remove(
+          "builder-correct",
+          "builder-incorrect"
+        );
+
+        if (check.correct) {
+          check.element.classList.add(
+            "builder-correct"
+          );
+        } else {
+          check.element.classList.add(
+            "builder-incorrect"
+          );
+        }
+
+      });
+
+
+      const correctCount =
+        checks.filter(check => check.correct).length;
+
+
+      if (correctCount === checks.length) {
+
+        feedback.className =
+          "question-feedback feedback-correct integral-builder-feedback";
+
+        feedback.innerHTML = `
+          <strong>Correct!</strong>
+          <span class="integral-builder-explanation"></span>
+        `;
+
+        const explanation =
+          feedback.querySelector(
+            ".integral-builder-explanation"
+          );
+
+        explanation.textContent =
+          currentSet.explanation;
+
+      } else {
+
+        feedback.className =
+          "question-feedback feedback-incorrect integral-builder-feedback";
+
+        feedback.innerHTML = `
+          <strong>Not quite.</strong>
+          ${correctCount} out of ${checks.length}
+          parts are correct.
+          Reconsider the highlighted entries.
+        `;
+      }
+
+      renderMath(feedback);
+    });
+
+
+    const tryAnotherButton =
+      card.querySelector(
+        ".integral-builder-try-another"
+      );
+
+
+    tryAnotherButton.addEventListener(
+      "click",
+      () => {
+        renderIntegralBuilder();
+      }
+    );
+
+
+    renderMath(card);
+  }
+
+
+  renderIntegralBuilder();
+
+  section.appendChild(card);
+
+  return;
+}
+
+      
       /* =========================================
          RANDOMIZED MULTIPLE CHOICE
       ========================================= */
