@@ -548,5 +548,28 @@ const videos = [
   youtubeId: "76XPDqm4Cfg",
   description:
     "An explanation of key properties of the gradient vector and its connection to directional derivatives."
+},{
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "finding-error-linear-approximation-part-1",
+  section: "Linear Approximation",
+  topic: "Linear Approximation",
+  title: "Finding Error: Linear Approximation Part I",
+  youtubeId: "9gs5RIa3_Q0",
+  description:
+    "An introduction to finding the error in a linear approximation by comparing the approximation with the actual function value."
+},
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "finding-error-linear-approximation-part-2",
+  section: "Linear Approximation",
+  topic: "Linear Approximation",
+  title: "Finding Error: Linear Approximation Part II",
+  youtubeId: "lZxDCtHUnHY",
+  description:
+    "A continuation of finding error in linear approximation, with additional examples comparing the approximation to the actual function value."
 }
 ];
