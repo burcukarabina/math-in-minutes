@@ -571,5 +571,29 @@ const videos = [
   youtubeId: "lZxDCtHUnHY",
   description:
     "A continuation of finding error in linear approximation, with additional examples comparing the approximation to the actual function value."
+},
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "lagrange-multiplier-algorithm-example-1",
+  section: "Optimization",
+  topic: "Lagrange Multipliers",
+  title: "Optimization with Lagrange Multiplier Algorithm Example 1",
+  youtubeId: "EGspl9UGs3M",
+  description:
+    "A worked example applying the Lagrange Multiplier algorithm to solve a constrained optimization problem."
+},
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "lagrange-multiplier-algorithm-example-2",
+  section: "Optimization",
+  topic: "Lagrange Multipliers",
+  title: "Optimization with Lagrange Multiplier Algorithm Example 2",
+  youtubeId: "RPsZ5vDWKDk",
+  description:
+    "A second worked example applying the Lagrange Multiplier algorithm to solve a constrained optimization problem."
 }
 ];
