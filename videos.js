@@ -354,6 +354,18 @@ const videos = [
     "Worked examples using the Geometric Series Test to determine whether a series converges or diverges and, when it converges, to find its sum."
 },
   {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "choosing-the-right-series-test",
+  section: "Numerical Series",
+  topic: "Convergence Tests",
+  title: "Choosing the Right Test with Series",
+  youtubeId: "17peHUlHhVI",
+  description:
+    "A guide to choosing an appropriate convergence test for an infinite series based on the form and structure of its terms."
+},
+  {
   course: "calculus-3",
   courseName: "Calculus III",
   page: "calculus-3.html",
