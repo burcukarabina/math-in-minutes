@@ -402,6 +402,18 @@ const videos = [
     "An introduction to the Comparison Test for determining convergence or divergence by comparing a series with another series whose behavior is already known."
 },
   {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "limit-comparison-test",
+  section: "Numerical Series",
+  topic: "Limit Comparison Test",
+  title: "Limit Comparison Test",
+  youtubeId: "gDCKFE3jlUg",
+  description:
+    "An introduction to the Limit Comparison Test for determining convergence or divergence by comparing a series with a simpler benchmark series."
+},
+  {
   course: "calculus-3",
   courseName: "Calculus III",
   page: "calculus-3.html",
