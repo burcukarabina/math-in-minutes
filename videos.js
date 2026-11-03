@@ -373,7 +373,7 @@ const videos = [
   section: "Numerical Series",
   topic: "Telescoping Series",
   title: "Telescoping Series",
-  youtubeId: "G52eA7leVgo",
+  youtubeId: "tM1JWD7YDAA",
   description:
     "An introduction to telescoping series, focusing on how terms cancel in partial sums and how this structure helps determine convergence and the sum of the series."
 },
