@@ -390,6 +390,18 @@ const videos = [
     "An introduction to the Integral Test for determining whether an infinite series converges or diverges by comparing it with a related improper integral."
 },
   {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "comparison-test",
+  section: "Numerical Series",
+  topic: "Comparison Test",
+  title: "Comparison Test",
+  youtubeId: "h5rOnvoyZtw",
+  description:
+    "An introduction to the Comparison Test for determining convergence or divergence by comparing a series with another series whose behavior is already known."
+},
+  {
   course: "calculus-3",
   courseName: "Calculus III",
   page: "calculus-3.html",
