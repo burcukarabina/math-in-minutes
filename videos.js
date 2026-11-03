@@ -366,6 +366,18 @@ const videos = [
     "A guide to choosing an appropriate convergence test for an infinite series based on the form and structure of its terms."
 },
   {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "telescoping-series",
+  section: "Numerical Series",
+  topic: "Telescoping Series",
+  title: "Telescoping Series",
+  youtubeId: "G52eA7leVgo",
+  description:
+    "An introduction to telescoping series, focusing on how terms cancel in partial sums and how this structure helps determine convergence and the sum of the series."
+},
+  {
   course: "calculus-3",
   courseName: "Calculus III",
   page: "calculus-3.html",
