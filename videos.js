@@ -378,6 +378,18 @@ const videos = [
     "An introduction to telescoping series, focusing on how terms cancel in partial sums and how this structure helps determine convergence and the sum of the series."
 },
   {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "integral-test",
+  section: "Numerical Series",
+  topic: "Integral Test",
+  title: "Integral Test",
+  youtubeId: "llHaWJkwh5U",
+  description:
+    "An introduction to the Integral Test for determining whether an infinite series converges or diverges by comparing it with a related improper integral."
+},
+  {
   course: "calculus-3",
   courseName: "Calculus III",
   page: "calculus-3.html",
