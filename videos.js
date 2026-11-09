@@ -655,5 +655,17 @@ const videos = [
   youtubeId: "RPsZ5vDWKDk",
   description:
     "A second worked example applying the Lagrange Multiplier algorithm to solve a constrained optimization problem."
+},
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "polar-equations-and-their-graphs",
+  section: "Polar Coordinates",
+  topic: "Polar Equations and Graphs",
+  title: "Polar Equations and Their Graphs",
+  youtubeId: "9q3hifqdCQs",
+  description:
+    "An introduction to interpreting polar equations and sketching their graphs, with emphasis on understanding how values of \\(r\\) and \\(\\theta\\) determine points in the polar plane."
 }
 ];
