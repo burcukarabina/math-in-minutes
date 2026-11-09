@@ -412,6 +412,29 @@ const videos = [
   youtubeId: "gDCKFE3jlUg",
   description:
     "An introduction to the Limit Comparison Test for determining convergence or divergence by comparing a series with a simpler benchmark series."
+},{
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "absolute-versus-conditional-convergence",
+  section: "Numerical Series",
+  topic: "Absolute and Conditional Convergence",
+  title: "Absolute versus Conditional Convergence",
+  youtubeId: "1oA5O3MxnCk",
+  description:
+    "An explanation of the difference between absolute and conditional convergence, including how convergence of the absolute-value series relates to convergence of the original series."
+},
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "proof-with-convergence-of-series",
+  section: "Numerical Series",
+  topic: "Convergence of Series",
+  title: "Proof with Convergence of Series",
+  youtubeId: "ycHSiGn_ZIw",
+  description:
+    "A proof-based exploration of convergence of infinite series, emphasizing how partial sums are used to justify convergence results."
 },
   {
   course: "calculus-3",
