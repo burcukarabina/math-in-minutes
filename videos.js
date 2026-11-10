@@ -684,7 +684,7 @@ const videos = [
   courseName: "Calculus III",
   page: "calculus-3.html",
   id: "polar-equations-and-their-graphs",
-  section: "Polar Coordinates",
+  section: "Coordinate Systems",
   topic: "Polar Equations and Graphs",
   title: "Polar Equations and Their Graphs",
   youtubeId: "9q3hifqdCQs",
