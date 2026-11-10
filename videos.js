@@ -437,6 +437,30 @@ const videos = [
     "A proof-based exploration of convergence of infinite series, emphasizing how partial sums are used to justify convergence results."
 },
   {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "ratio-test",
+  section: "Numerical Series",
+  topic: "Ratio Test",
+  title: "Ratio Test",
+  youtubeId: "eM0W9RSD3Y4",
+  description:
+    "An introduction to the Ratio Test for determining whether an infinite series converges or diverges, including how to interpret the resulting limit."
+},
+  {
+  course: "calculus-2",
+  courseName: "Calculus II",
+  page: "calculus-2.html",
+  id: "root-test",
+  section: "Numerical Series",
+  topic: "Root Test",
+  title: "Root Test",
+  youtubeId: "1c-I3nMtBAQ",
+  description:
+    "An introduction to the Root Test for determining whether an infinite series converges or diverges, including how to interpret the resulting limit."
+},
+  {
   course: "calculus-3",
   courseName: "Calculus III",
   page: "calculus-3.html",
