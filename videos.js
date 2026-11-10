@@ -690,5 +690,17 @@ const videos = [
   youtubeId: "9q3hifqdCQs",
   description:
     "An introduction to interpreting polar equations and sketching their graphs, with emphasis on understanding how values of \\(r\\) and \\(\\theta\\) determine points in the polar plane."
+},
+  {
+  course: "calculus-3",
+  courseName: "Calculus III",
+  page: "calculus-3.html",
+  id: "cylindrical-and-spherical-coordinates",
+  section: "Coordinate Systems",
+  topic: "Cylindrical and Spherical Coordinates",
+  title: "Cylindrical and Spherical Coordinates",
+  youtubeId: "8fvzSYHrJ8E",
+  description:
+    "An introduction to cylindrical and spherical coordinate systems, including how points and equations are represented and related to Cartesian coordinates."
 }
 ];
